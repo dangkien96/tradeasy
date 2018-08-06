@@ -1,0 +1,15 @@
+.tab-setting .nav-tabs {
+	width: 20%;
+    border: 0;
+}
+.btn-form-submit {
+	border-radius: 50%;
+	position: fixed;
+	bottom: 50px;
+	right: 50px;
+	height: 70px;
+	width: 70px;
+}
+.btn-form-submit i {
+	font-size: 24px;
+}
