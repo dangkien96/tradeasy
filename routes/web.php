@@ -52,7 +52,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Auth', 'middleware' => 'web']
     Route::get('logout', 'LoginController@logout')->name('logout');
 });
 
-Route::group(['prefix' => 'admin/users'], function() {
+Route::group(['prefix' => 'admin/users', 'middleware' => 'auth'], function() {
     Route::get('user-permission/{id}', '\DangKien\RolePer\Controllers\UserRoleController@index')->name('user-permission.index');
     Route::post('user-permission/{id}', '\DangKien\RolePer\Controllers\UserRoleController@store')->name('user-permission.store');
     Route::get('role-permission/{id}', '\DangKien\RolePer\Controllers\RolePermissionController@index')->name('roles-permission.index');
@@ -103,7 +103,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend'], function() {
     Route::resource('slides', 'SlideController',[ 'export' => ['destroy'] ]);
 });
 
-Route::group(['prefix' => 'rest/admin'], function() {
+Route::group(['prefix' => 'rest/admin', 'middleware' => 'auth'], function() {
     Route::get('users', 'Backend\UserController@getList');
     Route::delete('users/{id}', 'Backend\UserController@destroy');
 
