@@ -52,7 +52,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Auth', 'middleware' => 'web']
     Route::get('logout', 'LoginController@logout')->name('logout');
 });
 
-Route::group(['prefix' => 'admin/users', 'middleware' => 'auth'], function() {
+Route::group(['prefix' => 'admin/users'], function() {
     Route::get('user-permission/{id}', '\DangKien\RolePer\Controllers\UserRoleController@index')->name('user-permission.index');
     Route::post('user-permission/{id}', '\DangKien\RolePer\Controllers\UserRoleController@store')->name('user-permission.store');
     Route::get('role-permission/{id}', '\DangKien\RolePer\Controllers\RolePermissionController@index')->name('roles-permission.index');
@@ -63,7 +63,7 @@ Route::resource('admin/roles', '\DangKien\RolePer\Controllers\RoleController');
 Route::resource('admin/permissions', '\DangKien\RolePer\Controllers\PermissionController');
 Route::resource('admin/permissions-group', '\DangKien\RolePer\Controllers\PermissionGroupController');
 
-Route::group(['prefix' => 'admin', 'namespace' => 'Backend'], function() {
+Route::group(['prefix' => 'admin', 'namespace' => 'Backend', 'middleware' => 'auth'], function() {
     
     Route::get('/laravel-filemanager', '\UniSharp\LaravelFilemanager\controllers\LfmController@show');
     Route::post('/laravel-filemanager/upload', '\UniSharp\LaravelFilemanager\controllers\UploadController@upload');
