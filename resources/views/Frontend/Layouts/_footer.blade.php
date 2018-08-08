@@ -17,50 +17,47 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-6">
+                    <div class="col-md-2 col-sm-4">
                         <div class="widget-item">
-                            <h2>Our Services</h2>
+                            <h2>{{ trans('fe_menu.about_us') }}</h2>
                             <ul class="widget-link">
-                                <li><a href="#"> <i aria-hidden="true" class="fa fa-long-arrow-right"></i>Business Consulting</a></li>
-                                <li><a href="#"><i aria-hidden="true" class="fa fa-long-arrow-right"></i>Rumi. Exchange</a></li>
-                                <li><a href="#"><i aria-hidden="true" class="fa fa-long-arrow-right"></i>Rumi. Analytics</a></li>
-                                <li><a href="#"><i aria-hidden="true" class="fa fa-long-arrow-right"></i>Rumi. Mining</a></li>
-                                <li><a href="#"><i aria-hidden="true" class="fa fa-long-arrow-right"></i>Rumi. Shopping</a></li>
-                                <li><a href="#"><i aria-hidden="true" class="fa fa-long-arrow-right"></i>Customer Insights</a></li>
-                                <li><a href="#"><i aria-hidden="true" class="fa fa-long-arrow-right"></i>Customer Insights</a></li>
+                                <li><a href="{{ route('fe.about_us') }}"> <i aria-hidden="true" class="fa fa-long-arrow-right"></i>{{ trans('fe_menu.about_us') }}</a></li>
+                                <li><a href="#"><i aria-hidden="true" class="fa fa-long-arrow-right"></i>{{ trans('fe_menu.recruit') }}</a></li>
+                                <li><a href="{{ route('fe.contact') }}"><i aria-hidden="true" class="fa fa-long-arrow-right"></i>
+                                {{ trans('fe_menu.contact') }}</a></li>
                             </ul>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-6">
+                    <div class="col-md-2 col-sm-4">
                         <div class="widget-item">
-                            <h2>Our Services</h2>
-                            <div class="widget-post">
-                                <div class="widget-post-thumb">
-                                    <img alt="thumb" src="{{url('Frontend')}}/img/blog/s-1.jpg">
-                                </div>
-                                <div class="widget-post-content">
-                                    <div class="widget-date">29 JAN 20178</div>
-                                    <a href="#"><h4>Lorem ipsum dolor sit amet</h4></a>
-                                </div>
-                            </div>
-                            <div class="widget-post">
-                                <div class="widget-post-thumb">
-                                    <img alt="thumb" src="{{url('Frontend')}}/img/blog/s-2.jpg">
-                                </div>
-                                <div class="widget-post-content">
-                                    <div class="widget-date">29 JAN 20178</div>
-                                    <a href="#"><h4>Lorem ipsum dolor sit amet</h4></a>
-                                </div>
-                            </div>
-                            <div class="widget-post">
-                                <div class="widget-post-thumb">
-                                    <img alt="thumb" src="{{url('Frontend')}}/img/blog/s-3.jpg">
-                                </div>
-                                <div class="widget-post-content">
-                                    <div class="widget-date">29 JAN 20178</div>
-                                    <a href="#"><h4>Lorem ipsum dolor sit amet</h4></a>
-                                </div>
-                            </div>
+                            <h2>{{ trans('fe_menu.buy_business') }}</h2>
+                            <ul class="widget-link">
+                                <li><a href="{{ route('fe.business') }}"> <i aria-hidden="true" class="fa fa-long-arrow-right"></i>{{ trans('fe_menu.business') }}</a></li>
+                                <li><a href="{{ route('fe.franchise') }}"><i aria-hidden="true" class="fa fa-long-arrow-right"></i>{{ trans('fe_menu.franchise') }}</a></li>
+                                <li><a href="{{ route('fe.buy') }}"><i aria-hidden="true" class="fa fa-long-arrow-right"></i>{{ trans('fe_menu.register_buy_business') }}
+                                </a></li>
+                                <li><a href="{{ route('fe.buy_business_process') }}"><i aria-hidden="true" class="fa fa-long-arrow-right"></i>{{ trans('fe_menu.buy_process') }}
+                                </a></li>
+                                <li><a href="{{ route('fe.buy_guard') }}"><i aria-hidden="true" class="fa fa-long-arrow-right"></i>{{ trans('fe_menu.safeguard') }}
+                                </a></li>
+                                <li><a href="{{ route('fe.buy_qa') }}"><i aria-hidden="true" class="fa fa-long-arrow-right"></i>{{ trans('fe_menu.buy_qa') }}
+                                </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-sm-4">
+                        <div class="widget-item">
+                            <h2>{{ trans('fe_menu.transfer_business') }} </h2>
+                            <ul class="widget-link">
+                                <li><a href="{{ route('fe.sell_business') }}"> <i aria-hidden="true" class="fa fa-long-arrow-right"></i>{{ trans('fe_menu.sell_business') }}</a></li>
+                                <li><a href="{{ route('fe.sell_business_process') }}"><i aria-hidden="true" class="fa fa-long-arrow-right"></i>{{ trans('fe_menu.sell_business_process') }}</a></li>
+                                <li><a href="{{ route('fe.sell_criteria') }}"><i aria-hidden="true" class="fa fa-long-arrow-right"></i>{{ trans('fe_menu.sell_criteria') }}
+                                </a></li>
+                                <li><a href="{{ route('fe.sell_business_qa') }}"><i aria-hidden="true" class="fa fa-long-arrow-right"></i>{{ trans('fe_menu.sell_business_qa') }}
+                                </a></li>
+                                <li><a href="{{ route('fe.sell_valuation') }}"><i aria-hidden="true" class="fa fa-long-arrow-right"></i>{{ trans('fe_menu.sell_valuation') }}
+                                </a></li>
+                            </ul>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6">

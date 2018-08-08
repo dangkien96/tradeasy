@@ -43,7 +43,7 @@
                                             <a href="{{ route('fe.business') }}">{{ trans('fe_menu.business') }}</a>
                                         </li>
                                         <li>
-                                            <a href="pricing-plan.html">{{ trans('fe_menu.franchise') }}</a>
+                                            <a href="{{ route('fe.franchise') }}">{{ trans('fe_menu.franchise') }}</a>
                                         </li>
                                         <li class="{{ request()->is('buy-business/') || request()->is('buy-business/*') ? 'active': '' }}">
                                             <a href="#">{{ trans('fe_menu.buy_business') }}
@@ -86,7 +86,7 @@
                                             </ul>
                                         </li>
                                         <li><a href="{{ route('fe.start_up') }}">{{ trans('fe_menu.start_up') }}</a></li>
-                                        <li><a href="contact-us.html">人才招募</a></li>
+                                        <li><a href="{{ route('fe.recruits') }}">{{ trans('fe_menu.recruit') }}</a></li>
                                         <li><a href="{{ route('fe.contact') }}">{{ trans('fe_menu.contact') }}</a></li>
                                     </ul>
                                     <ul class="header-action">
@@ -107,8 +107,8 @@
                                 <ul>
                                     <li class="active"><a href="#">Home</a></li>
                                     <li><a href="{{ route('fe.about_us') }}">{{ trans('fe_menu.about_us') }}</a></li>
-                                    <li><a href="team.html">{{ trans('fe_menu.business') }}</a></li>
-                                    <li><a href="services.html">{{ trans('fe_menu.franchise') }}</a></li>
+                                    <li><a href="{{ route('fe.business') }}">{{ trans('fe_menu.business') }}</a></li>
+                                    <li><a href="{{ route('fe.franchise') }}">{{ trans('fe_menu.franchise') }}</a></li>
                                     <li><a href="{{ route('home') }}">{{ trans('fe_menu.buy_business') }} <i class="fa fa-sort-desc" aria-hidden="true"></i></a>
                                         <ul>
                                             <li><a href="{{ route('fe.buy') }}">{{ trans('fe_menu.register_buy_business') }}</a></li>
@@ -129,7 +129,7 @@
                                         </ul>
                                     </li>
                                     <li><a href="{{ route('fe.start_up') }}">{{ trans('fe_menu.start_up') }}</a></li>
-                                    <li><a href="contact-us.html">{{ trans('fe_menu.contact') }}</a></li>
+                                    <li><a href="{{ route('fe.recruits') }}">{{ trans('fe_menu.contact') }}</a></li>
                                     <li><a href="{{ route('fe.contact') }}">{{ trans('fe_menu.contact') }}</a></li>
                                 </ul>
                             </div>

@@ -50,6 +50,7 @@ body {
     font-weight: normal;
     font-style: normal;
     font-size: 15px;
+    background-color: #fafafa;
 }
 
 h1,
@@ -3884,4 +3885,71 @@ textarea.text-area:focus {
 }
 .service-wrapper .panel-body {
     padding-bottom: 0px;
+}
+.dock-container .dock-item {
+    display: inline-block;
+    width: 120px;
+     -webkit-transition: width 1s; /* For Safari 3.1 to 6.0 */
+    transition: width 1s;
+}
+/*.dock-container .dock-item:hover {
+    width: 170px;
+}*/
+.text-bold {
+    font-weight: bold;
+}
+.blog-text p{
+    font-size: 18px;
+}
+.single-blog-post {
+    background-color: #fff;
+}
+.rule {
+    height: 200px;
+    overflow: auto;
+}
+
+.rule-content,
+.rule:hover,
+.rule:focus {
+  visibility: visible;
+}
+
+.rule::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: darkgrey;
+}
+
+.rule::-webkit-scrollbar {
+    width: 6px;
+    background-color: darkgrey;
+}
+.rule::-webkit-scrollbar-thumb {
+    background-color: rgb(75, 84, 93);
+    outline: 1px solid slategrey
+}
+
+.item-franchise {
+    cursor: pointer;
+}
+.send_mail {
+    background: url(../img/bg_sp.gif);
+    height: 285px;
+    background-size: cover;
+    background-position: center;
+}
+.input-send-mail {
+    position: absolute;
+    top: 30%;
+}
+
+.input-send-mail input{
+    height: 30px;
+}
+
+.input-send-mail .btn {
+   /* border-radius: 2px;
+    padding: 0px 15px;
+    height: 30px;
+    line-height: 30px;*/
 }

@@ -23,28 +23,28 @@
 			            		@csrf
 				                <div class="col-md-12 col-sm-12">
 		                           <div class="col-md-6">
-		                           		<input class="form-control" name="name" type="text" placeholder="姓名*"
+		                           		<input class="form-control" name="name" type="text" placeholder="{!! trans('fe_contact.name') !!}*"
 		                           		value="{{ old('name') }}">
 	                                	@if ($errors->has('name'))
 			                            	<p class="text-left text-danger">{{ $errors->first('name') }}</p>
 			                            @endif
-		                           		<input class="form-control" name="phone" type="text" placeholder="電話*" 
+		                           		<input class="form-control" name="phone" type="text" placeholder="{!! trans('fe_contact.phone') !!}*" 
 		                           		value="{{ old('phone') }}">
 		                           		@if ($errors->has('phone'))
 			                            	<p class="text-left text-danger">{{ $errors->first('phone') }}</p>
 			                            @endif
-		                           		<input class="form-control" name="email" type="text" placeholder="電郵*"
+		                           		<input class="form-control" name="email" type="text" placeholder="{!! trans('fe_contact.email') !!}*"
 		                           		value="{{ old('email') }}">
 		                           		@if ($errors->has('email'))
 			                            	<p class="text-left text-danger">{{ $errors->first('email') }}</p>
 			                            @endif
-		                            	<textarea class="text-area form-control" name="message" cols="30" rows="1" placeholder="備註*">{{ old('message') }}</textarea>
+		                            	<textarea class="text-area form-control" name="message" cols="30" rows="1" placeholder="{!! trans('fe_contact.message') !!}*">{{ old('message') }}</textarea>
 		                            	<p>
 		                            	@php
 											echo captcha_img();
 		                            	@endphp
 		                            	</p>
-		                            	<input class="form-control" name="captcha" type="text" placeholder="Captcha">
+		                            	<input class="form-control" name="captcha" type="text" placeholder="{!! trans('fe_contact.captcha') !!}">
 		                            	@if ($errors->has('captcha'))
    			                            	<p class="text-left text-danger">{{ $errors->first('captcha') }}</p>
    			                            @endif

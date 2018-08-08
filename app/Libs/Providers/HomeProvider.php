@@ -97,4 +97,15 @@ class HomeProvider {
 
 		return $data;
 	}
+
+	public function getRule () {
+		$data = $this->settingModel->where('key', 'RULE_EVENT')
+						->first();
+
+		if (!empty($data->data)) {
+			$data->data = json_decode($data->data);
+	 	}
+
+		return $data;
+	}
 }

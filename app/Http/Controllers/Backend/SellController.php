@@ -6,15 +6,17 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
 use App\Models\Business;
+use App\Models\SellBusiness;
 use App\Libs\Configs\KeyConfig;
 
 class SellController extends Controller
 {
 	private $businessModel;
 
-	public function __construct(Business $business)
+	public function __construct(Business $business, SellBusiness $sellBusiness)
 	{
-		$this->businessModel = $business;
+        $this->businessModel     = $business;
+        $this->sellBusinessModel = $sellBusiness;
 	}
 
     public function sellProcess() {
@@ -94,5 +96,21 @@ class SellController extends Controller
     		'data' => 'required',
     		'key'  => 'required'
     	], []);
+    }
+
+     public function register () {
+        return view('Backend.Contents.sell_business.register');
+    }
+
+    public function list (Request $request) {
+        $data = $this->sellBusinessModel->filterName($request->freetext)
+                                    ->filterPhone($request->freetext)
+                                    ->filterEmail($request->freetext)
+                                    ->filterProfit($request->freetext)
+                                    ->filterNature($request->freetext)
+                                    ->buildCond()
+                                    ->orderBy('created_at', 'desc')
+                                    ->paginate(10);
+        return response()->json($data);
     }
 }

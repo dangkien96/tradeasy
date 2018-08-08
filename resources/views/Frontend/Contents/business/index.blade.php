@@ -25,7 +25,7 @@
 	    	    </div>
 	    	</div>
 	        <div class="row">
-	            <div class="col-md-8 col-sm-8">
+	            <div class="col-md-9 col-sm-9">
 	            	<div class="row">
 		            	<div class="search col-md-12">
 			            	<div class="panel" style="box-shadow: 0 10px 30px 0 rgba(5, 5, 7, 0.5)">
@@ -127,6 +127,16 @@
 			            		</div>
 			            	</div>
 		            	</div>
+	            	</div>
+	            </div>
+	            <div class="col-md-3 col-sm-3 send_mail">
+	            	<div class="input-send-mail">
+	            		<div class="form-group">
+	            			<input type="text" name="" value="" placeholder="">
+	            			<button class="btn btn-default" type="button">
+	            				Send
+	            			</button>
+	            		</div>
 	            	</div>
 	            </div>
 	        </div>

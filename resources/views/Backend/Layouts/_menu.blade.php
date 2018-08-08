@@ -57,6 +57,11 @@
                             </a>                    
                             <ul class="collapse">
 
+                                <li class="{{ request()->is('admin/sell-business/register-sell') || request()->is('admin/sell-business/register-sell/*') ? 'active-link': '' }}">
+                                    <a href="{{ route('register_sell.index') }}"><i class="ti-angle-double-right">
+                                    </i>Register Sell</a>
+                                </li>
+
                                 <li class="{{ request()->is('admin/sell-business/process') || request()->is('admin/sell-business/process/*') ? 'active-link': '' }}">
                                     <a href="{{ route('sell_process.index') }}"><i class="ti-angle-double-right">
                                     </i>Sell process</a>
@@ -89,6 +94,10 @@
                                 <i class="arrow"></i>
                             </a>                    
                             <ul class="collapse">
+                                <li class="{{ request()->is('admin/purchase-business/register-buy') || request()->is('admin/purchase-business/register-buy/*') ? 'active-link': '' }}">
+                                    <a href="{{ route('register_buy.index') }}">
+                                        <i class="ti-angle-double-right"></i>Register Buy</a>
+                                </li>
                                 <li class="{{ request()->is('admin/purchase-business/process') || request()->is('admin/purchase-business/process/*') ? 'active-link': '' }}">
                                     <a href="{{ route('buy_process.index') }}">
                                         <i class="ti-angle-double-right"></i>Buy process</a>
@@ -112,6 +121,14 @@
                                 <span class="menu-title"> Recruit</span>
                             </a>
                         </li>
+
+                        <li class="{{ request()->is('admin/contact') || request()->is('admin/contact/*') ? 'active-sub active': '' }}">
+                            <a href="{{ route('contact.index') }}">
+                                <i class="ti-pin-alt"></i>
+                                <span class="menu-title"> Contact Us</span>
+                            </a>
+                        </li>
+
 
                         <li class="{{ request()->is('admin/slides') || request()->is('admin/slides/*') ? 'active-sub active': '' }}">
                             <a href="{{ route('slides.index') }}">

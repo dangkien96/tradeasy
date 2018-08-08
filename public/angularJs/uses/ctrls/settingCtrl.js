@@ -7,7 +7,8 @@ ngApp.controller('settingCtrl',function($scope, $myNotify, $myBootbox, $myLoader
 		banner_home: {},
 		contact: {}, 
 		aboutUs: {},
-		purchaseBusiness: {}
+		purchaseBusiness: {},
+		eventRule: {}
 	}
 	$scope.filter = {
 		freetext: ""
@@ -26,6 +27,10 @@ ngApp.controller('settingCtrl',function($scope, $myNotify, $myBootbox, $myLoader
 					if (value.key == 'BANNER_HOME') {
 						$scope.data.banner = value.setting
 					}
+					if (value.key == 'RULE_EVENT') {
+						$scope.data.eventRule = value.setting
+					}
+					
 				});
 			}, function (error) {
 			})
@@ -71,6 +76,21 @@ ngApp.controller('settingCtrl',function($scope, $myNotify, $myBootbox, $myLoader
 				'setting': JSON.stringify(
 					{'content': $scope.data.aboutUs.content || ''}),
 				'key' : 'ABOUT_US'
+			}
+			$settingService.action.insertSetting(params).then(function (resp){
+				if (resp) {
+					$myNotify.success('Success')
+				}
+			}, function (error) {
+				$myNotify.error('Error')
+			});
+		},
+
+		saveRuleEvent: function () {
+			let params = {
+				'setting': JSON.stringify(
+					{'content': $scope.data.eventRule.content || ''}),
+				'key' : 'RULE_EVENT'
 			}
 			$settingService.action.insertSetting(params).then(function (resp){
 				if (resp) {

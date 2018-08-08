@@ -6,15 +6,17 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
 use App\Models\Business;
+use App\Models\BuyBusiness;
 use App\Libs\Configs\KeyConfig;
 
 class BuyController extends Controller
 {
-    private $businessModel;
+    private $businessModel, $buyBusinessModel;
 
-	public function __construct(Business $business)
+	public function __construct(Business $business, BuyBusiness $buyBusiness)
 	{
 		$this->businessModel = $business;
+        $this->buyBusinessModel = $buyBusiness;
 	}
 
     public function buyProcess() {
@@ -84,5 +86,22 @@ class BuyController extends Controller
     		'data' => 'required',
     		'key'  => 'required'
     	], []);
+    }
+
+
+    public function register () {
+        return view('Backend.Contents.purchase_business.register');
+    }
+
+    public function list (Request $request) {
+        $data = $this->buyBusinessModel->filterName($request->freetext)
+                                    ->filterPhone($request->freetext)
+                                    ->filterEmail($request->freetext)
+                                    ->filterCity($request->freetext)
+                                    ->filterNature($request->freetext)
+                                    ->buildCond()
+                                    ->orderBy('created_at', 'desc')
+                                    ->paginate(10);
+        return response()->json($data);
     }
 }

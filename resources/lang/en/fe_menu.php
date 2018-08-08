@@ -17,4 +17,5 @@ return array (
   'start_up' => '創業顧問',
   'contact' => '關於我們',
   'transfer_business' => '出让业务',
+  'recruit' => '聯絡我們',
 );

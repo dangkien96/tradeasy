@@ -41,6 +41,14 @@ Route::group(['prefix' => '/', 'namespace' => 'Frontend'], function() {
     Route::get('contact', 'ContactController@contact')->name('fe.contact');
     Route::post('contact', 'ContactController@addContact')->name('fe.post_contact');
 
+    Route::get('franchise', 'FranchiseController@index')->name('fe.franchise');
+    Route::get('franchise/detail/{id}-{slug}', 'FranchiseController@detail')->name('fe.franchise_detail');
+
+    Route::get('event-online', 'FranchiseController@registerEvent')->name('fe.event_online');
+    Route::post('event-online', 'FranchiseController@addEvent')->name('fe.post_event_online');
+    
+    Route::get('recruits', 'RecruitController@recruit')->name('fe.recruits');
+    Route::get('recruit-detail/{id}-{slug}', 'RecruitController@recruitDetail')->name('fe.recruit_detail');
 
 });
 
@@ -101,6 +109,15 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend', 'middleware' => 'au
     Route::resource('recruits', 'RecruitController',[ 'export' => ['destroy'] ]);
 
     Route::resource('slides', 'SlideController',[ 'export' => ['destroy'] ]);
+
+    Route::get('contact', 'ContactController@index')->name('contact.index');
+
+    Route::get('register-buy', 'BuyController@register')->name('register_buy.index');
+
+    Route::get('register-sell', 'SellController@register')->name('register_sell.index');
+
+    Route::get('event-online', 'EventOnlineController@register')->name('event_online.index');
+    
 });
 
 Route::group(['prefix' => 'rest/admin', 'middleware' => 'auth'], function() {
@@ -115,4 +132,11 @@ Route::group(['prefix' => 'rest/admin', 'middleware' => 'auth'], function() {
 
     Route::get('slides', 'Backend\SlideController@list');
     Route::delete('slides/{id}', 'Backend\SlideController@destroy');
+
+    Route::get('contact', 'Backend\ContactController@list');
+
+    Route::get('register-buy', 'Backend\BuyController@list');
+
+    Route::get('register-sell', 'Backend\SellController@list');
+    
 });

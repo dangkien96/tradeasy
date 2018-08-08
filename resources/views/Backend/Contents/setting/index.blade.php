@@ -1,6 +1,7 @@
 @extends('Backend.Layouts.default')
 @section ('title', 'ZeLike 澤樣室內設計')
 @section('content')
+
 	<div id="content-container" ng-controller="settingCtrl">
 		<div id="page-content">
 		    <div class="panel" style="background-color: #ecf0f5">
@@ -15,6 +16,9 @@
 			                </li>
 			                <li>
 			                    <a data-toggle="tab" href="#tab-3"><i class="ti-info-alt"></i> Banner Home</a>
+			                </li>
+			                <li>
+			                    <a data-toggle="tab" href="#tab-4"><i class="ti-info-alt"></i> Rule Event</a>
 			                </li>
 			            </ul>
 			            <div class="tab-content">
@@ -170,6 +174,22 @@
 		                            	</div>
         		                        <button type="button" ng-click="actions.saveBannerHome()" class="btn btn-primary btn-block">確定</button>
         		                    </form>
+	        		            </div>
+			                </div>
+			                <div id="tab-4" class="tab-pane fade">
+			                    <div class="row">
+	        		                <div class="col-sm-12">
+	        		                    <form>
+	        		                        <div class="form-group">
+	        		                        	<p class="text-danger text-left" ng-repeat="(key, err) in data.aboutUsEr.errors.content">
+	        		                        			@{{ err }}
+	        		                        	</p>
+	        		                            <textarea class="my-ckeditor" ng-model="data.eventRule.content">
+	        		                            </textarea>
+	        		                        </div>
+	        		                        <button type="button" ng-click="actions.saveRuleEvent()" class="btn btn-primary btn-block">確定</button>
+	        		                    </form>
+	        		                </div>
 	        		            </div>
 			                </div>
 			            </div>
