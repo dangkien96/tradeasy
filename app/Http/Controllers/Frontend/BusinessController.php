@@ -66,9 +66,17 @@ class BusinessController extends Controller
     								->with(['natures' => function($query) {
     									$query->select('id', 'name_2');
     								}])
+    								->with(['images' => function ($query) {
+    									$query->select('id', 'photo_1', 'cat_id')
+    											->where('deleted', 0)
+    											->where('active', 1)
+    											->orderBy('sort_no', 'asc')
+    											->get();
+    								}])
     								->first();
     	// echo "<pre>";
     	// print_r($data);
+    	// return 12;
     	return view('Frontend.Contents.business.detail', array('business' => $data));
     }
 

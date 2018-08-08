@@ -5,7 +5,7 @@
 		$locations    = app('Location')->getLocaiton();
 		$locationGr   = app('Location')->getGroupLocaiton();
 		$natures      = app('Location')->getNatrue();
-		$money_basics  = array(
+		$money_basics = array(
 						["value"=> 1, "name"=> "30萬以下"],
 						["value"=> 2, "name"=> "30-50萬"],
 						["value"=> 3, "name"=> "50-70萬"],
@@ -13,7 +13,8 @@
 						["value"=> 5, "name"=> "100-150萬"],
 						["value"=> 6, "name"=> "150-200萬"],
 						["value"=> 7, "name"=> "200萬以上"],
-						) 
+						) ;
+		$seo          = app('AboutUs')->getSeo();
 	@endphp
 	<div class="content-section ptb-80">
 	    <div class="container">
@@ -204,7 +205,7 @@
 @section ('myCss')
 @endsection
 @section ('meta')
-	<meta name=description content="{{ @$business->meta_description }}">
-	<meta name="keywords" content="{{ @$business->meta_name }}" />
+	<meta name="description" content="{!! @$seo->data->description !!}">
+	<meta name="keywords" content="{!! @$seo->data->keyword !!}" />
 @endsection
-@section ('title', @$business->meta_title)
+@section ('title', @$seo->data->title)

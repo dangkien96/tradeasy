@@ -21,6 +21,10 @@ class BusinessDB2 extends MyModel
          return $this->belongsTo('App\Models\BusinessNature', 'business_nature_id', 'id');
     }
 
+    public function images() {
+         return $this->hasMany('App\Models\BusinessImage', 'cat_id', 'id');
+    }
+
     public function filterNature($params) {
     	if (!empty($params)) {
     		$this->setFunctionCond('whereIn', ['business_nature_id', $params]);

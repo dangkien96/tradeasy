@@ -89,7 +89,7 @@ li {
 }
 
 p {
-    color: #7e7e7e;
+    color: rgb(39, 37, 37);
     font-size: 15px;
     font-weight: lighter;
     line-height: 24px;
@@ -2018,6 +2018,7 @@ a.button.button-black:hover {
 .service-text {
     padding: 0 17px;
     font-size: 20px;
+    line-height: 40px;
 }
 
 
@@ -2071,6 +2072,7 @@ a.button.button-black:hover {
 .service-text p {
     font-size: 20px;
     letter-spacing: 2px;
+    line-height: 40px;
 }
 
 
@@ -3189,7 +3191,7 @@ a.button.button-black:hover {
 ========================================*/
 
 .widget-title {
-    font-size: 20px;
+    font-size: 25px;
     letter-spacing: 1px;
     margin-bottom: 30px;
     position: relative;
@@ -3222,6 +3224,11 @@ a.button.button-black:hover {
 .post-cat-list li a {
     display: block;
     padding: 4px 0;
+    font-size: 18px;
+}
+
+.post-cat-list li a i {
+    color: rgb(30, 28, 28);
 }
 
 .post-thumb {
@@ -3952,4 +3959,21 @@ textarea.text-area:focus {
     padding: 0px 15px;
     height: 30px;
     line-height: 30px;*/
+}
+.service-text p span.title {
+    color: rgb(234, 114, 0);
+    font-size: 20px;
+    font-weight: 600;
+}
+.copyright p {
+    color: #fff;
+}
+
+.btn-business {
+    border-radius: 30px;
+    font-size: 16px;
+    padding: 0px 35px;
+    height: 40px;
+    line-height: 40px;
+    border: 1px #fa8e16;
 }

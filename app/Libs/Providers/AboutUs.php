@@ -30,4 +30,14 @@ class AboutUs {
 		}
 		return $contact;
 	}
+
+	public function getSeo() {
+		$seo = $this->setting->where('key', 'META_SEO')
+							 ->first();
+
+		if (!empty($seo->data)) {
+			$seo->data = json_decode($seo->data);
+		}
+		return $seo;
+	}
 }

@@ -4,3 +4,4 @@
 <script src="{{ url('Frontend/') }}/js/main.js"></script>
 <script src="{{ url('') }}/Nifty/plugins/bootstrap-select/bootstrap-select.min.js"></script>
 <script src="{{ url('') }}/Nifty/plugins/sweet-alert/sweetalert2.min.js"></script>
+<script src="{{ url('Frontend') }}/js/blueimp-gallery.min.js"></script>

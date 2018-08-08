@@ -36,7 +36,7 @@
 @section ('myCss')
 @endsection
 @section ('meta')
-	<meta name=description content="{{ @$business->meta_description }}">
+	<meta name="description" content="{{ @$business->meta_description }}">
 	<meta name="keywords" content="{{ @$business->meta_name }}" />
 @endsection
 @section ('title', @$business->meta_title)

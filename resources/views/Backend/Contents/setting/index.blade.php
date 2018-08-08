@@ -8,7 +8,10 @@
 		        <div class="panel-body">
 					<div class="tab-base tab-stacked-left tab-setting">
 			            <ul class="nav nav-tabs">
-			                <li class="active">
+			            	<li class="active">
+			                    <a data-toggle="tab" href="#tab-0"><i class="ti-world"></i> Seo meta default</a>
+			                </li>
+			                <li>
 			                    <a data-toggle="tab" href="#tab-1"><i class="ti-world"></i> Contact</a>
 			                </li>
 			                <li>
@@ -21,8 +24,44 @@
 			                    <a data-toggle="tab" href="#tab-4"><i class="ti-info-alt"></i> Rule Event</a>
 			                </li>
 			            </ul>
+			            
 			            <div class="tab-content">
-			                <div id="tab-1" class="tab-pane fade active in">
+			            	<div id="tab-0" class="tab-pane fade active in">
+			                    <div class="row">
+	        		                <div class="col-sm-12">
+	        		                    <form>
+	        		                        <div class="panel-body">
+	 					                        <div class="col-sm-12">
+	 					                            <div class="form-group">
+	 					                                <label class="control-label">Meta keyword:</label>
+	 					                                <input type="text" class="form-control" 
+	 					                                ng-model="data.meta.keyword"
+	 					                                required placeholder="Keyword">
+	 					                            </div>
+	 					                        </div>
+	 					                        <div class="col-sm-12">
+	 					                            <div class="form-group">
+	 					                                <label class="control-label">Meta title:</label>
+	 					                                <input type="text" class="form-control" ng-model="data.meta.title"
+	 					                                required placeholder="Title">
+	 					                            </div>
+	 					                        </div>
+	 					                        <div class="col-sm-12">
+	 					                            <div class="form-group">
+	 					                                <label class="control-label">Meta description:</label>
+	 					                                <textarea rows="5" class="form-control" placeholder="Description" ng-model="data.meta.description"></textarea>
+	 					                            </div>
+	 					                        </div>
+
+	 					                        <div class="col-sm-12">
+	 					                        	 <button type="button" ng-click="actions.saveMeta()" class="btn btn-primary btn-block">Submit</button>
+	 					                        </div>
+		 					                </div>
+	        		                    </form>
+	        		                </div>
+	        		            </div>
+			                </div>
+			                <div id="tab-1" class="tab-pane fade">
 			                    <div class="row">
 	        		                <div class="col-sm-12">
 	        		                    <form>

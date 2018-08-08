@@ -6,17 +6,24 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\BuyBusiness;
 use DB;
+use App\Models\BusinessDB2;
 
 class BuyController extends Controller
 {
-    private $buyBusinessModel;
-    public function __construct(BuyBusiness $buyBusiness)
+    private $buyBusinessModel, $businessModel;
+    public function __construct(BuyBusiness $buyBusiness, BusinessDB2 $business)
     {
         $this->buyBusinessModel = $buyBusiness; 
+        $this->businessModel    = $business;
     }
 
-	public function buy () {
-		return view('Frontend.Contents.buy-business.buy');
+	public function buy (Request $request) {
+
+        $data = $this->businessModel->select('id', 'intro_2', 'code')
+                                    ->where('id', $request->business)
+                                    ->first();
+
+		return view('Frontend.Contents.buy-business.buy', array('business' => $data));
 	}
     public function process () {
     	return view('Frontend.Contents.buy-business.process');
@@ -36,13 +43,16 @@ class BuyController extends Controller
         $this->_validateBuy($request);
         DB::beginTransaction();
         try {
-            $this->buyBusinessModel->name       = $request->name;
-            $this->buyBusinessModel->phone      = $request->phone;
-            $this->buyBusinessModel->email      = $request->email;
-            $this->buyBusinessModel->city       = $request->location_name;
-            $this->buyBusinessModel->nature     = $request->industry;
-            $this->buyBusinessModel->investment = $request->investment;
-            $this->buyBusinessModel->message    = $request->message;
+            $this->buyBusinessModel->name          = $request->name;
+            $this->buyBusinessModel->phone         = $request->phone;
+            $this->buyBusinessModel->email         = $request->email;
+            $this->buyBusinessModel->city          = $request->location_name;
+            $this->buyBusinessModel->nature        = $request->industry;
+            $this->buyBusinessModel->investment    = $request->investment;
+            $this->buyBusinessModel->message       = $request->message;
+            $this->buyBusinessModel->business_name = $request->business_name;
+            $this->buyBusinessModel->business_code = $request->business_code;
+            $this->buyBusinessModel->business_id   = $request->business_id;
             $this->buyBusinessModel->save();
             DB::commit();
             $request->session()->flush();

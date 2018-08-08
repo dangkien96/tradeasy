@@ -15,13 +15,14 @@
 	        </div>
 	        <div class="row">
 	            <div class="service-wrapper">
-	                <div class="col-md-12 col-sm-12">
+	                <div class="col-md-8 col-sm-8">
 	                    <div class="service-item">
 	                        <div class="service-text">
 	                            {!! @$start_up->data !!}
 	                        </div>
 	                    </div>
 	                </div>
+	                @includeif ('Frontend.Layouts._hot_business')
 	            </div>
 	        </div>
 	    </div>
@@ -33,7 +34,7 @@
 @section ('myCss')
 @endsection
 @section ('meta')
-	<meta name=description content="{{ @$start_up->meta_description }}">
+	<meta name="description" content="{{ @$start_up->meta_description }}">
 	<meta name="keywords" content="{{ @$start_up->meta_name }}" />
 @endsection
 @section ('title', @$start_up->meta_title)

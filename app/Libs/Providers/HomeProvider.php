@@ -5,6 +5,7 @@ use DB;
 use App\Models\Slide;
 use App\Models\BusinessDB2;
 use App\Models\Setting;
+use App\Models\Recurits;
 
 
 class HomeProvider {
@@ -18,6 +19,7 @@ class HomeProvider {
 		$this->business     = new BusinessDB2();
 		$this->slideModel   = new Slide();
 		$this->settingModel = new Setting();
+		$this->recuritModel = new Recurits();
 	}
 
 	public function getListBusiness () {
@@ -108,4 +110,11 @@ class HomeProvider {
 
 		return $data;
 	}
+
+	public function getRecruit () {
+		$data = $this->recuritModel::orderBy('id', 'desc')->limit(5)->get();
+
+		return $data;
+	}
+
 }

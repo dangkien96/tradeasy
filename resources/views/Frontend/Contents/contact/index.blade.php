@@ -5,6 +5,7 @@
 		$locations = app('Location')->getLocaiton();
 		$natures   = app('Location')->getNatrue();
 		$contact   = app('AboutUs')->getContact();
+		$seo       = app('AboutUs')->getSeo();
 	@endphp
 	<div class="content-section ptb-50 gray-bg">
 	    <div class="container">
@@ -132,7 +133,7 @@
 @section ('myCss')
 @endsection
 @section ('meta')
-	<meta name=description content="{{ @$business->meta_description }}">
-	<meta name="keywords" content="{{ @$business->meta_name }}" />
+	<meta name="description" content="{!! @$seo->data->description !!}">
+	<meta name="keywords" content="{!! @$seo->data->keyword !!}" />
 @endsection
-@section ('title', @$business->meta_title)
+@section ('title', @$seo->data->title)

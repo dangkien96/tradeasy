@@ -8,7 +8,8 @@ ngApp.controller('settingCtrl',function($scope, $myNotify, $myBootbox, $myLoader
 		contact: {}, 
 		aboutUs: {},
 		purchaseBusiness: {},
-		eventRule: {}
+		eventRule: {},
+		meta: {}
 	}
 	$scope.filter = {
 		freetext: ""
@@ -29,6 +30,9 @@ ngApp.controller('settingCtrl',function($scope, $myNotify, $myBootbox, $myLoader
 					}
 					if (value.key == 'RULE_EVENT') {
 						$scope.data.eventRule = value.setting
+					}
+					if (value.key == 'META_SEO') {
+						$scope.data.meta = value.setting
 					}
 					
 				});
@@ -111,7 +115,25 @@ ngApp.controller('settingCtrl',function($scope, $myNotify, $myBootbox, $myLoader
 					}),
 				'key' : 'PURCHASE_BUSINESS'
 			}
-			console.log(params)
+			$settingService.action.insertSetting(params).then(function (resp){
+				if (resp) {
+					$myNotify.success('Success')
+				}
+			}, function (error) {
+				$myNotify.error('Error')
+			});
+		},
+
+		saveMeta: function () {
+			let params = {
+				'setting': JSON.stringify(
+					{
+						'title': $scope.data.meta.title || '',
+						'keyword': $scope.data.meta.keyword || '',
+						'description': $scope.data.meta.description || '',
+					}),
+				'key' : 'META_SEO'
+			}
 			$settingService.action.insertSetting(params).then(function (resp){
 				if (resp) {
 					$myNotify.success('Success')
@@ -165,6 +187,8 @@ ngApp.controller('settingCtrl',function($scope, $myNotify, $myBootbox, $myLoader
 				})
 			}
 		},
+
+
 
 	}
 

@@ -20,4 +20,8 @@ return array (
   'this_issue' => '回本期',
   'business' => '現有商機',
   'read_more' => 'Read More',
+  'hot_franchise' => '特許經營推介',
+  'button_back' => 'Back',
+  'button_send' => 'Submit',
+  'title' => '簡介',
 );

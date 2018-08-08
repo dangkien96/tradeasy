@@ -1,11 +1,11 @@
 <footer class="footer-area ">
-    <div class="footer-top-section ptb-100 black-bg">
+    <div class="footer-top-section pt-100 black-bg">
         <div class="container">
             <div class="row">
                 <div class="widget-wrapper">
                     <div class="col-md-3 col-sm-6">
                         <div class="widget-item">
-                            <h1 class="footer-logo">Rumi<span>.</span></h1>
+                            <h1 class="footer-logo">Tradeasy<span>.</span></h1>
                             <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.</p>
                             <a href="#" class="readmore">Read More...</a>
                             <ul class="social-bookmarks footer-social">

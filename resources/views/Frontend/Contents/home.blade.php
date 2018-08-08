@@ -17,7 +17,7 @@
 						["value"=> 7, "name"=> "200萬以上"],
 						);
 		$bannerHome  = app('Home')->getBannerHome();
-
+		$seo         = app('AboutUs')->getSeo();
 	@endphp
 	<!-- End call to action -->
 	<!-- Start creative team -->
@@ -233,3 +233,9 @@
 @endsection
 @section ('myCss')
 @endsection
+
+@section ('meta')
+	<meta name="description" content="{!! @$seo->data->description !!}">
+	<meta name="keywords" content="{!! @$seo->data->keyword !!}" />
+@endsection
+@section ('title', @$seo->data->title)

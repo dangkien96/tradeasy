@@ -2,7 +2,8 @@
 
 @section ('content')
 	@php
-		$business = app('Buy')->getBusiness(App\Libs\Configs\KeyConfig::CONST_SELL_CRITERIA);
+		$rectuits = app('Home')->getRecruit();
+		$seo      = app('AboutUs')->getSeo();
 	@endphp
 	<div class="content-section ptb-50 gray-bg">
 	    <div class="container">
@@ -16,19 +17,32 @@
 	        </div>
 	        <div class="row">
 	            <div class="service-wrapper">
-	                <div class="col-md-12 col-sm-12">
+	                <div class="col-md-8 col-sm-8">
 	                    <div class="service-item">
 	                    	{!! @$recruit->content !!}
 	                    	<div class="pull-right">
-	                    		<button type="text" class="btn btn-default">
-	                    			<i class="fa fa-arrow-left"></i> Back
-	                    		</button>
+	                    		<a href="{{ route('fe.recruits') }}" type="text" class="btn btn-default">
+	                    			 {{ trans('fe_business.button_back') }} <i class="fa fa-arrow-right"></i>
+	                    		</a>
 	                    	</div>
 	                    </div>
 	                </div>
-
+	                <div class="col-md-4 col-sm-4" style="background: #fff;">
+	                	<aside class="single-widget">
+	                	        <h4 class="widget-title">{{ trans('fe_business.hot_business') }}</h4>
+	                	        <div class="widget-content">
+	                	            <ul class="post-cat-list">
+	                	                @foreach ($rectuits as $key => $rectuit)
+	                	                <li>
+	                	                    <a href="{{ route('fe.recruit_detail', [@$recruit->id, @$recruit->slug]) }}">
+	                	                        <i class="fa fa-angle-double-right"> </i> {!! @$recruit->title !!}</a>
+	                	                </li>
+	                	                @endforeach 
+	                	            </ul>
+	                	        </div>
+	                	</aside>
+	                </div>
 	            </div>
-	            
 	        </div>
 	    </div>
 	</div>
@@ -39,7 +53,7 @@
 @section ('myCss')
 @endsection
 @section ('meta')
-	<meta name=description content="{{ @$business->meta_description }}">
-	<meta name="keywords" content="{{ @$business->meta_name }}" />
+	<meta name="description" content="{!! @$seo->data->description !!}">
+	<meta name="keywords" content="{!! @$seo->data->keyword !!}" />
 @endsection
-@section ('title', @$business->meta_title)
+@section ('title', @$seo->data->title)

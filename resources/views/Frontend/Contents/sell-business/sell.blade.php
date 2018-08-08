@@ -3,7 +3,8 @@
 @section ('content')
 	@php
 		$locations = app('Location')->getLocaiton();
-		$natures = app('Location')->getNatrue();
+		$natures   = app('Location')->getNatrue();
+		$seo       = app('AboutUs')->getSeo();
 	@endphp
 	<div class="content-section ptb-50 gray-bg">
 	    <div class="container">
@@ -69,7 +70,7 @@
    			                            @endif
 		                            </div>
 				                </div>
-								<div class="col-md-12">
+								<div class="col-md-12 pb-10">
 									<button class="button comment-cntact active pull-right" type="submit">SEND</button>
 										<p class="bigtech-send-message"></p>
 								</div>
@@ -119,7 +120,7 @@
 @section ('myCss')
 @endsection
 @section ('meta')
-	<meta name=description content="{{ @$business->meta_description }}">
-	<meta name="keywords" content="{{ @$business->meta_name }}" />
+	<meta name="description" content="{!! @$seo->data->description !!}">
+	<meta name="keywords" content="{!! @$seo->data->keyword !!}" />
 @endsection
-@section ('title', @$business->meta_title)
+@section ('title', @$seo->data->title)
