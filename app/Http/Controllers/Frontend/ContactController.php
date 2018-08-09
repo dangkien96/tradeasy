@@ -20,6 +20,8 @@ class ContactController extends Controller
     	$this->contactModel = $contactModel;
     }
     public function addContact (Request $request) {
+        $request->flash();
+        $this->validateContact($request);
     	DB::beginTransaction();
     	try {
 			$this->contactModel->name    = $request->name;
@@ -47,7 +49,7 @@ class ContactController extends Controller
 
     }
 
-    public function validateContact() {
+    public function validateContact($request) {
     	$this->validate($request, [
 			'name'  => 'between: 1,250',
 			'phone' => 'between: 1,20',

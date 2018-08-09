@@ -4,6 +4,7 @@
 	<title>Send Email</title>
 </head>
 <body>
+	<p>Date: {{ Carbon\Carbon::now() }}</p>
 	<p>Tpye: {!! $params['type'] !!}</p>
 	<p>Name: {!! $params['name'] !!}</p>
 	<p>Tel: {!! $params['phone'] !!}</p>

@@ -83,20 +83,20 @@ class BusinessController extends Controller
 
     public function sendMail(Request $request) {
 
-    	$this->_validateMail($reqeuest);
-    	DB::beginTransaction();
+   //  	$this->_validateMail($reqeuest);
+   //  	DB::beginTransaction();
 
-    	try {
-			$this->senMailModel->email   = $request->email;
-			$this->senMailModel->is_stop = 0;
+   //  	try {
+			// $this->senMailModel->email   = $request->email;
+			// $this->senMailModel->is_stop = 0;
 			
-			$this->save();
-    		DB::commit();
-    		return redirect()->back();
-    	} catch (Exception $e) {
-    		DB::rollback();
-    		return redirect()->back();
-    	}
+			// $this->save();
+   //  		DB::commit();
+   //  		return redirect()->back();
+   //  	} catch (Exception $e) {
+   //  		DB::rollback();
+   //  		return redirect()->back();
+   //  	}
     }
 
     public function _validateMail($rquest) {
