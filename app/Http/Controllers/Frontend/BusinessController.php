@@ -9,10 +9,11 @@ use DB;
 
 class BusinessController extends Controller
 {
-	private $businessModel;
+	private $businessModel, $senMailModel;
 	public function __construct(BusinessDB2 $business)
 	{
 		$this->businessModel = $business;
+		$this->senMailModel  = DB::connection('mysql2')->table('tbl_b_item_send_email');
 	}
 
 	public function business (Request $request) {
@@ -78,6 +79,30 @@ class BusinessController extends Controller
     	// print_r($data);
     	// return 12;
     	return view('Frontend.Contents.business.detail', array('business' => $data));
+    }
+
+    public function sendMail(Request $request) {
+
+    	$this->_validateMail($reqeuest);
+    	DB::beginTransaction();
+
+    	try {
+			$this->senMailModel->email   = $request->email;
+			$this->senMailModel->is_stop = 0;
+			
+			$this->save();
+    		DB::commit();
+    		return redirect()->back();
+    	} catch (Exception $e) {
+    		DB::rollback();
+    		return redirect()->back();
+    	}
+    }
+
+    public function _validateMail($rquest) {
+    	$this->_validateMail($rquest, [
+    		'email' => 'required|email'
+    	]);
     }
 
 }

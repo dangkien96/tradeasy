@@ -10,7 +10,7 @@ class RecruitController extends Controller
 {
     public function recruit (Recurits $recruit) {
     	$recruits = $recruit->get();
-
+    	
     	return view('Frontend.Contents.recruit.index', array('recruits' => $recruits) );
     }
 

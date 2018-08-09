@@ -50,6 +50,9 @@ Route::group(['prefix' => '/', 'namespace' => 'Frontend'], function() {
     Route::get('recruits', 'RecruitController@recruit')->name('fe.recruits');
     Route::get('recruit-detail/{id}-{slug}', 'RecruitController@recruitDetail')->name('fe.recruit_detail');
 
+    Route::post('send-email', 'BusinessController@sendMail')->name('fe.sendMail');
+    
+
 });
 
 //End Frontend

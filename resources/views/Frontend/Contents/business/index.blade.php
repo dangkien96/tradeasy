@@ -131,14 +131,17 @@
 	            	</div>
 	            </div>
 	            <div class="col-md-3 col-sm-3 send_mail">
-	            	<div class="input-send-mail">
-	            		<div class="form-group">
-	            			<input type="text" name="" value="" placeholder="">
-	            			<button class="btn btn-default" type="button">
-	            				Send
-	            			</button>
+	            	<!-- <form action="{{ route('fe.sendMail') }}" method="post" accept-charset="utf-8"> -->
+	            		<!-- @csrf -->
+	            		<div class="input-send-mail">
+	            			<div class="form-group">
+	            				<input type="text" name="email" placeholder="your email">
+	            				<button class="btn btn-default" type="submit">
+	            					Send
+	            				</button>
+	            			</div>
 	            		</div>
-	            	</div>
+	            	<!-- </form> -->
 	            </div>
 	        </div>
 	        <div class="team-wrapper-slide mt-40">

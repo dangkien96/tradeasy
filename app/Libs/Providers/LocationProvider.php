@@ -16,7 +16,6 @@ class LocationProvider {
 	{
 		$this->locationModel = new Location();
 		$this->nature = new BusinessNature();
-		// $this->mysqli_connection = mysqli_connect(env('DB2_HOST'), env('DB2_USERNAME'), env('DB2_PASSWORD'), env('DB2_DATABASE') );
 	}
 
 	public function getLocaiton() {
