@@ -1,3 +1,7 @@
+@php
+    $contact   = app('AboutUs')->getContact();
+@endphp
+
 <header>
     <div class="header-area">
         <!-- start header top area -->
@@ -6,8 +10,8 @@
                 <div class="row">
                     <div class="col-md-8 col-sm-8">
                         <ul class="header-top-left">
-                            <li><a href="#"><i class="fa fa-envelope-o"></i> 123@456.789 </a></li>
-                            <li><a href="#"><i class="fa fa-phone"></i> + 0123456789 </a></li>
+                            <li><a href="#"><i class="fa fa-envelope-o"></i>{{ @$contact->data->email }} </a></li>
+                            <li><a href="#"><i class="fa fa-phone"></i> {{ @$contact->data->phone }}</a></li>
                         </ul>
                     </div>
                     <div class="col-md-4 col-sm-4">

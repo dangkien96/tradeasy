@@ -49,6 +49,9 @@
                         <li class="
                                 {{ request()->is('admin/sell-business') 
                                 || request()->is('admin/sell-business/*')
+                                || request()->is('admin/register-sell') 
+                                || request()->is('admin/register-sell/*')
+                                
                                 ? 'active-sub active': '' }}">
                             <a href="#">
                                 <i class="ti-package"></i>
@@ -57,7 +60,7 @@
                             </a>                    
                             <ul class="collapse">
 
-                                <li class="{{ request()->is('admin/sell-business/register-sell') || request()->is('admin/sell-business/register-sell/*') ? 'active-link': '' }}">
+                                <li class="{{ request()->is('admin/register-sell') || request()->is('admin/register-sell/*') ? 'active-link': '' }}">
                                     <a href="{{ route('register_sell.index') }}"><i class="ti-angle-double-right">
                                     </i>Register Sell</a>
                                 </li>
@@ -87,6 +90,8 @@
                          <li class="
                                 {{ request()->is('admin/purchase-business') 
                                 || request()->is('admin/purchase-business/*')
+                                || request()->is('admin/register-buy') 
+                                || request()->is('admin/register-buy/*')
                                 ? 'active-sub active': '' }}">
                             <a href="#">
                                 <i class="ti-shopping-cart"></i>
@@ -94,7 +99,7 @@
                                 <i class="arrow"></i>
                             </a>                    
                             <ul class="collapse">
-                                <li class="{{ request()->is('admin/purchase-business/register-buy') || request()->is('admin/purchase-business/register-buy/*') ? 'active-link': '' }}">
+                                <li class="{{ request()->is('admin/register-buy') || request()->is('admin/register-buy/*') ? 'active-link': '' }}">
                                     <a href="{{ route('register_buy.index') }}">
                                         <i class="ti-angle-double-right"></i>Register Buy</a>
                                 </li>
@@ -117,7 +122,7 @@
 
                         <li class="{{ request()->is('admin/recruits') || request()->is('admin/recruits/*') ? 'active-sub active': '' }}">
                             <a href="{{ route('recruits.index') }}">
-                                <i class="ti-pin-alt"></i>
+                                <i class="ti-arrow-circle-right"></i>
                                 <span class="menu-title"> Recruit</span>
                             </a>
                         </li>
@@ -132,14 +137,14 @@
 
                         <li class="{{ request()->is('admin/slides') || request()->is('admin/slides/*') ? 'active-sub active': '' }}">
                             <a href="{{ route('slides.index') }}">
-                                <i class="ti-pin-alt"></i>
+                                <i class="ti-gallery"></i>
                                 <span class="menu-title"> Slide</span>
                             </a>
                         </li>
 
                         <li class="{{ request()->is('admin/start-up-page') || request()->is('admin/start-up-page/*') ? 'active-sub active': '' }}">
                             <a href="{{ route('start_up.index') }}">
-                                <i class="ti-hand-open"></i>
+                                <i class="ti-blackboard"></i>
                                 <span class="menu-title"> Startup page</span>
                             </a>
                         </li>

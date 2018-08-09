@@ -64,14 +64,10 @@
                         <div class="widget-item">
                             <h2>Get In Tuch</h2>
                             <ul class="widget-address">
-                                <li><a href="#"><i class="fa fa-map-marker m-5"></i> The Rumi. Company Ltd. 54B, Tailstoi Town 5238 MT, lowa city</a></li>
-                                <li><a href="#"><i class="fa fa-phone m-5"></i> +6681 631 237 884</a></li>
-                                <li><a href="#"><i class="fa fa-envelope m-5"></i> info@example.com</a></li>
+                                <li><a href="#"><i class="fa fa-map-marker m-5"></i> {{ @$contact->data->address }}</a></li>
+                                <li><a href="#"><i class="fa fa-phone m-5"></i> {{ @$contact->data->phone }}</a></li>
+                                <li><a href="#"><i class="fa fa-envelope m-5"></i> {{ @$contact->data->email }}</a></li>
                             </ul>
-                            <div class="futter-form">
-                                <input type="text" placeholder="Subscribe Now" class="form-control">
-                                <div class="submit-icon"> <i class="fa fa-paper-plane"></i></div>
-                            </div>
                         </div>
                     </div>
                 </div>

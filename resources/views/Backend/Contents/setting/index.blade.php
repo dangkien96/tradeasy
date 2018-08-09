@@ -12,16 +12,16 @@
 			                    <a data-toggle="tab" href="#tab-0"><i class="ti-world"></i> Seo meta default</a>
 			                </li>
 			                <li>
-			                    <a data-toggle="tab" href="#tab-1"><i class="ti-world"></i> Contact</a>
+			                    <a data-toggle="tab" href="#tab-1"><i class="ti-arrow-circle-right"></i> Contact</a>
 			                </li>
 			                <li>
 			                    <a data-toggle="tab" href="#tab-2"><i class="ti-info-alt"></i> About-us</a>
 			                </li>
 			                <li>
-			                    <a data-toggle="tab" href="#tab-3"><i class="ti-info-alt"></i> Banner Home</a>
+			                    <a data-toggle="tab" href="#tab-3"><i class="ti-gallery"></i> Banner Home</a>
 			                </li>
 			                <li>
-			                    <a data-toggle="tab" href="#tab-4"><i class="ti-info-alt"></i> Rule Event</a>
+			                    <a data-toggle="tab" href="#tab-4"><i class="ti-vector"></i> Rule Event</a>
 			                </li>
 			            </ul>
 			            
