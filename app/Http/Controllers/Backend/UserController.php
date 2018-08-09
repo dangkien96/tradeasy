@@ -79,13 +79,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
         if (Auth::check()) {
-            $user = $this->userModel::find(Auth::id());
-            if (!empty($user)) {
-                return view('Backend.Contents.user.updateSeft', ['user'=>$user]);
-            }
+            $user = $this->userModel::findOrFail(Auth::id());
+            return view('Backend.Contents.user.updateSeft', ['user'=>$user]);
         } else {
             return redirect()->route('login');
         }

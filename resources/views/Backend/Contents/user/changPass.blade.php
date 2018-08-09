@@ -4,11 +4,11 @@
 	<div id="content-container">
 		<div id="page-head">
             <div id="page-title">
-                <h1 class="page-header text-overflow">用戶</h1>
+                <h1 class="page-header text-overflow">Password</h1>
             </div>
             <ol class="breadcrumb">
 			<li><a href="#"><i class="demo-pli-home"></i></a></li>
-			<li><a href="#"> 修改密碼</a></li>
+			<li><a href="#"> Change Password</a></li>
             </ol>
         </div>
 		<div id="page-content">
@@ -25,7 +25,7 @@
 			                    <div class="row">
 			                        <div class="col-sm-10">
 			                            <div class="form-group">
-			                                <label class="control-label">Mật khẩu mới</label>
+			                                <label class="control-label">New password</label>
 			                                <input type="password" name="password" class="form-control">
 			                                @if ($errors->has('password'))
 				                            	<p class="text-left text-danger">{{ $errors->first('password') }}</p>
@@ -34,7 +34,7 @@
 			                        </div> 
 			                        <div class="col-sm-10">
 			                            <div class="form-group">
-			                                <label class="control-label">Nhập lại mật khẩu mới</label>
+			                                <label class="control-label">Confirm password</label>
 			                                <input type="password" name="confirm" class="form-control">
 			                                @if ($errors->has('confirm'))
 				                            	<p class="text-left text-danger">{{ $errors->first('confirm') }}</p>
@@ -44,7 +44,7 @@
 			                    </div>
 			                    <div class="row">
 			                    	<div class="col-sm-10">
-			                        	<button type="submit" class="btn btn-primary btn-block">Gửi</button>
+			                        	<button type="submit" class="btn btn-primary btn-block">Send</button>
 			                        </div>
 			                    </div>
 			                </div>

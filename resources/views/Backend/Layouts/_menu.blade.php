@@ -23,7 +23,7 @@
                     </li>    -->
                     <ul id="mainnav-menu" class="list-group">
                         <li class="list-divider"></li>
-                        <li class="list-header">Quản lí</li> 
+                        <li class="list-header">Manager</li> 
                         <li class="
                                 {{ request()->is('admin/users') 
                                 || request()->is('admin/users/*')
@@ -32,16 +32,16 @@
                                 ? 'active-sub active': '' }}">
                             <a href="#">
                                 <i class="demo-pli-male"></i>
-                                <span class="menu-title">Người dùng</span>
+                                <span class="menu-title">Users</span>
                                 <i class="arrow"></i>
                             </a>                    
                             <ul class="collapse">
                                 <li class="{{ request()->is('admin/users') || request()->is('admin/users/*') ? 'active-link': '' }}">
                                     <a href="{{ route('users.index') }}"><i class="ti-angle-double-right">
-                                    </i>Người dùng</a>
+                                    </i>Users</a>
                                 </li>
                                 <li class="{{ request()->is('admin/roles') || request()->is('admin/roles/*') ? 'active-link': '' }}">
-                                    <a href="{{ route('roles.index') }}"><i class="ti-angle-double-right"></i>Chức vụ</a>
+                                    <a href="{{ route('roles.index') }}"><i class="ti-angle-double-right"></i>Role</a>
                                 </li>
                             </ul>
                         </li>

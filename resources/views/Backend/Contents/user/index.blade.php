@@ -4,11 +4,11 @@
 	<div id="content-container" ng-controller="userCtrl">
 		<div id="page-head">
             <div id="page-title">
-                <h1 class="page-header text-overflow">Người dùng</h1>
+                <h1 class="page-header text-overflow">Users</h1>
             </div>
             <ol class="breadcrumb">
 				<li><a href="#"><i class="demo-pli-home"></i></a></li>
-				<li><a href="#">Danh sách</a></li>
+				<li><a href="#">List</a></li>
             </ol>
         </div>
 		<div id="page-content">
@@ -21,7 +21,7 @@
 		            	<div class="pad-btm form-inline">
 				            <div class="row">
 				                <div class="col-sm-6 table-toolbar-left">
-				                   <a href="{{ route('users.create') }}" id="demo-btn-addrow" class="btn btn-purple"><i class="demo-pli-add"></i> Thêm mới người dùng</a>
+				                   <a href="{{ route('users.create') }}" id="demo-btn-addrow" class="btn btn-purple"><i class="demo-pli-add"></i> Create Users</a>
 				                </div>
 				                <div class="col-sm-6 table-toolbar-right">
 				                    <div class="form-group col-sm-12">
@@ -36,11 +36,11 @@
 		                        <thead>
 		                            <tr>
 		                                <th class="text-center">#</th>
-		                                <th>Tên</th>
+		                                <th>Name</th>
 		                                <th>Email</th>
 		                                <th>Phone</th>
-		                                <th>Trạng thái</th>
-		                                <th>Thao tác</th>
+		                                <th>Status</th>
+		                                <th>Actions</th>
 		                            </tr>
 		                        </thead>
 		                        <tbody>
@@ -56,13 +56,13 @@
 			                            </td>
 		                                <td style="width: 250px">
 		                                	<a class="btn btn-info btn-icon btn-sm" >
-		                                		Cập nhật
+		                                		Edit
 		                                	</a>
 		                                	<a class="btn btn-info btn-icon btn-sm" href="{{ url('admin/users/user-permission') }}/@{{ user.id }}">
-		                                		Phân quyền
+		                                		Permission
 		                                	</a>
 		                                	<button class="btn btn-danger btn-sm btn-icon" ng-click="actions.delete(user.id)">
-		                                		Xóa
+		                                		Delete
 		                                	</button>
 		                                </td>
 		                            </tr>
