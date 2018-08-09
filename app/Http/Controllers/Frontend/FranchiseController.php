@@ -109,6 +109,20 @@ class FranchiseController extends Controller
         
     }
 
+    public function hotFranchise() 
+    {
+        $url = $this->api_url.'franchise_category/all';
+
+        $data = $this->_send(self::HTTP_METHOD_GET, $url, []);
+
+        $data = json_decode($data, true);
+        $val = array_rand($data['data']);
+        $ran_m = array_rand($data['data'][$val]['franchises'], 2);
+        $hotF[] = $data['data'][$val]['franchises'][0];
+        $hotF[] = $data['data'][$val]['franchises'][1];
+        return $hotF;
+    }
+
 
     public function validateInsert($request) {
         $this->validate($request, [

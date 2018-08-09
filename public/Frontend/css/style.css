@@ -3236,7 +3236,8 @@ a.button.button-black:hover {
 }
 
 .post-thumb img {
-    width: 70px;
+    width: 90px;
+    height: 70px;
 }
 
 .widget-post-content {
