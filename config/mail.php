@@ -60,6 +60,8 @@ return [
         'name' => env('MAIL_FROM_NAME', 'Example'),
     ],
 
+
+    'toMail' => 'kiendt2112@gmail.com',
     /*
     |--------------------------------------------------------------------------
     | E-Mail Encryption Protocol
@@ -117,6 +119,14 @@ return [
 
         'paths' => [
             resource_path('views/vendor/mail'),
+        ],
+    ],
+
+    'stream' => [
+        'ssl' => [
+            'allow_self_signed' => true,
+            'verify_peer' => false,
+            'verify_peer_name' => false,
         ],
     ],
 

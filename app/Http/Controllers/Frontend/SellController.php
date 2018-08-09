@@ -52,6 +52,10 @@ class SellController extends Controller
             $this->sellBusinessModel->save();
             DB::commit();
             $request->session()->flush();
+            $params = ['name'=>"$request->name", 'email' => '22334@s.ca'];
+            Mail::to('kiendt2112@gmail.com')
+                    ->send(new SendMail('buy_business',  $params, 'Transoft', 'Buy Business Tradeasy') );
+
             return redirect()->back()->with('sell-business', 'success');
         } catch (Exception $e) {
             DB::rollback();

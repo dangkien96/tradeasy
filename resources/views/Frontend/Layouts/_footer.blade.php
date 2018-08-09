@@ -1,3 +1,6 @@
+@php
+    $contact   = app('AboutUs')->getContact();
+@endphp
 <footer class="footer-area ">
     <div class="footer-top-section pt-100 black-bg">
         <div class="container">

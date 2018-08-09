@@ -1,6 +1,9 @@
 @extends('Frontend.Layouts.default')
 
 @section ('content')
+@php
+    $businessHots = app('Home')->getBusinessHot();
+@endphp
 	<div class="content-section ptb-50 gray-bg">
 	    <div class="container">
 	        <div class="row">
@@ -12,9 +15,10 @@
 	        </div>
 	        <div class="row">
 	            <div class="service-wrapper">
-	                <div class="col-md-8 col-sm-12 service-item">
-                        <div class="service-text">
-                            <div class="col-md-6">
+	                <div class="col-md-8 col-sm-8">
+                        <div class="service-text" style="overflow: auto; background-color: #fff">
+                            <div class="pt-20">
+                            	<div class="col-md-6">
                             	<p><span class="title">代號：</span> {{ @$business->code }}</p>
                             	<p><span class="title">頂手費:</span> HKD {{ number_format(@$business->investment, 0,",","," ) }}</p>
                             	<p><span class="title">參考利潤：</span> HKD90,000</p>
@@ -50,7 +54,7 @@
 								</div>
                             </div>
 
-                            <div class="col-md-12 pt-100 text-center">
+                            <div class="col-md-12 pt-100 pb-30 text-center">
                             	<div class="button-back">
                             		<a style="background: rgb(140, 140, 140);color: #fff;" href="{{ URL::previous() }}" class="btn-default btn btn-business">
                             			{{ trans('fe_business.button_back') }}  <i class="fa fa-repeat"></i>
@@ -60,7 +64,23 @@
                             		</a>
                             	</div>
                             </div>
+                            </div>
                         </div>
+	                </div>
+	                <div class="col-md-4 col-sm-4" style="background: #fff;">
+	                    <aside class="single-widget">
+	                            <h4 class="widget-title">{{ trans('fe_business.hot_business') }}</h4>
+	                            <div class="widget-content">
+	                                <ul class="post-cat-list">
+	                                    @foreach ($businessHots as $key => $businessHot)
+	                                    <li>
+	                                        <a href="{{ route('fe.business_detail', [@$businessHot->id, @$businessHot->intro_2]) }}">
+	                                            <i class="fa fa-angle-double-right"> </i> {{ $businessHot->intro_2 }}</a>
+	                                    </li>
+	                                    @endforeach 
+	                                </ul>
+	                            </div>
+	                    </aside>
 	                </div>
 	            </div>
 	        </div>

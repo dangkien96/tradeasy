@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Frontend;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\BuyBusiness;
-use DB;
 use App\Models\BusinessDB2;
+use App\Mail\SendMail;
+
+use DB, Mail;
 
 class BuyController extends Controller
 {
@@ -38,7 +40,7 @@ class BuyController extends Controller
     }
 
     public function buyBusiness(Request $request) {
-
+        ini_set('max_execution_time', 300); 
         $request->flash();
         $this->_validateBuy($request);
         DB::beginTransaction();
@@ -54,9 +56,24 @@ class BuyController extends Controller
             $this->buyBusinessModel->business_code = $request->business_code;
             $this->buyBusinessModel->business_id   = $request->business_id;
             $this->buyBusinessModel->save();
+            
+            $params = [
+                'name'          => $request->name,
+                'phone'         => $request->phone,
+                'email'         => $request->email, 
+                'location_name' => $request->location_name, 
+                'investment'    => $request->investment,
+                'message'       => $request->message 
+                ];  
+
+            Mail::to('kiendt2112@gmail.com')
+                    ->send(new SendMail('buy_business',  $params, 'Transoft', 'Buy Business Tradeasy') );
+
             DB::commit();
             $request->session()->flush();
+
             return redirect()->back()->with('buy-business', 'success');
+
         } catch (Exception $e) {
             DB::rollback();
         }

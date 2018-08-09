@@ -87,6 +87,10 @@ class FranchiseController extends Controller
             $eventModel->franchise_id     = $request->franchise_id;
             $eventModel->franchise_name   = $request->franchise_name;
             $eventModel->save();
+            
+            $params = ['name'=>"$request->name", 'email' => '22334@s.ca'];
+            Mail::to('kiendt2112@gmail.com')
+                    ->send(new SendMail('buy_business',  $params, 'Transoft', 'Buy Business Tradeasy') );
             DB::commit();
             return redirect()->back()->with('event', 'success');
         } catch (Exception $e) {

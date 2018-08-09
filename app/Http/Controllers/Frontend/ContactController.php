@@ -26,7 +26,11 @@ class ContactController extends Controller
 			$this->contactModel->phone   = $request->phone;
 			$this->contactModel->message = $request->message;
 			$this->contactModel->save();
-    		DB::commit();
+    		
+            $params = ['name'=>"$request->name", 'email' => '22334@s.ca'];
+            Mail::to('kiendt2112@gmail.com')
+                    ->send(new SendMail('buy_business',  $params, 'Transoft', 'Buy Business Tradeasy') );
+            DB::commit();
     		return redirect()->back()->with('contact', 'success');
     	} catch (Exception $e) {
     		DB::rollback();
