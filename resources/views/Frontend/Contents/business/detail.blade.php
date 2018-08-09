@@ -26,8 +26,8 @@
                             	<p><span class="title">每月租金：</span> HKD47,500</p>
                             </div>
                             <div class="col-md-6">
-                            	<p><span class="title">地區：</span> {{ @$business->natures->name_2 }} </p>
-                            	<p><span class="title">行業：</span> {{ @$business->locations->name_2 ? $business->locations->name_2 : 'N/A' }} </p>
+                            	<p><span class="title">地區：</span> {{ @$business->locations->name_2 ? $business->locations->name_2 : 'N/A' }} </p>
+                            	<p><span class="title">行業：</span> {{ @$business->natures->name_2 }} </p>
                             	<p><span class="title">營業額：</span> {{ @$business->Revenue }} </p>
                             	<p><span class="title">面積：</span> {{ @$business->Premise_Size }}</p>
                             </div>
