@@ -208,7 +208,7 @@
 	                                <p>{!! trans('fe_business.sell_price') !!}：HKD {{ number_format(@$businessHot->investment, 0) }}
 										<br>{!! trans('fe_business.reference_profit') !!}：{{ @$businessHot->reference_profits }}
 	                                </p>
-	                                <a href="{{ route('fe.business_detail', [@$businessHot->id, @$businessHot->intro_2]) }}" class="read-more">{{ @$businessHot->read_more }}</a>
+	                                <a href="{{ route('fe.business_detail', [@$businessHot->id, @$businessHot->intro_2]) }}" class="read-more">{{ trans('fe_business.read_more') }}</a>
 	                            </div>
 	                        </a>
                         </div>
