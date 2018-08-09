@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use DB;
+use DB, Mail;
 use App\Models\Contact;
+use App\Mail\SendMail;
 
 class ContactController extends Controller
 {
@@ -27,9 +28,15 @@ class ContactController extends Controller
 			$this->contactModel->message = $request->message;
 			$this->contactModel->save();
     		
-            $params = ['name'=>"$request->name", 'email' => '22334@s.ca'];
-            Mail::to('kiendt2112@gmail.com')
-                    ->send(new SendMail('buy_business',  $params, 'Transoft', 'Buy Business Tradeasy') );
+            $params = [
+                'name'    => $request->name,
+                'phone'   => $request->phone,
+                'email'   => $request->email,  
+                'message' => $request->message,
+                'type'    => 'Contact',
+            ]; 
+            Mail::to(config('mail.toMail'))
+                    ->send(new SendMail('contact',  $params, 'Transoft', 'Contact Tradeasy') );
             DB::commit();
     		return redirect()->back()->with('contact', 'success');
     	} catch (Exception $e) {

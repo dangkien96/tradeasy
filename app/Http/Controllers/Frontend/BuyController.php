@@ -58,15 +58,15 @@ class BuyController extends Controller
             $this->buyBusinessModel->save();
             
             $params = [
-                'name'          => $request->name,
-                'phone'         => $request->phone,
-                'email'         => $request->email, 
-                'location_name' => $request->location_name, 
-                'investment'    => $request->investment,
-                'message'       => $request->message 
+                'name'       => $request->name,
+                'phone'      => $request->phone,
+                'email'      => $request->email, 
+                'nature'     => $request->industry, 
+                'investment' => $request->investment,
+                'type'       => 'Buy business',
                 ];  
 
-            Mail::to('kiendt2112@gmail.com')
+            Mail::to(config('mail.toMail'))
                     ->send(new SendMail('buy_business',  $params, 'Transoft', 'Buy Business Tradeasy') );
 
             DB::commit();

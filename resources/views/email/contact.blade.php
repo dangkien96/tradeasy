@@ -11,8 +11,7 @@
 	<p>Ramark: {!! $params['type'] !!}</p>
 	<br>
 	<br>
-	<b>Detail</b>
-	<p>Business Nature: {!! $params['nature'] !!}</p>
-	<p>Reference profits: {!! $params['investment'] !!}</p>
+	<b>Message</b>
+	<p> {!! $params['message'] !!} </p>
 	<!-- <p>Transfer fees: {!! $params['type'] !!}</p> -->
 </html>

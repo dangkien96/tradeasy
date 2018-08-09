@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Frontend;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\EventOnline;
-use DB;
+use App\Mail\SendMail;
+use DB, Mail;
 
 class FranchiseController extends Controller
 {
@@ -88,8 +89,17 @@ class FranchiseController extends Controller
             $eventModel->franchise_name   = $request->franchise_name;
             $eventModel->save();
             
-            $params = ['name'=>"$request->name", 'email' => '22334@s.ca'];
-            Mail::to('kiendt2112@gmail.com')
+            $params = [
+                'name'           => $request->name,
+                'phone'          => $request->phone,
+                'number'         => $request->number,
+                'email'          => $request->email, 
+                'nature'         => $request->industry, 
+                'franchise_id'   => $request->franchise_id,
+                'franchise_name' => $request->franchise_name,
+                'type'           => 'Sell business',
+            ]; 
+            Mail::to(config('mail.toMail'))
                     ->send(new SendMail('buy_business',  $params, 'Transoft', 'Buy Business Tradeasy') );
             DB::commit();
             return redirect()->back()->with('event', 'success');

@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Frontend;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\SellBusiness;
-use DB;
+use App\Mail\SendMail;
+use DB, Mail;
 
 class SellController extends Controller
 {
@@ -52,8 +53,15 @@ class SellController extends Controller
             $this->sellBusinessModel->save();
             DB::commit();
             $request->session()->flush();
-            $params = ['name'=>"$request->name", 'email' => '22334@s.ca'];
-            Mail::to('kiendt2112@gmail.com')
+            $params = [
+                'name'       => $request->name,
+                'phone'      => $request->phone,
+                'email'      => $request->email, 
+                'nature'     => $request->industry, 
+                'investment' => $request->profit,
+                'type'       => 'Sell business',
+            ]; 
+            Mail::to(config('mail.toMail'))
                     ->send(new SendMail('buy_business',  $params, 'Transoft', 'Buy Business Tradeasy') );
 
             return redirect()->back()->with('sell-business', 'success');
