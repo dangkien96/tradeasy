@@ -155,6 +155,13 @@
                                 <span class="menu-title"> {{ trans('backend.menu.setting') }}</span>
                             </a>
                         </li>
+
+                        <li class="{{ request()->is('admin/translations') || request()->is('admin/translations/*') ? 'active-sub active': '' }}">
+                            <a href="{{ url('admin/translations') }}">
+                                <i class="ti-settings"></i>
+                                <span class="menu-title"> Translate </span>
+                            </a>
+                        </li>
                         <li class="list-divider">
                         </li>
                     </ul>
