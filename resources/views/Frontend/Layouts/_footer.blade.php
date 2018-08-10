@@ -82,7 +82,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="copyright">
-                        <p>Copyright 2018 &copy; Bigtechit All Rights Reserved. </p>
+                        <p>Copyright 2018 &copy; Design and code by transoftvn </p>
                     </div>
                 </div>
             </div>

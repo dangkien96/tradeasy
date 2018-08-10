@@ -11,7 +11,7 @@
 	        <div class="row">
 	            <div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
 	                <div class="main-heading-content text-center">
-	                    <h2>購入登記</h2>
+	                    <h2>{!! trans('fe_business.register_business') !!}</h2>
 	                </div>
 	            </div>
 	        </div>
@@ -33,23 +33,23 @@
 												<br>
 											</p>
 		                           		@endif
-		                           		<input class="form-control" name="name" type="text" placeholder="Your Name*" 
+		                           		<input class="form-control" name="name" type="text" placeholder="{!! trans('fe_business.name') !!}*" 
 		                           		value="{{ old('name') }}">
    		                                @if ($errors->has('name'))
    			                            	<p class="text-left text-danger">{{ $errors->first('name') }}</p>
    			                            @endif
-		                           		<input class="form-control" name="phone" type="text" placeholder="Your Phone*" 
+		                           		<input class="form-control" name="phone" type="text" placeholder="{!! trans('fe_business.phone') !!}*" 
 		                           		value="{{ old('phone') }}">
 		                           		@if ($errors->has('phone'))
    			                            	<p class="text-left text-danger">{{ $errors->first('phone') }}</p>
    			                            @endif
-		                           		<input class="form-control" name="email" type="text" placeholder="Your Email*" 
+		                           		<input class="form-control" name="email" type="text" placeholder="{!! trans('fe_business.email') !!}*" 
 		                           		value="{{ old('email') }}">
 		                           		@if ($errors->has('email'))
    			                            	<p class="text-left text-danger">{{ $errors->first('email') }}</p>
    			                            @endif
 		                           		<select id="demo-select2-placeholder" class="form-control" name="location_name">
-		                           			<option value="">Selected City</option>
+		                           			<option value="">{!! trans('fe_business.select_location') !!}</option>
 		                           			@foreach ($locations as $location)
 		                           				<option @if ($location->name_2 == old('location_name')) selected @endif value="{!! $location->name_2 !!}">{!! $location->name_2 !!}</option>
 		                           			@endforeach
@@ -58,7 +58,7 @@
    			                            	<p class="text-left text-danger">{{ $errors->first('location_name') }}</p>
    			                            @endif
 		                           		<select class="form-control" name="industry" >
-		                           			<option value="">Selected Industry</option>
+		                           			<option value="">{!! trans('fe_business.select_industry') !!}</option>
 		                           			@foreach ($natures as $nature)
 		                           				<option @if ($nature->name_2 == old('industry')) selected @endif value="{!! $nature->name_2 !!}">{!! $nature->name_2 !!}</option>
 		                           			@endforeach
@@ -78,24 +78,24 @@
 											</p>
 		                           		@endif
 		                            	
-		                            	<input class="form-control" name="investment" type="text" placeholder="Your investment*" >
+		                            	<input class="form-control" name="investment" type="text" placeholder="{!! trans('fe_business.investment') !!}*" >
 		                            	@if ($errors->has('investment'))
    			                            	<p class="text-left text-danger">{{ $errors->first('investment') }}</p>
    			                            @endif
-		                            	<textarea class="text-area" name="message" placeholder="Write Message*"></textarea>
+		                            	<textarea class="text-area" name="message" placeholder="{!! trans('fe_business.message') !!}*"></textarea>
 		                            	<p>
     		                            	@php
     											echo captcha_img();
     		                            	@endphp
 		                            	</p>
-		                            	<input class="form-control" name="captcha" type="text" placeholder="Captcha">
+		                            	<input class="form-control" name="captcha" type="text" placeholder="{!! trans('fe_business.captcha') !!}">
 		                            	@if ($errors->has('captcha'))
    			                            	<p class="text-left text-danger">{{ $errors->first('captcha') }}</p>
    			                            @endif
 		                            </div>
 				                </div>
 								<div class="col-md-12 pb-10">
-									<button class="button comment-cntact active pull-right" type="submit">SEND MESSAGE</button>
+									<button class="button comment-cntact active pull-right" type="submit">{!! trans('fe_business.send') !!}</button>
 									<p class="bigtech-send-message"></p>
 								</div>
 			                </form>

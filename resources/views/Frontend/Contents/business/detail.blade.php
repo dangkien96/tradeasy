@@ -19,25 +19,25 @@
                         <div class="service-text" style="overflow: auto; background-color: #fff">
                             <div class="pt-20">
                             	<div class="col-md-6">
-                            	<p><span class="title">代號：</span> {{ @$business->code }}</p>
-                            	<p><span class="title">頂手費:</span> HKD {{ number_format(@$business->investment, 0,",","," ) }}</p>
-                            	<p><span class="title">參考利潤：</span> HKD90,000</p>
-                            	<p><span class="title">回本期:</span> {{ @$business->payback_period }}</p>
-                            	<p><span class="title">每月租金：</span> HKD47,500</p>
+                            	<p><span class="title">{{ trans('fe_business.code') }}</span> {{ @$business->code }}</p>
+                            	<p><span class="title"> 頂手費:</span> HKD {{ number_format(@$business->investment, 0,",","," ) }}</p>
+                            	<p><span class="title">{{ trans('fe_business.reference_profits') }}: {{ @$business->reference_profits }}</span> </p>
+                            	<p><span class="title">{{ trans('fe_business.payback_period') }}:</span> {{ @$business->payback_period }}</p>
+                            	<p><span class="title">{{ trans('fe_business.rent') }}: </span> {{ @$business->Rent }}</p>
                             </div>
                             <div class="col-md-6">
-                            	<p><span class="title">地區：</span> {{ @$business->locations->name_2 ? $business->locations->name_2 : 'N/A' }} </p>
-                            	<p><span class="title">行業：</span> {{ @$business->natures->name_2 }} </p>
-                            	<p><span class="title">營業額：</span> {{ @$business->Revenue }} </p>
-                            	<p><span class="title">面積：</span> {{ @$business->Premise_Size }}</p>
+                            	<p><span class="title">{{ trans('fe_business.location') }}</span> {{ @$business->locations->name_2 ? $business->locations->name_2 : 'N/A' }} </p>
+                            	<p><span class="title">{{ trans('fe_business.nature') }}</span> {{ @$business->natures->name_2 }} </p>
+                            	<p><span class="title">{{ trans('fe_business.revenue') }}</span> {{ @$business->Revenue }} </p>
+                            	<p><span class="title">{{ trans('fe_business.premise_size') }}</span> {{ @$business->Premise_Size }}</p>
                             </div>
                             <div class="col-md-12 pt-50">
-                            	<span>備注：</span>
+                            	<span>{{ trans('fe_business.description') }}: </span>
 								{!! @$business->desc_2 !!}
                             </div>
 							
 							<div class="col-md-12 pt-80">
-								<div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
+								<div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls" data-hide-page-scrollbars="false">
 								    <div class="slides"></div>
 								    <h3 class="title"></h3>
 								    <a class="prev">‹</a>
