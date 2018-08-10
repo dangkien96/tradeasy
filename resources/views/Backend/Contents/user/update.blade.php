@@ -5,11 +5,11 @@
 	<div id="content-container">
 		<div id="page-head">
             <div id="page-title">
-                <h1 class="page-header text-overflow">Users</h1>
+                <h1 class="page-header text-overflow">{!! trans('backend.users.lable') !!}</h1>
             </div>
             <ol class="breadcrumb">
 			<li><a href="#"><i class="demo-pli-home"></i></a></li>
-			<li><a href="#">Update</a></li>
+			<li><a href="#">{!! trans('backend.users.update') !!}</a></li>
             </ol>
         </div>
 		<div id="page-content">
@@ -25,7 +25,7 @@
                                     <div class="row">
                                         <div class="col-sm-10">
                                             <div class="form-group">
-                                                <label class="control-label">Name</label>
+                                                <label class="control-label">{!! trans('backend.users.name') !!}</label>
                                                 <input type="text" name="name" class="form-control" value="{{ $user->name }}">
                                                 @if ($errors->has('name'))
                 	                            	<p class="text-left text-danger">{{ $errors->first('name') }}</p>
@@ -34,7 +34,7 @@
                                         </div> 
                                         <div class="col-sm-10">
                                             <div class="form-group">
-                                                <label class="control-label">Phone</label>
+                                                <label class="control-label">{!! trans('backend.users.phone') !!}</label>
                                                 <input type="text" name="phone" class="form-control" value="{{ $user->phone }}">
                                                 @if ($errors->has('phone'))
                 	                            	<p class="text-left text-danger">{{ $errors->first('phone') }}</p>
@@ -44,7 +44,7 @@
 
                                         <div class="col-sm-10">
                                             <div class="form-group">
-                                                <label class="control-label">Email</label>
+                                                <label class="control-label">{!! trans('backend.users.email') !!}</label>
                                                 <input disabled type="text" name="email" class="form-control" value="{{ $user->email }}">
                                                 @if ($errors->has('email'))
                 	                            	<p class="text-left text-danger">{{ $errors->first('email') }}</p>
@@ -56,7 +56,7 @@
                                         <div class="col-sm-10">
                                             <div class="form-group">
                                                	<div>
-                                               		<span class="btn btn-primary btn-file">Avatar... 
+                                               		<span class="btn btn-primary btn-file">{!! trans('backend.users.avatar') !!}... 
                                                			<input class="myRenderImage" type="file" name="avatar">
                                                		</span>
                                                		<div style="margin-top: 15px;">
@@ -67,23 +67,21 @@
                                         </div>
                                         <div class="col-sm-10"  style="margin-bottom: 15px;">
                                             <div class="form-group has-feedback">
-                	                            <label class="col-lg-3 control-label" style="padding-top: 10px;">Status</label>
+                	                            <label class="col-lg-3 control-label" style="padding-top: 10px;">{!! trans('backend.status.lable') !!}</label>
                 	                            <div class="col-lg-7">
                 	                                <div class="radio">
                 	                                    <input id="demo-radio-7" class="magic-radio" type="radio" name="status" value="AVAILABLE" data-bv-field="member" @if($user->status == "AVAILABLE") {{ 'checked' }} @endif>
-                	                                    <label for="demo-radio-7">Avaialbe</label>
+                	                                    <label for="demo-radio-7">{!! trans('backend.status.available') !!}</label>
                 	
                 	                                    <input id="demo-radio-8" class="magic-radio" type="radio" name="status" value="DISABLE" data-bv-field="member" @if($user->status == "DISABLE") {{ 'checked' }} @endif>
-                	                                    <label for="demo-radio-8">Disable</label>
+                	                                    <label for="demo-radio-8">{!! trans('backend.status.disable') !!}</label>
                 	                                </div>
                 	                        </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                    	<div class="col-sm-10">
-                                        	<button type="submit" class="btn btn-primary btn-block">Send</button>
-                                        </div>
-                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-block btn-form-submit">
+                                        <i class="fa fa-save"></i>
+                                    </button>
                                 </div>
 					   	</form>
 			        </div>

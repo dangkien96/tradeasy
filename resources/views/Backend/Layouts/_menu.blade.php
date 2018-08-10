@@ -23,7 +23,7 @@
                     </li>    -->
                     <ul id="mainnav-menu" class="list-group">
                         <li class="list-divider"></li>
-                        <li class="list-header">Manager</li> 
+                        <!-- <li class="list-header">{{ trans('backend.menu.manager') }}</li>  -->
                         <li class="
                                 {{ request()->is('admin/users') 
                                 || request()->is('admin/users/*')
@@ -32,16 +32,16 @@
                                 ? 'active-sub active': '' }}">
                             <a href="#">
                                 <i class="demo-pli-male"></i>
-                                <span class="menu-title">Users</span>
+                                <span class="menu-title">{{ trans('backend.menu.users') }}</span>
                                 <i class="arrow"></i>
                             </a>                    
                             <ul class="collapse">
                                 <li class="{{ request()->is('admin/users') || request()->is('admin/users/*') ? 'active-link': '' }}">
                                     <a href="{{ route('users.index') }}"><i class="ti-angle-double-right">
-                                    </i>Users</a>
+                                    </i>{{ trans('backend.menu.users') }}</a>
                                 </li>
                                 <li class="{{ request()->is('admin/roles') || request()->is('admin/roles/*') ? 'active-link': '' }}">
-                                    <a href="{{ route('roles.index') }}"><i class="ti-angle-double-right"></i>Role</a>
+                                    <a href="{{ route('roles.index') }}"><i class="ti-angle-double-right"></i>{{ trans('backend.menu.role') }}</a>
                                 </li>
                             </ul>
                         </li>
@@ -55,34 +55,34 @@
                                 ? 'active-sub active': '' }}">
                             <a href="#">
                                 <i class="ti-package"></i>
-                                <span class="menu-title">Selling Business</span>
+                                <span class="menu-title">{{ trans('backend.menu.sell_business') }}</span>
                                 <i class="arrow"></i>
                             </a>                    
                             <ul class="collapse">
 
                                 <li class="{{ request()->is('admin/register-sell') || request()->is('admin/register-sell/*') ? 'active-link': '' }}">
                                     <a href="{{ route('register_sell.index') }}"><i class="ti-angle-double-right">
-                                    </i>Register Sell</a>
+                                    </i>{{ trans('backend.menu.register_sell') }}</a>
                                 </li>
 
                                 <li class="{{ request()->is('admin/sell-business/process') || request()->is('admin/sell-business/process/*') ? 'active-link': '' }}">
                                     <a href="{{ route('sell_process.index') }}"><i class="ti-angle-double-right">
-                                    </i>Sell process</a>
+                                    </i>{{ trans('backend.menu.process_sell') }}</a>
                                 </li>
 
                                 <li class="{{ request()->is('admin/sell-business/sell-criteria') || request()->is('admin/sell-business/sell-criteria/*') ? 'active-link': '' }}">
                                     <a href="{{ route('sell_criteria.index') }}"><i class="ti-angle-double-right">
-                                    </i>Sell criteria</a>
+                                    </i>{{ trans('backend.menu.sell_criteria') }}</a>
                                 </li>
 
                                 <li class="{{ request()->is('admin/sell-business/sell-qa') || request()->is('admin/sell-business/sell-qa/*') ? 'active-link': '' }}">
                                     <a href="{{ route('sell_qa.index') }}"><i class="ti-angle-double-right">
-                                    </i>Sell qa</a>
+                                    </i>{{ trans('backend.menu.sell_qa') }}</a>
                                 </li>
 
                                 <li class="{{ request()->is('admin/sell-business/sell-valuation') || request()->is('admin/sell-business/sell-valuation/*') ? 'active-link': '' }}">
                                     <a href="{{ route('sell_valuation.index') }}"><i class="ti-angle-double-right">
-                                    </i>Sell valuation</a>
+                                    </i>{{ trans('backend.menu.sell_valuation') }}</a>
                                 </li>
                             </ul>
                         </li>
@@ -95,27 +95,27 @@
                                 ? 'active-sub active': '' }}">
                             <a href="#">
                                 <i class="ti-shopping-cart"></i>
-                                <span class="menu-title">Purchase Business</span>
+                                <span class="menu-title">{{ trans('backend.menu.purchase_business') }}</span>
                                 <i class="arrow"></i>
                             </a>                    
                             <ul class="collapse">
                                 <li class="{{ request()->is('admin/register-buy') || request()->is('admin/register-buy/*') ? 'active-link': '' }}">
                                     <a href="{{ route('register_buy.index') }}">
-                                        <i class="ti-angle-double-right"></i>Register Buy</a>
+                                        <i class="ti-angle-double-right"></i>{{ trans('backend.menu.register_buy') }}</a>
                                 </li>
                                 <li class="{{ request()->is('admin/purchase-business/process') || request()->is('admin/purchase-business/process/*') ? 'active-link': '' }}">
                                     <a href="{{ route('buy_process.index') }}">
-                                        <i class="ti-angle-double-right"></i>Buy process</a>
+                                        <i class="ti-angle-double-right"></i>{{ trans('backend.menu.process_buy') }}</a>
                                 </li>
 
                                 <li class="{{ request()->is('admin/purchase-business/safe-guard') || request()->is('admin/purchase-business/safe-guard/*') ? 'active-link': '' }}">
                                     <a href="{{ route('safe_guard.index') }}">
-                                        <i class="ti-angle-double-right"></i>Safe guard</a>
+                                        <i class="ti-angle-double-right"></i>{{ trans('backend.menu.safe_guard') }}</a>
                                 </li>
 
                                 <li class="{{ request()->is('admin/purchase-business/buy-qa') || request()->is('admin/purchase-business/buy-qa/*') ? 'active-link': '' }}">
                                     <a href="{{ route('buy_qa.index') }}">
-                                        <i class="ti-angle-double-right"></i>Buy Qa</a>
+                                        <i class="ti-angle-double-right"></i>{{ trans('backend.menu.buy_qa') }}</a>
                                 </li>
                             </ul>
                         </li>
@@ -123,14 +123,14 @@
                         <li class="{{ request()->is('admin/recruits') || request()->is('admin/recruits/*') ? 'active-sub active': '' }}">
                             <a href="{{ route('recruits.index') }}">
                                 <i class="ti-arrow-circle-right"></i>
-                                <span class="menu-title"> Recruit</span>
+                                <span class="menu-title"> {{ trans('backend.menu.recruit') }}</span>
                             </a>
                         </li>
 
                         <li class="{{ request()->is('admin/contact') || request()->is('admin/contact/*') ? 'active-sub active': '' }}">
                             <a href="{{ route('contact.index') }}">
                                 <i class="ti-pin-alt"></i>
-                                <span class="menu-title"> Contact Us</span>
+                                <span class="menu-title"> {{ trans('backend.menu.contact_us') }}</span>
                             </a>
                         </li>
 
@@ -138,21 +138,21 @@
                         <li class="{{ request()->is('admin/slides') || request()->is('admin/slides/*') ? 'active-sub active': '' }}">
                             <a href="{{ route('slides.index') }}">
                                 <i class="ti-gallery"></i>
-                                <span class="menu-title"> Slide</span>
+                                <span class="menu-title"> {{ trans('backend.menu.slide') }}</span>
                             </a>
                         </li>
 
                         <li class="{{ request()->is('admin/start-up-page') || request()->is('admin/start-up-page/*') ? 'active-sub active': '' }}">
                             <a href="{{ route('start_up.index') }}">
                                 <i class="ti-blackboard"></i>
-                                <span class="menu-title"> Startup page</span>
+                                <span class="menu-title"> {{ trans('backend.menu.start_up') }}</span>
                             </a>
                         </li>
                        
                         <li class="{{ request()->is('admin/setting') || request()->is('admin/setting/*') ? 'active-sub active': '' }}">
                             <a href="{{ route('setting.index') }}">
                                 <i class="ti-settings"></i>
-                                <span class="menu-title"> Setting</span>
+                                <span class="menu-title"> {{ trans('backend.menu.setting') }}</span>
                             </a>
                         </li>
                         <li class="list-divider">

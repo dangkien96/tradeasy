@@ -34,14 +34,14 @@
 		                        <thead>
 		                            <tr>
 		                                <th class="text-center">#</th>
-		                                <th>Name</th>
-		                                <th>Email</th>
-		                                <th>Phone</th>
-		                                <th>City</th>
-		                                <th>Nature</th>
-		                                <th>Investment</th>
-		                                <th>Message</th>
-		                                <th>Created at</th>
+		                                <th>{!! trans('backend.buy_business.name') !!}</th>
+		                                <th>{!! trans('backend.buy_business.email') !!}</th>
+		                                <th>{!! trans('backend.buy_business.phone') !!}</th>
+		                                <th>{!! trans('backend.buy_business.city') !!}</th>
+		                                <th>{!! trans('backend.buy_business.nature') !!}</th>
+		                                <th>{!! trans('backend.buy_business.invertment') !!}</th>
+		                                <th>{!! trans('backend.buy_business.message') !!}</th>
+		                                <th>{!! trans('backend.buy_business.created_at') !!}</th>
 		                            </tr>
 		                        </thead>
 		                        <tbody>

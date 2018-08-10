@@ -13,7 +13,7 @@
 
                         	<div class="form-group">
                                 <label class="control-label">
-                                	Content Website <span class="text-danger"> (*)</span>
+                                	{!! trans('backend.sell_business.content') !!} <span class="text-danger"> (*)</span>
                                 </label>
                                 <textarea class="my-ckeditor" name="data">{!! @$sell_process->data ? $sell_process->data : @old('meta_title') !!}</textarea>
                                 @if ($errors->has('data'))
@@ -23,26 +23,26 @@
 
                             <div class="form-group">
                                 <label class="control-label">
-									Meta title
+									{!! trans('backend.sell_business.meta_title') !!}
                                 </label>
-                                <input type="text" name="meta_title" class="form-control" value="{{ @$sell_process->meta_title ? $sell_process->meta_title: @old('meta_title') }}" placeholder="Meta title">
+                                <input type="text" name="{!! trans('backend.sell_business.meta_title') !!}" class="form-control" value="{{ @$sell_process->meta_title ? $sell_process->meta_title: @old('meta_title') }}" placeholder="Meta title">
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label">
-									Meta name
+									{!! trans('backend.sell_business.meta_keyword') !!}
                                 </label>
                                 <input type="text" name="meta_name" class="form-control" value="{{ @$sell_process->meta_name ? $sell_process->meta_name: @old('meta_name') }}" placeholder="Meta name">
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label">Meta description</label>
-                                <textarea placeholder="Meta description" rows="5" class="form-control" name="meta_description">{!! @$sell_process->meta_description ? $sell_process->meta_description: @old('meta_description') !!}</textarea>
+                                <label class="control-label">{!! trans('backend.sell_business.meta_description') !!}</label>
+                                <textarea placeholder="{!! trans('backend.sell_business.meta_description') !!}" rows="5" class="form-control" name="meta_description">{!! @$sell_process->meta_description ? $sell_process->meta_description: @old('meta_description') !!}</textarea>
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label">Meta tag</label>
-                                <textarea placeholder="Meta tag" rows="5" class="form-control" name="meta_tag">{!! @$sell_process->meta_tag ? $sell_process->meta_tag : @old('meta_tag') !!}</textarea>
+                                <label class="control-label">{!! trans('backend.sell_business.tag') !!}</label>
+                                <textarea placeholder="{!! trans('backend.sell_business.description') !!}" rows="5" class="form-control" name="meta_tag">{!! @$sell_process->meta_tag ? $sell_process->meta_tag : @old('meta_tag') !!}</textarea>
                             </div>
                         </div>
 

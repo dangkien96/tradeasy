@@ -34,14 +34,14 @@
 		                        <thead>
 		                            <tr>
 		                                <th class="text-center">#</th>
-		                                <th>Name</th>
-		                                <th>Email</th>
-		                                <th>Phone</th>
-		                                <th>Profit</th>
-		                                <th>Nature</th>
-		                                <th>Investment</th>
-		                                <th>Message</th>
-		                                <th>Created at</th>
+		                                <th>{!! trans('backend.sell_business.name') !!}</th>
+		                                <th>{!! trans('backend.sell_business.email') !!}</th>
+		                                <th>{!! trans('backend.sell_business.phone') !!}</th>
+		                                <th>{!! trans('backend.sell_business.profit') !!}</th>
+		                                <th>{!! trans('backend.sell_business.nature') !!}</th>
+		                                <th>{!! trans('backend.sell_business.invertment') !!}</th>
+		                                <th>{!! trans('backend.sell_business.message') !!}</th>
+		                                <th>{!! trans('backend.sell_business.created_at') !!}</th>
 		                            </tr>
 		                        </thead>
 		                        <tbody>

@@ -4,11 +4,11 @@
 	<div id="content-container">
 		<div id="page-head">
             <div id="page-title">
-                <h1 class="page-header text-overflow">Password</h1>
+                <h1 class="page-header text-overflow">{!! trans('backend.users.password') !!}</h1>
             </div>
             <ol class="breadcrumb">
 			<li><a href="#"><i class="demo-pli-home"></i></a></li>
-			<li><a href="#"> Change Password</a></li>
+			<li><a href="#"> {!! trans('backend.users.change_password') !!}</a></li>
             </ol>
         </div>
 		<div id="page-content">
@@ -25,7 +25,7 @@
 			                    <div class="row">
 			                        <div class="col-sm-10">
 			                            <div class="form-group">
-			                                <label class="control-label">New password</label>
+			                                <label class="control-label">{!! trans('backend.users.new_password') !!}</label>
 			                                <input type="password" name="password" class="form-control">
 			                                @if ($errors->has('password'))
 				                            	<p class="text-left text-danger">{{ $errors->first('password') }}</p>
@@ -34,7 +34,7 @@
 			                        </div> 
 			                        <div class="col-sm-10">
 			                            <div class="form-group">
-			                                <label class="control-label">Confirm password</label>
+			                                <label class="control-label">{!! trans('backend.users.confirm_password') !!}</label>
 			                                <input type="password" name="confirm" class="form-control">
 			                                @if ($errors->has('confirm'))
 				                            	<p class="text-left text-danger">{{ $errors->first('confirm') }}</p>
@@ -42,11 +42,9 @@
 			                            </div>
 			                        </div>
 			                    </div>
-			                    <div class="row">
-			                    	<div class="col-sm-10">
-			                        	<button type="submit" class="btn btn-primary btn-block">Send</button>
-			                        </div>
-			                    </div>
+			                    <button type="submit" class="btn btn-primary btn-block btn-form-submit">
+	                            	<i class="fa fa-save"></i>
+	                            </button>
 			                </div>
 			                
 					   	</form>

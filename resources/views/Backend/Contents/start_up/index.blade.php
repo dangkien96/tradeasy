@@ -13,7 +13,7 @@
 
                         	<div class="form-group">
                                 <label class="control-label">
-                                	Content Website <span class="text-danger"> (*)</span>
+                                	{!! trans('backend.start_up.content') !!} <span class="text-danger"> (*)</span>
                                 </label>
                                 <textarea class="my-ckeditor" name="data">{!! @$startup->data ? $startup->data : @old('meta_title') !!}</textarea>
                                 @if ($errors->has('data'))
@@ -23,26 +23,26 @@
 
                             <div class="form-group">
                                 <label class="control-label">
-									Meta title
+									{!! trans('backend.start_up.meta_title') !!}
                                 </label>
-                                <input type="text" name="meta_title" class="form-control" value="{{ @$startup->meta_title ? $startup->meta_title: @old('meta_title') }}" placeholder="Meta title">
+                                <input type="text" name="{!! trans('backend.start_up.meta_title') !!}" class="form-control" value="{{ @$startup->meta_title ? $startup->meta_title: @old('meta_title') }}" placeholder="Meta title">
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label">
-									Meta name
+									{!! trans('backend.start_up.meta_name') !!}
                                 </label>
-                                <input type="text" name="meta_name" class="form-control" value="{{ @$startup->meta_name ? $startup->meta_name: @old('meta_name') }}" placeholder="Meta name">
+                                <input type="text" name="{!! trans('backend.start_up.meta_name') !!}" class="form-control" value="{{ @$startup->meta_name ? $startup->meta_name: @old('meta_name') }}" placeholder="Meta name">
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label">Meta description</label>
-                                <textarea placeholder="Meta description" rows="5" class="form-control" name="meta_description">{!! @$startup->meta_description ? $startup->meta_description: @old('meta_description') !!}</textarea>
+                                <label class="control-label">{!! trans('backend.start_up.meta_description') !!}</label>
+                                <textarea placeholder="{!! trans('backend.start_up.meta_description') !!}" rows="5" class="form-control" name="meta_description">{!! @$startup->meta_description ? $startup->meta_description: @old('meta_description') !!}</textarea>
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label">Meta tag</label>
-                                <textarea placeholder="Meta tag" rows="5" class="form-control" name="meta_tag">{!! @$startup->meta_tag ? $startup->meta_tag : @old('meta_tag') !!}</textarea>
+                                <label class="control-label">{!! trans('backend.start_up.meta_tag') !!}</label>
+                                <textarea placeholder="{!! trans('backend.start_up.meta_tag') !!}" rows="5" class="form-control" name="meta_tag">{!! @$startup->meta_tag ? $startup->meta_tag : @old('meta_tag') !!}</textarea>
                             </div>
                         </div>
 

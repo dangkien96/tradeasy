@@ -3,11 +3,11 @@
 	<div id="content-container" ng-controller="contactCtrl">
 		<div id="page-head">
             <div id="page-title">
-                <h1 class="page-header text-overflow">About us</h1>
+                <h1 class="page-header text-overflow">{!! trans('backend.contact.lable') !!}</h1>
             </div>
             <ol class="breadcrumb">
 				<li><a href="#"><i class="demo-pli-home"></i></a></li>
-				<li><a href="#">List</a></li>
+				<li><a href="#">{!! trans('backend.actions.list') !!}</a></li>
             </ol>
         </div>
 		<div id="page-content">
@@ -34,11 +34,11 @@
 		                        <thead>
 		                            <tr>
 		                                <th class="text-center">#</th>
-		                                <th>Name</th>
-		                                <th>Email</th>
-		                                <th>Phone</th>
-		                                <th>Created at</th>
-		                                <th>Message</th>
+		                                <th>{!! trans('backend.contact.name') !!}</th>
+		                                <th>{!! trans('backend.contact.email') !!}</th>
+		                                <th>{!! trans('backend.contact.phone') !!}</th>
+		                                <th>{!! trans('backend.contact.created_at') !!}</th>
+		                                <th>{!! trans('backend.contact.message') !!}</th>
 		                            </tr>
 		                        </thead>
 		                        <tbody>

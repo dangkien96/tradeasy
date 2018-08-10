@@ -4,12 +4,12 @@
 	<div id="content-container">
 		<div id="page-head">
             <div id="page-title">
-                <h1 class="page-header text-overflow">Slide</h1>
+                <h1 class="page-header text-overflow">{!! trans('backend.slide.lable') !!}</h1>
             </div>
             <ol class="breadcrumb">
 			<li><a href="#"><i class="demo-pli-home"></i></a></li>
 			<li><a href="#">
-				{{ isset($slide) ? 'Update' : 'Create' }}
+				{{ isset($slide) ? trans('backend.actions.update') : trans('backend.actions.create') }}
 				</a></li>
             </ol>
         </div>
@@ -32,7 +32,7 @@
 				                        <div class="col-sm-10">
 				                            <div class="form-group">
 				                                <label class="control-label text-bold">
-				                                	Title <span class="text-danger"> (*)</span>
+				                                	{!! trans('backend.slide.title') !!} <span class="text-danger"> (*)</span>
 				                                </label>
 				                                <input type="text" name="title" class="form-control" value="{{ @$slide->title ? $slide->title : @old('title') }}" required>
 				                                @if ($errors->has('title'))
@@ -44,7 +44,7 @@
 				                        <div class="col-sm-10">
 				                            <div class="form-group">
 				                                <label class="control-label text-bold">
-				                                	Link <span class="text-danger"> (*)</span>
+				                                	{!! trans('backend.slide.link') !!} <span class="text-danger"> (*)</span>
 				                                </label>
 				                                <input type="text" name="url_link" class="form-control" value="{{ @$slide->url_link ? $slide->url_link: @old('url_link') }}" required>
 				                                @if ($errors->has('url_link'))
@@ -56,7 +56,7 @@
 				                        <div class="col-sm-10">
 				                            <div class="form-group">
 				                                <label class="control-label text-bold">
-				                                	Description
+				                                	{!! trans('backend.slide.description') !!}
 				                                </label>
 				                                <textarea name="description" id="description">{!! @$slide->description ? $slide->description : @old('description') !!}</textarea>
 				                                @if ($errors->has('url_link'))
@@ -68,7 +68,7 @@
         		                        <div class="col-sm-10">
     			                            <div class="form-group">
     			                                <label class="control-label">
-    			                                	{!! trans('slide.sort_by') !!} <span class="text-danger"> (*)</span>
+    			                                	{!! trans('backend.actions.sort_by') !!} <span class="text-danger"> (*)</span>
     			                                </label>
 
     			                                <select class="selectpicker" data-width="100%" name="sort_by">
@@ -96,12 +96,12 @@
     			                        <div class="col-sm-10">
 				                            <div class="form-group">
 				                                <label class="control-label text-bold">
-				                                	Image <span class="text-danger"> (*)</span>
+				                                	{!! trans('backend.slide.image') !!} <span class="text-danger"> (*)</span>
 				                                </label>
 				                                 <div class="input-group">
 													<span class="input-group-btn">
 														<a data-input="thumbnail" data-preview="holder" class="btn btn-primary my-lfm" type="'image'">
-															<i class="fa fa-picture-o"></i> Choose
+															<i class="fa fa-picture-o"></i> {!! trans('backend.slide.image') !!}
 														</a>
 													</span>
 													<input id="thumbnail" class="form-control" type="text" name="url_image" value="{{ @$slide->url_image ? $slide->url_image: @old('url_image') }}">
@@ -118,7 +118,7 @@
 
 				                        <div class="col-sm-10"  style="margin-bottom: 15px;">
 				                            <div class="form-group has-feedback">
-					                            <label class="col-lg-3 control-label" style="padding-top: 10px;">Status<span class="text-danger"> (*)</span></label>
+					                            <label class="col-lg-3 control-label" style="padding-top: 10px;">{!! trans('backend.status.lable') !!}<span class="text-danger"> (*)</span></label>
 					                            <div class="col-lg-7">
 					                                <div class="radio">
 					                                    <input id="demo-radio-7" class="magic-radio" type="radio" name="status" value="AVAILABLE" data-bv-field="member" 
@@ -126,13 +126,13 @@
 															{{ 'checked' }}
 														@endif
 					                                    checked>
-					                                    <label for="demo-radio-7"> Available</label>
+					                                    <label for="demo-radio-7"> {!! trans('backend.status.available') !!}</label>
 					
 					                                    <input id="demo-radio-8" class="magic-radio" type="radio" name="status" value="DISABLE" data-bv-field="member"
 					                                    @if (@$slide->status == 'DISABLE' || @old('status') == 'DISABLE')
 															{{ 'checked' }}
 														@endif>
-					                                    <label for="demo-radio-8"> Disable</label>
+					                                    <label for="demo-radio-8"> {!! trans('backend.status.disable') !!}</label>
 					                                </div>
                                                     @if ($errors->has('status'))
                     	                            	<p class="text-left text-danger">{{ $errors->first('status') }}</p>

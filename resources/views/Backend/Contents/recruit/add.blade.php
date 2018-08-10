@@ -4,12 +4,12 @@
 	<div id="content-container">
 		<div id="page-head">
             <div id="page-title">
-                <h1 class="page-header text-overflow">Recruit</h1>
+                <h1 class="page-header text-overflow">{!! trans('backend.recruit.lable') !!}</h1>
             </div>
             <ol class="breadcrumb">
 			<li><a href="#"><i class="demo-pli-home"></i></a></li>
 			<li><a href="#">
-				{{ isset($recruit) ? 'Update' : 'Create' }}
+				{{ isset($recruit) ? trans('backend.recruit.update') : trans('backend.recruit.create')  }}
 				</a></li>
             </ol>
         </div>
@@ -31,7 +31,7 @@
 					                        <div class="col-sm-10">
 					                            <div class="form-group">
 					                                <label class="control-label">
-					                                	Title <span class="text-danger"> (*)</span>
+					                                	{!! trans('backend.recruit.title') !!} <span class="text-danger"> (*)</span>
 					                                </label>
 					                                <input type="text" name="title" class="form-control" value="{{ @$recruit->title }}" required>
 					                                @if ($errors->has('title'))
@@ -42,7 +42,7 @@
 	            	                        <div class="col-sm-10">
 	            	                        	<div class="form-group">
 	                	                            <label class="control-label">
-	                	                            	End Date<span class="text-danger"> (*)</span>
+	                	                            	{!! trans('backend.recruit.end_date') !!}<span class="text-danger"> (*)</span>
 	                	                            </label>
 	                                                <div class="input-group date">
 					                                    <input type="text" class="form-control" name="end_date" value="{{ @$recruit->end_date }}" required>
@@ -56,7 +56,7 @@
 	            	                        <div class="col-sm-10">
 	            	                        	<div class="form-group">
 	                	                            <label class="control-label">
-	                	                            	Content<span class="text-danger"> (*)</span>
+	                	                            	{!! trans('backend.recruit.content') !!}<span class="text-danger"> (*)</span>
 	                	                            </label>
                                                     <textarea class="my-ckeditor" name="content" name="content">
                                                     	{{ @$recruit->content }}

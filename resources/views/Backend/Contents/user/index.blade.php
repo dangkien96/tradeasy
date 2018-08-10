@@ -4,11 +4,11 @@
 	<div id="content-container" ng-controller="userCtrl">
 		<div id="page-head">
             <div id="page-title">
-                <h1 class="page-header text-overflow">Users</h1>
+                <h1 class="page-header text-overflow">{!! trans('backend.users.lable') !!}</h1>
             </div>
             <ol class="breadcrumb">
 				<li><a href="#"><i class="demo-pli-home"></i></a></li>
-				<li><a href="#">List</a></li>
+				<li><a href="#">{!! trans('backend.actions.list') !!}</a></li>
             </ol>
         </div>
 		<div id="page-content">
@@ -36,11 +36,11 @@
 		                        <thead>
 		                            <tr>
 		                                <th class="text-center">#</th>
-		                                <th>Name</th>
-		                                <th>Email</th>
-		                                <th>Phone</th>
-		                                <th>Status</th>
-		                                <th>Actions</th>
+		                                <th>{!! trans('backend.users.name') !!}</th>
+		                                <th>{!! trans('backend.users.email') !!}</th>
+		                                <th>{!! trans('backend.users.phone') !!}</th>
+		                                <th>{!! trans('backend.status.lable') !!}</th>
+		                                <th>{!! trans('backend.actions.lable') !!}</th>
 		                            </tr>
 		                        </thead>
 		                        <tbody>
@@ -56,13 +56,13 @@
 			                            </td>
 		                                <td style="width: 250px">
 		                                	<a class="btn btn-info btn-icon btn-sm" >
-		                                		Edit
+		                                		{!! trans('backend.actions.edit') !!}
 		                                	</a>
 		                                	<a class="btn btn-info btn-icon btn-sm" href="{{ url('admin/users/user-permission') }}/@{{ user.id }}">
-		                                		Permission
+		                                		{!! trans('backend.actions.role') !!}
 		                                	</a>
 		                                	<button class="btn btn-danger btn-sm btn-icon" ng-click="actions.delete(user.id)">
-		                                		Delete
+		                                		{!! trans('backend.actions.delete') !!}
 		                                	</button>
 		                                </td>
 		                            </tr>

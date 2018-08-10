@@ -13,7 +13,7 @@
 
                         	<div class="form-group">
                                 <label class="control-label">
-                                	Content Website <span class="text-danger"> (*)</span>
+                                	{!! trans('backend.buy_business.buy_content') !!}<span class="text-danger"> (*)</span>
                                 </label>
                                 <textarea class="my-ckeditor" name="data">{!! @$buy_qa->data ? $buy_qa->data : @old('meta_title') !!}</textarea>
                                 @if ($errors->has('data'))
@@ -23,25 +23,25 @@
 
                             <div class="form-group">
                                 <label class="control-label">
-									Meta title
+									{!! trans('backend.buy_business.meta_title') !!}
                                 </label>
                                 <input type="text" name="meta_title" class="form-control" value="{{ @$buy_qa->meta_title ? $buy_qa->meta_title: @old('meta_title') }}" placeholder="Meta title">
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label">
-									Meta name
+									{!! trans('backend.buy_business.meta_keyword') !!}
                                 </label>
                                 <input type="text" name="meta_name" class="form-control" value="{{ @$buy_qa->meta_name ? $buy_qa->meta_name: @old('meta_name') }}" placeholder="Meta name">
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label">Meta description</label>
+                                <label class="control-label">{!! trans('backend.buy_business.meta_description') !!}</label>
                                 <textarea placeholder="Meta description" rows="5" class="form-control" name="meta_description">{!! @$buy_qa->meta_description ? $buy_qa->meta_description: @old('meta_description') !!}</textarea>
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label">Meta tag</label>
+                                <label class="control-label">{!! trans('backend.buy_business.meta_tag') !!}</label>
                                 <textarea placeholder="Meta tag" rows="5" class="form-control" name="meta_tag">{!! @$buy_qa->meta_tag ? $buy_qa->meta_tag : @old('meta_tag') !!}</textarea>
                             </div>
                         </div>
