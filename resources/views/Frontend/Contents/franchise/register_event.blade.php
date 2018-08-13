@@ -49,7 +49,7 @@
 											echo captcha_img();
 		                            	@endphp
 		                            	</p>
-		                            	<input class="form-control" name="captcha" type="text" placeholder="{!! trans('fe_contact.captcha') !!}">
+		                            	<input class="form-control" name="captcha" type="text" placeholder="{!! trans('fe_business.captcha') !!}">
 		                            	@if ($errors->has('captcha'))
    			                            	<p class="text-left text-danger">{{ $errors->first('captcha') }}</p>
    			                            @endif
@@ -67,7 +67,7 @@
 		                            	</p>
    			                            <div class="row">
    			                            	<div class="col-md-12 text-center">
-   			                            		<button class="button comment-cntact active" type="submit">SEND</button>
+   			                            		<button class="button comment-cntact active" type="submit">{!! trans('fe_business.send') !!}</button>
    			                            			<p class="bigtech-send-message"></p>
    			                            	</div>
    			                            </div>

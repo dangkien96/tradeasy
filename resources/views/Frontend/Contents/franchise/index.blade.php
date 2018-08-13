@@ -37,7 +37,6 @@
 			                            <br>
 			                            <p>{{ $franchise->description }}</p>
 			                            <br>
-			                            <!-- <a href="{{ route('fe.franchise_detail', [$franchise->id, $franchise->slug]) }}" class="readmore">Read More <i class="fa fa-long-arrow-right"></i></a> -->
 			                        </div>
 			                    </div>
 			                </div> 
@@ -51,8 +50,6 @@
 @endsection 
 
 @section ('myJs')
-<!-- 	<script src="{{ url('angularJs/uses/Frontend/ctrls/franchiseCtrl.js') }}"></script>
-	<script src="{{ url('angularJs/uses/Frontend/factory/services/franchiseService.js') }}"></script> -->
 	<script>
 		$(document).ready(function (){
 			var maxHeight = 0;
