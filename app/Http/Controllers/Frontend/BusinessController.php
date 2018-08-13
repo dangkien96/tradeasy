@@ -39,7 +39,7 @@ class BusinessController extends Controller
 					 ->filterPremiseSize((int)$start_premise_size,(int)$end_premise_size)
 					 ->filterMoneyBasic($money_basic)
 					 ->buildCond()					 
-					 ->select('id', 'code', 'intro_2', 'reference_profits', 'investment', 'Premise_Size', 'location_id')
+					 ->select('id', 'code', 'intro_2', 'reference_profits', 'investment', 'Premise_Size', 'location_id', 'hot_item', 'desc_3')
 					 ->with(['locations' => function($query) {
 						    $query->select('id', 'name_2');
 						}])
@@ -75,9 +75,9 @@ class BusinessController extends Controller
     											->get();
     								}])
     								->first();
-    	// echo "<pre>";
-    	// print_r($data);
-    	// return 12;
+    	echo "<pre>";
+    	print_r($data);
+    	return 12;
     	return view('Frontend.Contents.business.detail', array('business' => $data));
     }
 

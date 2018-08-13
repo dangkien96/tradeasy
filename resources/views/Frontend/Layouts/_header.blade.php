@@ -30,7 +30,7 @@
                     <div class="row">
                         <div class="col-md-1 col-sm-2">
                             <div class="logo">
-                                <h2><a href="{{ route('home') }}">Tradeasy<span>.</span></a></h2>
+                                <h2><a href="{{ route('home') }}">Tradeasy<span></span></a></h2>
                             </div>
                         </div>
                         <div class="col-md-11 col-sm-10 hidden-xs hidden-sm mainmenu-main-wrapper">

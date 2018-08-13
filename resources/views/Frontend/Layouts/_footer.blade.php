@@ -8,7 +8,7 @@
                 <div class="widget-wrapper">
                     <div class="col-md-3 col-sm-6">
                         <div class="widget-item">
-                            <h1 class="footer-logo">Tradeasy<span>.</span></h1>
+                            <h1 class="footer-logo">Tradeasy<span></span></h1>
                             <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.</p>
                             <a href="#" class="readmore">Read More...</a>
                             <ul class="social-bookmarks footer-social">
@@ -65,7 +65,7 @@
                     </div>
                     <div class="col-md-3 col-sm-6">
                         <div class="widget-item">
-                            <h2>Get In Tuch</h2>
+                            <h2>聯絡資訊</h2>
                             <ul class="widget-address">
                                 <li><a href="#"><i class="fa fa-map-marker m-5"></i> {{ @$contact->data->address }}</a></li>
                                 <li><a href="#"><i class="fa fa-phone m-5"></i> {{ @$contact->data->phone }}</a></li>

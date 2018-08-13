@@ -36,7 +36,7 @@ class HomeProvider {
 	}
 
 	public function getBusinessNew () {
-		$data = $this->business->select('id', 'code', 'intro_2', 'reference_profits', 'investment', 'Premise_Size', 'location_id')
+		$data = $this->business->select('id', 'code', 'intro_2', 'reference_profits', 'investment', 'Premise_Size', 'location_id', 'hot_item')
 								->with(['locations' => function($query) {
 									    $query->select('id', 'name_2');
 								}])

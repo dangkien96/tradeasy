@@ -147,28 +147,41 @@
 	        <div class="team-wrapper-slide mt-40">
 	        	@foreach (@$businessNews as $key => $businessNew)
 	            <div class="col-md-4 col-sm-6">
-	                <div class="team-item">
+	                <div class="team-item" style="background: #fff;">
 	                    <div class="team-content">
-	                        <h3><a href="{{ route('fe.business_detail', [@$businessNew->id, @$businessNew->intro_2]) }}">{!! @$businessNew->intro_2 !!}</a></h3>
-	                        <span class="position">{!! trans('fe_business.code') !!}: {!! @$businessNew->code !!}</span>
-	                        <p class="pt-20" >{!! trans('fe_business.industry') !!}: {!! @$businessNew->locations->name_2 !!}</p>
-	                        <div class="progress-bar-wrapper">
-	                            <div class="single-experience">
-	                                <p>出讓叫價: HKD {!! number_format(@$businessNew->investment, 0) !!}</p>
+	                        <div class="team-title-item">
+	                        	<h3><a href="{{ route('fe.business_detail', [@$businessNew->id, @$businessNew->intro_2]) }}">{!! @$businessNew->intro_2 !!} </a> 
+	                        		@if (@$businessNew->hot_item == 1)
+	                        			<img src="{{ url('Frontend/img/service/hot.gif') }}" alt="">
+	                        		@endif
+	                        	</h3>
+	                        	<span class="position">{!! trans('fe_business.code') !!}: {!! @$businessNew->code !!}</span>
+	                        	{!! @$businessNew->desc_3 ? $businessNew->desc_3 : '' !!}
+	                        </div>
+	                        <div class="progress-bar-wrapper pt-10">
+	                        	<div class="single-experience">
+	                                <p>{!! trans('fe_business.industry') !!}: {!! @$businessNew->locations->name_2 !!}</p>
 	                                <div class="progress">
 	                                    <div style="width: 100%; visibility: visible; animation-duration: 0.1s; animation-delay: 0.5s; animation-name: fadeInLeft;" aria-valuemax="100" aria-valuemin="0" aria-valuenow="100" role="progressbar" data-wow-delay="0" data-wow-duration="0" class="progress-bar wow fadeInLeft   animated">
 	                                    </div>
 	                                </div>
 	                            </div>
 	                            <div class="single-experience">
-	                                <p>參考利潤: {!! @$businessNew->reference_profits !!}</p>
+	                                <p>{!! trans('fe_business.investment') !!}: HKD {!! number_format(@$businessNew->investment, 0) !!}</p>
 	                                <div class="progress">
 	                                    <div style="width: 100%; visibility: visible; animation-duration: 0.1s; animation-delay: 0.5s; animation-name: fadeInLeft;" aria-valuemax="100" aria-valuemin="0" aria-valuenow="100" role="progressbar" data-wow-delay="0" data-wow-duration="0" class="progress-bar wow fadeInLeft   animated">
 	                                    </div>
 	                                </div>
 	                            </div>
 	                            <div class="single-experience">
-	                                <p>回本期: {!! @$businessNew->payback_period !!}</p>
+	                                <p>{!! trans('fe_business.reference_profits') !!}: {!! @$businessNew->reference_profits !!}</p>
+	                                <div class="progress">
+	                                    <div style="width: 100%; visibility: visible; animation-duration: 0.1s; animation-delay: 0.5s; animation-name: fadeInLeft;" aria-valuemax="100" aria-valuemin="0" aria-valuenow="100" role="progressbar" data-wow-delay="0" data-wow-duration="0" class="progress-bar wow fadeInLeft   animated">
+	                                    </div>
+	                                </div>
+	                            </div>
+	                            <div class="single-experience">
+	                                <p>{!! trans('fe_business.payback_period') !!}: {!! @$businessNew->payback_period ? $businessNew->payback_period : 'N/a' !!}</p>
 	                                <div class="progress">
 	                                    <div style="width: 100%; visibility: visible; animation-duration: 0.1s; animation-delay: 0.5s; animation-name: fadeInLeft;" aria-valuemax="100" aria-valuemin="0" aria-valuenow="100" role="progressbar" data-wow-delay="0" data-wow-duration="0" class="progress-bar wow fadeInLeft   animated">
 	                                    </div>
@@ -192,16 +205,17 @@
 @section ('myJs')
 	<script>
 		$(document).ready(function (){
-			var height = function () {
+			var height = function (itemClass) {
 				var maxHeight = 0;
-				$('.team-item').each(function() {
+				$(itemClass).each(function() {
 					if (maxHeight < $(this).height()) {
 						maxHeight = $(this).height();
 					}
 				});
-				$('.team-item').height(maxHeight);
+				$(itemClass).height(maxHeight);
 			}		
-			height();
+			height('.team-item');
+			height('.team-title-item');
 		})
 	</script>
 @endsection

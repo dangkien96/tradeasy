@@ -134,7 +134,8 @@
 	            	    <div class="col-md-4 col-sm-6">
 	            	        <div class="team-item">
 	            	            <div class="team-content">
-	            	                <h3><a href="{{ route('fe.business_detail', [@$businessNew->id, @$businessNew->intro_2]) }}">{!! @$businessNew->intro_2 !!}</a></h3>
+	            	                <h3><a href="{{ route('fe.business_detail', [@$businessNew->id, @$businessNew->intro_2]) }}">{!! @$businessNew->intro_2 !!}</a>
+	                        		</h3>
 	            	                <span class="position">{!! trans('fe_business.code') !!}: {!! @$businessNew->code !!}</span>
 	            	                <p class="pt-20" >{!! trans('fe_business.industry') !!}: {!! @$businessNew->locations->name_2 !!}</p>
 	            	                <div class="progress-bar-wrapper">
@@ -153,7 +154,7 @@
 	            	                        </div>
 	            	                    </div>
 	            	                    <div class="single-experience">
-	            	                        <p>{!! trans('fe_business.this_issue') !!}: {!! @$businessNew->payback_period !!}</p>
+	            	                        <p>{!! trans('fe_business.this_issue') !!}: {!! @$businessNew->payback_period ? $businessNew->payback_period : "N/A" !!}</p>
 	            	                        <div class="progress">
 	            	                            <div style="width: 100%; visibility: visible; animation-duration: 0.1s; animation-delay: 0.5s; animation-name: fadeInLeft;" aria-valuemax="100" aria-valuemin="0" aria-valuenow="100" role="progressbar" data-wow-delay="0" data-wow-duration="0" class="progress-bar wow fadeInLeft animated">
 	            	                            </div>
@@ -229,6 +230,19 @@
 		$('.selectpicker').selectpicker({
 		    style: 'btn-default'
 		  });
+		$(document).ready(function (){
+			var height = function (itemClass) {
+				var maxHeight = 0;
+				$(itemClass).each(function() {
+					if (maxHeight < $(this).height()) {
+						maxHeight = $(this).height();
+					}
+				});
+				$(itemClass).height(maxHeight);
+			}		
+			height('.team-item');
+		})
+	</script>
 	</script>
 @endsection
 @section ('myCss')
