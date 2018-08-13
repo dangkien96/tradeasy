@@ -64,14 +64,14 @@
     											echo captcha_img();
     		                            	@endphp
 		                            	</p>
-		                            	<input class="form-control" name="captcha" type="text" placeholder="Captcha">
+		                            	<input class="form-control" name="captcha" type="text" placeholder="{!! trans('fe_business.captcha') !!}">
 		                            	@if ($errors->has('captcha'))
    			                            	<p class="text-left text-danger">{{ $errors->first('captcha') }}</p>
    			                            @endif
 		                            </div>
 				                </div>
 								<div class="col-md-12 pb-10">
-									<button class="button comment-cntact active pull-right" type="submit">SEND</button>
+									<button class="button comment-cntact active pull-right" type="submit">{!! trans('fe_business.send') !!}</button>
 										<p class="bigtech-send-message"></p>
 								</div>
 			                </form>
