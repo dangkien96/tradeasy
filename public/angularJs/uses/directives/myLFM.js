@@ -5,7 +5,7 @@ ngApp.directive('myLfm', function($apply) {
             type: "=type"
         },
         link: function(scope, element, attrs) {
-            var domain = SiteUrl + '/admin/laravel-filemanager/';
+            var domain = SiteUrl + '/admin/laravel-filemanager';
             $(element).filemanager(scope.type, {prefix: domain});
         }
     };
