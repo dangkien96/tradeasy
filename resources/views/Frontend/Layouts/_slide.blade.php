@@ -11,11 +11,10 @@
                 <div class="row">
                     <div class="slider-content-area">
                         <div class="slide-text">
-                            <h1 class="homepage-three-title">Welcome to Rumi<span>.</span></h1>
-                            <h2>Lorem ipsum is simply dummy text of the printing.</h2>
+                            <h1 class="homepage-three-title">{!! @$slide->title !!}<span>.</span></h1>
+                            <h3>{!! @$slide->description !!}.</h3>
                             <div class="slider-content-btn">
-                                <a class="button button-color active margin-right-15  " href="#">Get Started</a>
-                                <a class="button button-transparent slide-right margin-top-20" href="#">Sign Up Now</a>
+                                <a class="button button-color active margin-right-15" href="{!! @$slide->url_link !!}">{{ trans('fe_business.get_started') }}</a>
                             </div>
                         </div>
                     </div>
