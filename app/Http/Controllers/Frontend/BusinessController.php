@@ -75,9 +75,9 @@ class BusinessController extends Controller
     											->get();
     								}])
     								->first();
-    	echo "<pre>";
-    	print_r($data);
-    	return 12;
+    	// echo "<pre>";
+    	// print_r($data);
+    	// return 12;
     	return view('Frontend.Contents.business.detail', array('business' => $data));
     }
 
