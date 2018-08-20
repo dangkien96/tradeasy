@@ -53,13 +53,15 @@ class BuyController extends Controller
         $request->flash();
         $this->_validateBuy($request);
         DB::beginTransaction();
+        $nature_name = @BusinessNature::find($request->industry)->name_2;
+        $location_name = @Location::find($request->location_name)->name_2;
         try {
             // Insert Database buy_business of backend mysql 1
             $this->buyBusinessModel->name          = $request->name;
             $this->buyBusinessModel->phone         = $request->phone;
             $this->buyBusinessModel->email         = $request->email;
-            $this->buyBusinessModel->city          = $request->location_name;
-            $this->buyBusinessModel->nature        = $request->industry;
+            $this->buyBusinessModel->city          = $location_name;
+            $this->buyBusinessModel->nature        = $nature_name;
             $this->buyBusinessModel->investment    = $request->investment;
             $this->buyBusinessModel->message       = $request->message;
             $this->buyBusinessModel->business_name = $request->business_name;
@@ -84,6 +86,7 @@ class BuyController extends Controller
                             'investment'         => $request->investment,
                             'source'             => $s_source,
                             'desc_2'             => $request->message,
+                            
                             'member_create_date' => '0000-00-00 00:00:00',
                             'member_create_by'   => '0',
                             'member_modify_date' => '0000-00-00 00:00:00',
@@ -101,8 +104,8 @@ class BuyController extends Controller
             $params = [
                 'intro'                => $request->business_name,
                 'code'                 => $request->business_code,
-                'region_name'          => @Location::find($request->location_name)->name_2,
-                'business_nature_name' => @BusinessNature::find($request->industry)->name_2,
+                'region_name'          => $location_name,
+                'business_nature_name' => $nature_name,
                 'investment'           => $request->investment,
                 'company'              => $request->input('company', "TRADEASY"),
                 ];

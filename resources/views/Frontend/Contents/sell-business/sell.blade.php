@@ -41,7 +41,7 @@
 		                           		<select class="form-control" name="industry">
 		                           			<option value="">行業</option>
 		                           			@foreach ($natures as $nature)
-		                           				<option @if ($nature->name_2 == old('industry')) selected @endif value="{!! $nature->name_2 !!}">{!! $nature->name_2 !!}</option>
+		                           				<option @if ($nature->id == old('industry')) selected @endif value="{!! $nature->id !!}">{!! $nature->name_2 !!}</option>
 		                           			@endforeach
 		                           		</select>
 	                                	@if ($errors->has('industry'))
@@ -54,7 +54,7 @@
 			                            @endif
 		                            </div>
 		                            <div class="col-md-6">
-		                            	<input class="form-control" name="investment" type="text" placeholder="金額*">
+		                            	<input class="form-control" name="investment" type="text" placeholder="金額*" value="{{ old('investment') }}">
 		                            	@if ($errors->has('investment'))
 			                            	<p class="text-left text-danger">{{ $errors->first('investment') }}</p>
 			                            @endif

@@ -5,16 +5,17 @@ namespace App\Http\Controllers\Frontend;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\EventOnline;
-use App\Mail\SendMail;
 use DB, Mail;
 use App\Libs\Functions\HTTP;
+use Carbon\Carbon;
+use App\Jobs\EmailJob;
 
 class FranchiseController extends Controller
 {
 	private $api_url;
     private $http;
 	
-	public function __construct(HTTP $http)
+	public function __construct()
 	{
 		$this->api_url = HTTP::API_URL;
         $this->http = $http;
@@ -87,19 +88,56 @@ class FranchiseController extends Controller
             $eventModel->franchise_id     = $request->franchise_id;
             $eventModel->franchise_name   = $request->franchise_name;
             $eventModel->save();
-            
+
+            $s_source="Email Enquiry";
+            $t_uuid=uniqid("",true);
+
+            DB::connection('mysql2')
+                ->table('tbl_business_transfer')
+                ->insert(array(
+                    't_uuid'             => $t_uuid,
+                    'post_date'          => Carbon::now(),
+                    'type_id'            => 2,
+                    'opportunities_id'   => $request->franchise_id,
+                    'first_name'         => $request->name,
+                    'phone_1'            => $request->phone,
+                    'email'              => $request->email,
+                    'business_nature_id' => 0,
+                    'desc_2'             => $s_source." ".$request->message,
+                    'source'             => $s_source,
+                    'character_1'        => "",
+
+                    'member_create_date' => '0000-00-00 00:00:00',
+                    'member_create_by'   => '0',
+                    'member_modify_date' => '0000-00-00 00:00:00',
+                    'member_modify_by'   => '0',
+                    'modify_date'        => '0000-00-00 00:00:00',
+                    'create_date'        => '0000-00-00 00:00:00',
+                    'create_by'          => '0',
+                    'modify_by'          => '0',
+                    'deleted'            => '0',
+                    'inactive'           => '0',
+                    'status'             => '0',
+                    ));
+            $company = $request->input('company', 'TRADEASY');
+
+
             $params = [
                 'name'           => $request->name,
                 'phone'          => $request->phone,
                 'number'         => $request->number,
                 'email'          => $request->email, 
-                'nature'         => $request->industry, 
                 'franchise_id'   => $request->franchise_id,
                 'franchise_name' => $request->franchise_name,
-                'type'           => 'Sell business',
+                'message'        => $request->number,
+                
+                'come_to'        => $s_source, 
+                'company'        => $company,
             ]; 
-            Mail::to(config('mail.toMail'))
-                    ->send(new SendMail('buy_business',  $params, 'Transoft', 'Buy Business Tradeasy') );
+            EmailJob::dispatch($request->email, 'franchise_customer', $params, $params['company'], $params['company']." - Acquired Business");
+            EmailJob::dispatch(config('mail.toMail'), 'franchise_ad', $params, $params['company'], $params['company']." - Acquired Business");
+            // Mail::to(config('mail.toMail'))
+            //         ->send(new SendMail('buy_business',  $params, 'Transoft', 'Buy Business Tradeasy') );
             DB::commit();
             return redirect()->back()->with('event', 'success');
         } catch (Exception $e) {
@@ -129,8 +167,9 @@ class FranchiseController extends Controller
             'number_of_people' => 'between: 1, 100',
             'phone'            => 'between: 1, 100',
             'email'            => 'between: 1, 250|email',
-            'franchise_id'     => 'requied',
+            'franchise_id'     => 'required',
             'franchise_name'   => 'between: 1, 100',
+            'captcha'          => 'required| captcha'
         ], []);
     }
 }
