@@ -47,7 +47,7 @@ class FranchiseController extends Controller
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
         
         // neu la post and put se them data
-        if(in_array(strtolower($method), [strtolower($this->http::HTTP_METHOD_POST), strtolower(self::HTTP_METHOD_PUT)]))
+        if(in_array(strtolower($method), [strtolower($this->http::HTTP_METHOD_POST), strtolower($this->http::HTTP_METHOD_PUT)]))
         {
             curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($params)); // $params = array
         }
