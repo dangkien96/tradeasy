@@ -7,25 +7,24 @@ use App\Http\Controllers\Controller;
 use App\Models\EventOnline;
 use App\Mail\SendMail;
 use DB, Mail;
+use App\Libs\Functions\HTTP;
 
 class FranchiseController extends Controller
 {
 	private $api_url;
-	const HTTP_METHOD_POST = 'POST';
-    const HTTP_METHOD_PUT = 'PUT';
-    const HTTP_METHOD_GET = 'GET';
-    const HTTP_METHOD_DELETE = 'DELETE';
+    private $http;
 	
-	public function __construct()
+	public function __construct(HTTP $http)
 	{
-		$this->api_url = 'http://profi.bkav.ooo/api/';
-
+		$this->api_url = HTTP::API_URL;
+        $this->http = $http;
 	}
 
     public function index() {
-    	$url = $this->api_url.'franchise_category/all';
 
-    	$data = $this->_send(self::HTTP_METHOD_GET, $url, []);
+    	$url = $this->api_url.'franchise_category/all';
+        // return $url;
+    	$data = $this->http->_send($this->http::HTTP_METHOD_GET, $url, []);
     	$data = json_decode($data);
 
     	return view('Frontend.Contents.franchise.index', array('categories' => $data));
@@ -34,7 +33,7 @@ class FranchiseController extends Controller
     public function detail($id) {
     	$url = $this->api_url.'franchise/detail/'.$id;
 
-    	$data = $this->_send(self::HTTP_METHOD_GET, $url, []);
+    	$data = $this->http->_send($this->http::HTTP_METHOD_GET, $url, []);
     	$data = json_decode($data);
 
     	return view('Frontend.Contents.franchise.detail', array('franchise'=> $data) );

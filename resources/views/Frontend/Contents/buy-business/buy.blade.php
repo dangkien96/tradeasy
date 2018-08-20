@@ -51,7 +51,7 @@
 		                           		<select id="demo-select2-placeholder" class="form-control" name="location_name">
 		                           			<option value="">{!! trans('fe_business.select_location') !!}</option>
 		                           			@foreach ($locations as $location)
-		                           				<option @if ($location->name_2 == old('location_name')) selected @endif value="{!! $location->name_2 !!}">{!! $location->name_2 !!}</option>
+		                           				<option @if ($location->id == old('location_name')) selected @endif value="{!! $location->id !!}">{!! $location->name_2 !!}</option>
 		                           			@endforeach
 			                            </select>
 			                            @if ($errors->has('location_name'))
@@ -60,7 +60,7 @@
 		                           		<select class="form-control" name="industry" >
 		                           			<option value="">{!! trans('fe_business.select_industry') !!}</option>
 		                           			@foreach ($natures as $nature)
-		                           				<option @if ($nature->name_2 == old('industry')) selected @endif value="{!! $nature->name_2 !!}">{!! $nature->name_2 !!}</option>
+		                           				<option @if ($nature->id == old('industry')) selected @endif value="{!! $nature->id !!}">{!! $nature->name_2 !!}</option>
 		                           			@endforeach
 		                           		</select>
 		                           		@if ($errors->has('industry'))
@@ -78,11 +78,11 @@
 											</p>
 		                           		@endif
 		                            	
-		                            	<input class="form-control" name="investment" type="text" placeholder="{!! trans('fe_business.investment') !!}*" >
+		                            	<input class="form-control" name="investment" type="text" placeholder="{!! trans('fe_business.investment') !!}*" value="{{ old('investment') }}" >
 		                            	@if ($errors->has('investment'))
    			                            	<p class="text-left text-danger">{{ $errors->first('investment') }}</p>
    			                            @endif
-		                            	<textarea class="text-area" name="message" placeholder="{!! trans('fe_business.message') !!}*"></textarea>
+		                            	<textarea class="text-area" name="message" placeholder="{!! trans('fe_business.message') !!}*">{{ old('message') }}</textarea>
 		                            	<p>
     		                            	@php
     											echo captcha_img();

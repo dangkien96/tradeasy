@@ -16,6 +16,8 @@ class BusinessController extends Controller
 		$this->senMailModel  = DB::connection('mysql2')->table('tbl_b_item_send_email');
 	}
 
+	// Filler business
+	// return view business
 	public function business (Request $request) {
 		$request->flash();
 		
@@ -58,7 +60,7 @@ class BusinessController extends Controller
     	return view('Frontend.Contents.business.index', array('businessNews' => $data) );
     }
 
-
+    // Return business detail
     public function businessDetail($id, Request $request) {
     	$data = $this->businessModel->where('id', $id)
     								->with(['locations' => function($query) {

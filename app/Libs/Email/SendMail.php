@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Libs\Mail;
+use Mail;
 
 
 class SendMail {
