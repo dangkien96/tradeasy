@@ -150,7 +150,7 @@ class FranchiseController extends Controller
     {
         $url = $this->api_url.'franchise_category/all';
 
-        $data = $this->_send(self::HTTP_METHOD_GET, $url, []);
+        $data = $this->_send($this->HTTP_METHOD_GET, $url, []);
 
         $data = json_decode($data, true);
         $val = array_rand($data['data']);
