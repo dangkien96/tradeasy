@@ -18,7 +18,7 @@ class FranchiseController extends Controller
 	public function __construct()
 	{
 		$this->api_url = HTTP::API_URL;
-        $this->http = $http;
+        $this->http = new HTTP();
 	}
 
     public function index() {
