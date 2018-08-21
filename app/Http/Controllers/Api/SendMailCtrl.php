@@ -80,10 +80,25 @@ class SendMailCtrl extends Controller
                 'company'              => $request->input('company', "TRADEASY"),
                 ];
 
+            $params2 = [
+                'intro'                => @$business_info->intro2,
+                'code'                 => @$business_info->code,
+                'region_name'          => $location_name,
+                'business_nature_name' => $nature_name,
+                'investment'           => $request->investment,
+                'company'              => $request->input('company', "TRADEASY"),
+                'name'                 => $request->name,
+                'tel'                  => $request->phone,
+                'email'                => $request->email,
+                'come_to'              => $s_source,
+                'message'              => $request->message,
+                ];
+
             $url   = $this->base_url."follow.php?t_uuid=".$t_uuid."&ref1=".$request->input('business_id', -1); 
 
-            EmailJob::dispatch($request->email, 'buy_business_customer', $params, $params['company'], $params['company']." Acquired Business");
-            EmailJob::dispatch($request->company_email, 'buy_business_ad', $params, $params['company'], $params['company']." Acquired Business");
+            EmailJob::dispatch($request->email, 'buy_business_customer', $params2, $params2['company'], $params2['company']." Acquired Business");
+
+            EmailJob::dispatch($request->company_email, 'buy_business_ad', $params2, $params2['company'], $params2['company']." Acquired Business");
 
             // Function send mail
             $mail  = $this->_sendMailUserFlow($request->input('business_id', -1), $t_uuid, $params, $url);
