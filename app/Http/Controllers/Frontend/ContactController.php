@@ -82,9 +82,6 @@ class ContactController extends Controller
     	} catch (Exception $e) {
     		DB::rollback();
     	}
-    	
-
-
     }
 
     public function validateContact($request) {

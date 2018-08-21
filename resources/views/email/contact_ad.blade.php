@@ -13,7 +13,7 @@
 		Name : {{ $params['name'] }}<br>
 		Tel : {{ $params['phone'] }}<br>
 		Email : {{ $params['email'] }}<br>
-		Remarks : {{ $params['come_to'] }}." - ".{{ $params['message'] }}<br>
+		Remarks : {{ $params['come_to'] }} - {{ $params['message'] }}<br>
 		<!-- <br><br>
 		<b>Details</b><br />
 		Code : '.get_field("tbl_opportunities", "code", $opportunities_id).'<br />

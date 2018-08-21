@@ -13,7 +13,7 @@
 		Name : {{ $params['name'] }}<br>
 		Tel : {{ $params['phone'] }}<br>
 		Email : {{ $params['email'] }}<br>
-		Remarks : {{ $params['come_to']. " " .$params['message']  }}<br>
+		Remarks : {{ $params['come_to']. " - " .$params['message']  }}<br>
 		character_1 : '.$intt.'<br>
 		<br><br>			
 		{{ $params['company'] }}
