@@ -89,8 +89,8 @@
 			swal({
 			  type: 'success',
 			  title: 'Success',
-			  text: 'Something went success!',
-			  timer: 2000
+			  text: "{{ trans('fe_business.success') }}",
+			  // timer: 2000
 			})
 		</script>
 		

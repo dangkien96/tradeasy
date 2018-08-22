@@ -474,8 +474,8 @@ class SendMailCtrl extends Controller
                 'phone'          => $request->phone,
                 'number'         => $request->number,
                 'email'          => $request->email, 
-                'franchise_id'   => $request->franchise_id,
-                'franchise_name' => $request->franchise_name,
+                'franchise_id'   => $request->input('franchise_id', 0),
+                'franchise_name' => $request->input('franchise_name', ""),
                 'message'        => $request->number,
                 
                 'come_to'        => $s_source, 
