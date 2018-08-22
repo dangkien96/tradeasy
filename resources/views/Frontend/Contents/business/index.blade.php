@@ -35,6 +35,13 @@
 					            		@csrf
 						                <div class="col-md-12 col-sm-12">
 				                            <div class="col-md-5">
+            		                           	<div class="form-group">
+            		                           	    <label for="inputEmail3" class="col-sm-3 control-label">{!! trans('fe_business.code') !!} </label>
+            		                           	    <div class="col-sm-9">
+            		                           	    	<input style="margin-bottom:0px;" class="form-control" name="code" type="text" placeholder="{!! trans('fe_business.code') !!}*"
+            	                           		value="{{ old('code') }}">
+            		                           	    </div>
+            	                           	    </div>
 					                           	<div class="form-group">
 					                           	    <label for="inputEmail3" class="col-sm-3 control-label">{!! trans('fe_business.filter.location') !!} </label>
 					                           	    <div class="col-sm-9">
@@ -80,6 +87,13 @@
 				                           	    </div>
 				                            </div>
 				                            <div class="col-md-7">
+				                            	<div class="form-group">
+            		                           	    <label for="inputEmail3" class="col-sm-3 control-label">{!! trans('fe_business.freetext') !!} </label>
+            		                           	    <div class="col-sm-9">
+            		                           	    	<input style="margin-bottom:0px;" class="form-control" name="freetext" type="text" placeholder="{!! trans('fe_business.freetext') !!}*"
+            	                           		value="{{ old('freetext') }}">
+            		                           	    </div>
+            	                           	    </div>
     			                           	    <div class="form-group">
     				                           	    <label for="inputEmail3" class="col-sm-3 control-label">{!! trans('fe_business.filter.profit') !!} </label>
     				                           	    <div class="col-sm-9">

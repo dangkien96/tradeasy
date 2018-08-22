@@ -113,27 +113,27 @@
 			swal({
 			  type: 'success',
 			  title: 'Success',
-			  text: 'Something went success!',
-			  timer: 2000
+			  text: trans('fe_business.success'),
+			  // timer: 2000
 			})
 		</script>
 		
 	@endif
 	<script>
 	    $(document).ready(function () {
-	        $('input[name*="investment"]').on('keyup', function () {
-	        	var selection = window.getSelection().toString();
-        	    if ( selection !== '' ) {
-        	        return;
-        	    }
-        	    var $this = $( this );
-        	    var input = $this.val();	            
-        	    var input = input.replace(/[\D\s\._\-]+/g, "");
-        	        input = input ? parseInt( input, 10 ) : 0;
-        	        $this.val( function() {
-        	            return ( input === 0 ) ? "" : input.toLocaleString( "en-US" );
-        	        } );
-	        });
+	        // $('input[name*="investment"]').on('keyup', function () {
+	        // 	var selection = window.getSelection().toString();
+        	//     if ( selection !== '' ) {
+        	//         return;
+        	//     }
+        	//     var $this = $( this );
+        	//     var input = $this.val();	            
+        	//     var input = input.replace(/[\D\s\._\-]+/g, "");
+        	//         input = input ? parseInt( input, 10 ) : 0;
+        	//         $this.val( function() {
+        	//             return ( input === 0 ) ? "" : input.toLocaleString( "en-US" );
+        	//         } );
+	        // });
 	    })
 	</script>
 @endsection

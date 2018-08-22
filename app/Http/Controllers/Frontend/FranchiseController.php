@@ -170,6 +170,14 @@ class FranchiseController extends Controller
             'franchise_id'     => 'required',
             'franchise_name'   => 'between: 1, 100',
             'captcha'          => 'required| captcha'
-        ], []);
+        ], [], array(
+            'name'             => trans('fe_business.name'),
+            'number_of_people' => trans('fe_business.number'),
+            'phone'            => trans('fe_business.phone'),
+            'email'            => trans('fe_business.email'),
+            'franchise_id'     => trans('fe_business.franchise'),
+            'franchise_name'   => trans('fe_business.franchise'),
+            'captcha'          => trans('fe_business.captcha'),
+        ));
     }
 }

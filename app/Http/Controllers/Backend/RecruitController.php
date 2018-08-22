@@ -56,7 +56,7 @@ class RecruitController extends Controller
        try {
            $this->recruitModel->title    = $request->title;
            $this->recruitModel->slug     = sanitizeTitle($request->title);
-           // $this->recruitModel->end_date = \Carbon\Carbon::parse($request->end_date)->format('Y/m/d');
+           $this->recruitModel->end_date = \Carbon\Carbon::parse($request->end_date)->format('Y/m/d');
            $this->recruitModel->content  = $request->content;
            $this->recruitModel->save();
            DB::commit();

@@ -91,7 +91,12 @@ class ContactController extends Controller
 			'email' => 'between: 1,250|email',
 			'captcha' => 'between: 1,250|captcha',
     	], [
-    	]);
+    	], array(
+            'name'     => trans('fe_business.name'),
+            'phone'    => trans('fe_business.phone'),
+            'email'    => trans('fe_business.email'),
+            'captcha'  => trans('fe_business.captcha'),
+        ));
     }
 }
 

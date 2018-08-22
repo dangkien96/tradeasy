@@ -10,7 +10,7 @@
 	        <div class="row">
 	            <div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
 	                <div class="main-heading-content text-center">
-	                    <h2>{{ trans('fe_recruit.title') }} 購入業務流程</h2>
+	                    <h2>{{ trans('fe_recruit.title') }}</h2>
 	                </div>
 	            </div>
 	        </div>
@@ -18,14 +18,14 @@
 	            <div class="service-wrapper">
 	                <div class="col-md-12 col-sm-12">
 	                    <div class="service-item">
-	                    	<table class="col-md-12">
+	                    	<table style="width: 100%;" class="col-md-12 ptb-30 table-hover table-striped">
 	                    		<tbody>
 	                    			@foreach ($recruits as $key => $recruit)
-										<tr>
-											<td class="col-md-7">
+										<tr class="ptb-20">
+											<td class="col-md-7 ptbl-10">
 												<a href="{{ route('fe.recruit_detail', [@$recruit->id, @$recruit->slug]) }}"> {!! @$recruit->title !!} </a>
 											</td>
-											<td class="text-center col-md-5">
+											<td class="text-center col-md-5 ptb-10">
 												<p> {!! @$recruit->end_date !!} </p>
 											</td>
 										</tr>

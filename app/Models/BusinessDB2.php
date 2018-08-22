@@ -39,6 +39,21 @@ class BusinessDB2 extends MyModel
     	return $this;
     }
 
+    public function filterCode($params) {
+        if (!empty($params)) {
+            $this->setFunctionCond('where', ['code', "like", "%".$params."%"]);
+        }
+        return $this;
+    }
+
+     public function filterFreeText($params) {
+        if (!empty($params)) {
+            $this->setFunctionCond('where', ['intro_2', "like", "%".$params."%"]);
+            // $this->setFunctionCond('whereOr', ['decs_2', "like", "%".$params."%"]);
+        }
+        return $this;
+    }
+
     public function filterProfit($start, $end) {
     	if (!empty($start) || !empty($end)) {
             if (!empty($start)) {

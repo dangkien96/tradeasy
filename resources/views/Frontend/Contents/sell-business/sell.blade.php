@@ -112,8 +112,8 @@
 				        } );
 	    		});
 	    	}
-	    	moneyCode($('input[name*="investment"]'));
-	    	moneyCode($('input[name*="profit"]'));
+	    	// moneyCode($('input[name*="investment"]'));
+	    	// moneyCode($('input[name*="profit"]'));
 	    })
 	</script>
 @endsection

@@ -103,9 +103,9 @@
 	 					                        </div>
 	 					                        <div class="col-sm-12">
 	 					                            <div class="form-group">
-	 					                                <label class="control-label">{!! trans('backend.setting.youtube') !!}</label>
-	 					                                <input type="text" class="form-control" ng-model="data.contact.youtube"
-	 					                                placeholder="{!! trans('backend.setting.youtube') !!}">
+	 					                                <label class="control-label">{!! trans('backend.setting.wechat') !!}</label>
+	 					                                <input type="text" class="form-control" ng-model="data.contact.wechat"
+	 					                                placeholder="{!! trans('backend.setting.wechat') !!}">
 	 					                            </div>
 	 					                        </div>
 	 					                        <div class="col-sm-12">
@@ -117,9 +117,9 @@
 	 					                        </div>
 	 					                        <div class="col-sm-12">
 	 					                            <div class="form-group">
-	 					                                <label class="control-label">{!! trans('backend.setting.zalo') !!}</label>
-	 					                                <input type="text" class="form-control" ng-model="data.contact.zalo"
-	 					                                placeholder="{!! trans('backend.setting.zalo') !!}">
+	 					                                <label class="control-label">{!! trans('backend.setting.whatsap') !!}</label>
+	 					                                <input type="text" class="form-control" ng-model="data.contact.whatsap"
+	 					                                placeholder="{!! trans('backend.setting.whatsap') !!}">
 	 					                            </div>
 	 					                        </div>
 	 					                        <div class="col-sm-12">

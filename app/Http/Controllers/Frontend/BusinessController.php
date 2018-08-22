@@ -30,11 +30,15 @@ class BusinessController extends Controller
 		$start_premise_size = $request->input('start_premise_size');
 		$end_premise_size   = $request->input('end_premise_size');
 		$money_basic        = $request->input('money_basic');
+		$code               = $request->input('code');
+		$freetext           = $request->input('freetext');
 		if (!empty($location_name)) {
 			$location_name[] = -100;
 		}
 		$data = $this->businessModel
 					 ->filterLocation($location_name)
+					 ->filterCode($code)
+					 ->filterFreeText($freetext)
 					 ->filterNature($nature_name)
 					 ->filterRent((int)$start_rent, (int)$end_rent)
 					 ->filterProfit((int)$start_profit,(int)$end_profit)

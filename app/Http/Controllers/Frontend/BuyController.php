@@ -306,9 +306,17 @@ class BuyController extends Controller
             'email'         => 'email| between: 1, 150',
             'location_name' => 'between: 1, 150',
             'industry'      => 'between: 1, 150',
-            'investment'    => 'between: 1, 150',
+            // 'investment'    => 'between: 1, 150',
             'captcha'       => 'between: 1, 150|captcha'
-        ]);
+        ], [], 
+        array(
+            'name'          => trans('fe_business.name'),
+            'phone'         => trans('fe_business.phone'),
+            'email'         => trans('fe_business.email'),
+            'location_name' => trans('fe_business.select_location'),
+            'industry'      => trans('fe_business.select_industry'),
+            'captcha'       => trans('fe_business.captcha'),
+        ));
     }
 }
 

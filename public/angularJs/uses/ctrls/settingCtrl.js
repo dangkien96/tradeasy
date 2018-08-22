@@ -153,9 +153,9 @@ ngApp.controller('settingCtrl',function($scope, $myNotify, $myBootbox, $myLoader
 						'fax' : $scope.data.contact.fax || '',
 						'email': $scope.data.contact.email || '',
 						'fb': $scope.data.contact.fb || '',
-						'youtube'  : $scope.data.contact.youtube || '',
+						'wechat'  : $scope.data.contact.wechat || '',
 						'instagram' : $scope.data.contact.instagram || '',
-						'zalo' : $scope.data.contact.zalo || '',
+						'whatsap' : $scope.data.contact.whatsap || '',
 						'iframe' : $scope.data.contact.iframe || '',
 						'website' : $scope.data.contact.website || '',
 					}
