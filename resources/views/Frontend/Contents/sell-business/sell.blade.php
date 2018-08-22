@@ -89,7 +89,7 @@
 			swal({
 			  type: 'success',
 			  title: 'Success',
-			  text: "{{ trans('fe_business.success') }}",
+			  text: "{!! trans('fe_business.success') !!}",
 			  // timer: 2000
 			})
 		</script>
