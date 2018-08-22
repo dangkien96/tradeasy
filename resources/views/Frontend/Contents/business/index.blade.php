@@ -176,29 +176,24 @@
 	                        	<div class="single-experience">
 	                                <p>{!! trans('fe_business.industry') !!}: {!! @$businessNew->locations->name_2 !!}</p>
 	                                <div class="progress">
-	                                    <div style="width: 100%; visibility: visible; animation-duration: 0.1s; animation-delay: 0.5s; animation-name: fadeInLeft;" aria-valuemax="100" aria-valuemin="0" aria-valuenow="100" role="progressbar" data-wow-delay="0" data-wow-duration="0" class="progress-bar wow fadeInLeft   animated">
-	                                    </div>
 	                                </div>
 	                            </div>
 	                            <div class="single-experience">
 	                                <p>{!! trans('fe_business.investment') !!}: HKD {!! number_format(@$businessNew->investment, 0) !!}</p>
 	                                <div class="progress">
-	                                    <div style="width: 100%; visibility: visible; animation-duration: 0.1s; animation-delay: 0.5s; animation-name: fadeInLeft;" aria-valuemax="100" aria-valuemin="0" aria-valuenow="100" role="progressbar" data-wow-delay="0" data-wow-duration="0" class="progress-bar wow fadeInLeft   animated">
-	                                    </div>
+	                                    
 	                                </div>
 	                            </div>
 	                            <div class="single-experience">
 	                                <p>{!! trans('fe_business.reference_profits') !!}: {!! @$businessNew->reference_profits !!}</p>
 	                                <div class="progress">
-	                                    <div style="width: 100%; visibility: visible; animation-duration: 0.1s; animation-delay: 0.5s; animation-name: fadeInLeft;" aria-valuemax="100" aria-valuemin="0" aria-valuenow="100" role="progressbar" data-wow-delay="0" data-wow-duration="0" class="progress-bar wow fadeInLeft   animated">
-	                                    </div>
+	                                    
 	                                </div>
 	                            </div>
 	                            <div class="single-experience">
 	                                <p>{!! trans('fe_business.payback_period') !!}: {!! @$businessNew->payback_period ? $businessNew->payback_period : 'N/a' !!}</p>
 	                                <div class="progress">
-	                                    <div style="width: 100%; visibility: visible; animation-duration: 0.1s; animation-delay: 0.5s; animation-name: fadeInLeft;" aria-valuemax="100" aria-valuemin="0" aria-valuenow="100" role="progressbar" data-wow-delay="0" data-wow-duration="0" class="progress-bar wow fadeInLeft   animated">
-	                                    </div>
+	                                   
 	                                </div>
 	                            </div>
 	                        </div>

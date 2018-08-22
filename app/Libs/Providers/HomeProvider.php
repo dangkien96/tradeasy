@@ -36,27 +36,29 @@ class HomeProvider {
 	}
 
 	public function getBusinessNew () {
-		$data = $this->business->select('id', 'code', 'intro_2', 'reference_profits', 'investment', 'Premise_Size', 'location_id', 'hot_item')
+		$data = $this->business->select('tbl_opportunities_4.photo_1', 'tbl_opportunities.id', 'tbl_opportunities.code', 'tbl_opportunities.intro_2', 'reference_profits', 'investment', 'Premise_Size', 'location_id', 'hot_item')
+								->join('tbl_opportunities_4', 'tbl_opportunities_4.cat_id', '=', 'tbl_opportunities.id')
+								
 								->with(['locations' => function($query) {
 									    $query->select('id', 'name_2');
 								}])
 								->where([
-								['active', 1],
-								['deleted', 0],
-								['ranking', '!=', 9],
-								['hot_item', 1],
+								['tbl_opportunities.active', 1],
+								['tbl_opportunities.deleted', 0],
+								['tbl_opportunities.ranking', '!=', 9],
+								['tbl_opportunities.hot_item', 1],
 								])->whereOr([
-								['active', 1],
-								['deleted', 0],
-								['ranking', '!=', 9],
-								['new_item', 1]
+								['tbl_opportunities.active', 1],
+								['tbl_opportunities.deleted', 0],
+								['tbl_opportunities.ranking', '!=', 9],
+								['tbl_opportunities.new_item', 1]
 								])->whereOr([
-								['active', 1],
-								['deleted', 0],
-								['ranking', '!=', 9],
-								['b_item', 1]
+								['tbl_opportunities.active', 1],
+								['tbl_opportunities.deleted', 0],
+								['tbl_opportunities.ranking', '!=', 9],
+								['tbl_opportunities.b_item', 1]
 								])
-								->orderBy('sort_no', 'desc')
+								->orderBy('tbl_opportunities.sort_no', 'desc')
 								->limit(9)
 								->get();
 
