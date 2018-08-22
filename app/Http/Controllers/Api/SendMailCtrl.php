@@ -147,8 +147,9 @@ class SendMailCtrl extends Controller
                             'start_time' => Carbon::now(), 
                             't_uuid'     => $uuid),
                     ));
-            EmailJob::dispatch(@$data->email, 'buy_business', $params, $params['company'], $params['company']." Acquired Business");
+            // EmailJob::dispatch(@$data->email, 'buy_business', $params, $params['company'], $params['company']." Acquired Business");
         }
+        return $data;
     }
 
     /**
