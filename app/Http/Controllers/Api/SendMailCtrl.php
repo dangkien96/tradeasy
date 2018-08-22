@@ -446,7 +446,7 @@ class SendMailCtrl extends Controller
                     't_uuid'             => $t_uuid,
                     'post_date'          => Carbon::now(),
                     'type_id'            => 2,
-                    'opportunities_id'   => $request->franchise_id,
+                    'opportunities_id'   => $request->input('franchise_id', 0),
                     'first_name'         => $request->name,
                     'phone_1'            => $request->phone,
                     'email'              => $request->email,
