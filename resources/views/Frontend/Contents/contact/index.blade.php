@@ -123,7 +123,7 @@
 		<script>
 			swal({
 			  type: 'success',
-			  title: 'Success',
+			  title: "{!! trans('fe_business.success_title') !!}",
 			  text: '{!! trans("fe_business.success") !!}',
 			})
 		</script>
