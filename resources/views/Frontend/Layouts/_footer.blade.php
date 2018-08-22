@@ -9,14 +9,11 @@
                     <div class="col-md-3 col-sm-6">
                         <div class="widget-item">
                             <h1 class="footer-logo">Tradeasy<span></span></h1>
-                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.</p>
-                            <a href="#" class="readmore">Read More...</a>
+                            
                             <ul class="social-bookmarks footer-social">
                                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a href="#"><i class="fa fa-youtube"></i></a></li>
-                                <li><a href="#"><i class="fa fa-rss"></i></a></li>
+                                <li><a href="#"><i class="fa fa-weixin"></i></a></li>
+                                <li><a href="#"><i class="fa fa-whatsapp"></i></a></li>
                             </ul>
                         </div>
                     </div>
@@ -82,7 +79,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="copyright">
-                        <p>Copyright 2018 &copy; Design and code by transoftvn </p>
+                        <p>Copyright 2018 &copy; Design and code by cloud tech</p>
                     </div>
                 </div>
             </div>

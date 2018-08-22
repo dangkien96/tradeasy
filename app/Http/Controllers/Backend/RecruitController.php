@@ -56,7 +56,7 @@ class RecruitController extends Controller
        try {
            $this->recruitModel->title    = $request->title;
            $this->recruitModel->slug     = sanitizeTitle($request->title);
-           $this->recruitModel->end_date = \Carbon\Carbon::parse($request->end_date)->format('Y/m/d');
+           // $this->recruitModel->end_date = \Carbon\Carbon::parse($request->end_date)->format('Y/m/d');
            $this->recruitModel->content  = $request->content;
            $this->recruitModel->save();
            DB::commit();
@@ -137,7 +137,7 @@ class RecruitController extends Controller
     public function _validate ($request) {
         $this->validate($request, [
             'title' => 'required| max: 255',
-            'end_date'=> 'required| max: 255',
+            // 'end_date'=> 'required| max: 255',
 
         ], 
         []);

@@ -39,7 +39,7 @@
 						                            @endif
 					                            </div>
 					                        </div> 			
-	            	                        <div class="col-sm-10">
+	            	                       <!--  <div class="col-sm-10">
 	            	                        	<div class="form-group">
 	                	                            <label class="control-label">
 	                	                            	{!! trans('backend.recruit.end_date') !!}<span class="text-danger"> (*)</span>
@@ -52,7 +52,7 @@
 	                	                            	<p class="text-left text-danger">{{ $errors->first('end_date') }}</p>
 	                	                            @endif
 	                	                        </div>
-	            	                        </div>
+	            	                        </div> -->
 	            	                        <div class="col-sm-10">
 	            	                        	<div class="form-group">
 	                	                            <label class="control-label">

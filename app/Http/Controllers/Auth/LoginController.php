@@ -72,7 +72,8 @@ class LoginController extends Controller
 
     protected function sendFailedLoginResponse(Request $request)
     {
-        throw ValidationException::withMessages();
+        throw ValidationException::withMessages([
+        ]);
     }
 
     /**

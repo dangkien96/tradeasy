@@ -142,22 +142,19 @@
 	            	                    <div class="single-experience">
 	            	                        <p>{!! trans('fe_business.sell_price') !!}: HKD {!! number_format(@$businessNew->investment, 0) !!}</p>
 	            	                        <div class="progress">
-	            	                            <div style="width: 100%; visibility: visible; animation-duration: 0.1s; animation-delay: 0.5s; animation-name: fadeInLeft;" aria-valuemax="100" aria-valuemin="0" aria-valuenow="100" role="progressbar" data-wow-delay="0" data-wow-duration="0" class="progress-bar wow fadeInLeft animated">
-	            	                            </div>
+	            	                            
 	            	                        </div>
 	            	                    </div>
 	            	                    <div class="single-experience">
 	            	                        <p>{!! trans('fe_business.reference_profit') !!}: {!! @$businessNew->reference_profits !!}</p>
 	            	                        <div class="progress">
-	            	                            <div style="width: 100%; visibility: visible; animation-duration: 0.1s; animation-delay: 0.5s; animation-name: fadeInLeft;" aria-valuemax="100" aria-valuemin="0" aria-valuenow="100" role="progressbar" data-wow-delay="0" data-wow-duration="0" class="progress-bar wow fadeInLeft animated">
-	            	                            </div>
+	            	                            
 	            	                        </div>
 	            	                    </div>
 	            	                    <div class="single-experience">
 	            	                        <p>{!! trans('fe_business.this_issue') !!}: {!! @$businessNew->payback_period ? $businessNew->payback_period : "N/A" !!}</p>
 	            	                        <div class="progress">
-	            	                            <div style="width: 100%; visibility: visible; animation-duration: 0.1s; animation-delay: 0.5s; animation-name: fadeInLeft;" aria-valuemax="100" aria-valuemin="0" aria-valuenow="100" role="progressbar" data-wow-delay="0" data-wow-duration="0" class="progress-bar wow fadeInLeft animated">
-	            	                            </div>
+	            	                            
 	            	                        </div>
 	            	                    </div>
 	            	                </div>
