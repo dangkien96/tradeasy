@@ -49,6 +49,8 @@ class HTTP {
         $info = curl_getinfo($ch);
         curl_close($ch);
     }
+
+    // public function
 }
 
 

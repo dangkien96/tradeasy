@@ -192,7 +192,7 @@ class SendMailCtrl extends Controller
         
         foreach ($data as $key => $value) {
             if (!in_array(@$value->email, $this->mail_check_arr)) {
-                $this->mail_check_arr[] = $value->email;
+                $this->mail_check_arr[] = @$value->email;
                 DB::connection('mysql2')
                     ->table('tbl_opportunities_mail_user')
                     ->insert(array(array(
