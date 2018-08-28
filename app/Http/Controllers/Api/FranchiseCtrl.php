@@ -78,6 +78,9 @@ class FranchiseCtrl extends Controller
                 'come_to'        => $s_source, 
                 'company'        => $company,
             ]; 
+            $opp_id = $request->input('franchise_id', -1);
+            $url    = $this->base_url."follow_franchise.php?t_uuid=".$t_uuid."&ref1=".$opp_id; 
+
             EmailJob::dispatch($request->email, 'franchise_customer', $params, $params['company'], $params['company']." - Acquired Business");
             EmailJob::dispatch($request->company_email, 'franchise_ad', $params, $params['company'], $params['company']." - Acquired Business");
 

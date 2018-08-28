@@ -25,10 +25,10 @@ class FranchiseController extends Controller
 
 	public function __construct()
 	{
-        $this->api_url                = HTTP::API_URL;
-        $this->http                   = new HTTP();
-        $this->franchiseModel         = new Franchises();
-        $this->businessModel          = new BuyBusiness();
+        $this->api_url        = HTTP::API_URL;
+        $this->http           = new HTTP();
+        $this->franchiseModel = new Franchises();
+        $this->businessModel  = new BuyBusiness();
 	}
 
     public function index() {
@@ -133,7 +133,7 @@ class FranchiseController extends Controller
                 'company'        => $company,
             ]; 
 
-            $opp_id = $request->input('franchise_id', -1);;
+            $opp_id = $request->input('franchise_id', -1);
             $url    = $this->base_url."follow_franchise.php?t_uuid=".$t_uuid."&ref1=".$opp_id; 
 
             EmailJob::dispatch($request->email, 'franchise_customer', $params, $params['company'], $params['company']." - Acquired Business");
