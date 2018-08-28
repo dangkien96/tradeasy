@@ -1,55 +1,60 @@
 <?php
 
-namespace App\Http\Controllers\Frontend;
+namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use DB, Mail;
-use App\Models\Contact;
-use Carbon\Carbon;
+use App\Models\BuyBusiness;
+use App\Models\BusinessDB2;
+use App\Models\BusinessNature;
+use App\Models\Location;
+use App\Libs\Functions\HTTP;
 use App\Jobs\EmailJob;
 
-class ContactController extends Controller
+use Carbon\Carbon;
+use DB, Mail;
+
+class SellCtrl extends Controller
 {
-	private $contactModel;
-    private $mail_check_arr = array();
-    private $base_url = "http://transoft.tk/";
+    private $buyBusinessModel, $businessModel, $http, $base_url, $mail_check_arr = array();
 
-    public function contact () {
-    	return view('Frontend.Contents.contact.index');
+    public function __construct(BuyBusiness $buyBusiness, BusinessDB2 $business, HTTP $http) {
+            $this->buyBusinessModel = $buyBusiness; 
+            $this->businessModel    = $business;
+            $this->http             = $http;
+            $this->base_url         = "http://transoft.tk/";
     }
 
-    public function __construct(Contact $contactModel, Request $request)
-    {
-    	$this->contactModel = $contactModel;
-    }
-    public function addContact (Request $request) {
-        $request->flash();
-        $this->validateContact($request);
-    	DB::beginTransaction();
-    	try {
-			$this->contactModel->name    = $request->name;
-			$this->contactModel->email   = $request->email;
-			$this->contactModel->phone   = $request->phone;
-			$this->contactModel->message = $request->message;
-			$this->contactModel->save();
+    /**
+     * Insert and send mail sell business
+     * @param $request
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function sellBusiness(Request $request) {
+
+        $nature_name = @BusinessNature::find($request->industry)->name_2;
+        DB::beginTransaction();
+        try {
+            $t_uuid=uniqid("", true);
 
             $s_source="Email Enquiry";
-            $t_uuid=uniqid("",true);
 
             DB::connection('mysql2')
                 ->table('tbl_business_transfer')
                 ->insert(array(
                     't_uuid'             => $t_uuid,
                     'post_date'          => Carbon::now(),
-                    'type_id'            => 3,
+                    'type_id'            => 2,
                     'opportunities_id'   => 0,
                     'first_name'         => $request->name,
                     'phone_1'            => $request->phone,
                     'email'              => $request->email,
+                    'business_nature_id' => $request->industry,
+                    'investment'         => $request->investment,
+                    'profit'             => $request->profit,
                     'desc_2'             => $request->message,
                     'source'             => $s_source,
-                    'business_nature_id' => 0,
 
                     'member_create_date' => '0000-00-00 00:00:00',
                     'member_create_by'   => '0',
@@ -63,31 +68,39 @@ class ContactController extends Controller
                     'inactive'           => '0',
                     'status'             => '0',
                     ));
-    		$company = $request->input('company', 'TRADEASY');
-            $params = [
-                'name'    => $request->name,
-                'phone'   => $request->phone,
-                'email'   => $request->email,  
-                'message' => $request->message,
-                'type'    => 'Contact',
-                'company' => $company,
-                'come_to' => $s_source,
-            ]; 
-            $url   = $this->base_url."follow_general.php?t_uuid=".$t_uuid."&type=S"; 
-            EmailJob::dispatch($request->email, 'contact_customer', $params, $params['company'], $params['company']." Acquired Business");
+            $company = $request->input('company', 'TRADEASY');
 
-            EmailJob::dispatch(config('mail.toMail'), 'contact_ad', $params, $params['company'], $params['company']." Acquired Business");
-            
+            $params = [
+                'name'                 => $request->name,
+                'phone'                => $request->phone,
+                'email'                => $request->email, 
+                'business_nature_name' => $nature_name, 
+                'investment'           => $request->investment,
+                'profit'               => $request->profit,
+                'message'              => $request->message,
+                'come_to'              => $s_source,
+                'company'              => $company,
+                'type'                 => "出讓業務查詢",
+                ]; 
+
+            $url   = $this->base_url."follow_general.php?t_uuid=".$t_uuid."&type=S"; 
+            $opp_id = -1;
+
+            EmailJob::dispatch($request->email, 'sell_business_customer', $params, $params['company'], $params['company']." - Acquired Business");
+
+            EmailJob::dispatch($request->company_email, 'sell_business_ad', $params, $params['company'], $params['company']." - Acquired Business");
+
             $this->_sendMailSetting($t_uuid, $params, $url);
             $this->_sendMailAd($t_uuid, $params, $url);
-            $this->_sendExclusive(-1, $request->phone, $t_uuid, $params, $url);
-
-            $request->flush();
+            $this->_sendExclusive($opp_id, $request->phone, $t_uuid, $params, $url);
+            
             DB::commit();
-    		return redirect()->back()->with('contact', 'success');
-    	} catch (Exception $e) {
-    		DB::rollback();
-    	}
+
+            return response()->json(['status' => true], 200);
+        } catch (Exception $e) {
+            DB::rollback();
+            return response()->json(['status' => false], 422);
+        }
     }
 
     public function _sendMailSetting ($uuid, $params, $url) {
@@ -108,7 +121,7 @@ class ContactController extends Controller
                 DB::connection('mysql2')
                     ->table('tbl_general_mail_user')
                     ->insert(array(array(
-                            'type'       => "C",
+                            'type'       => "S",
                             'user_id'    => $value->id, 
                             'start_time' => $value->start_time, 
                             't_uuid'     => $uuid),
@@ -142,13 +155,13 @@ class ContactController extends Controller
                 DB::connection('mysql2')
                     ->table('tbl_general_mail_user')
                     ->insert(array(array(
-                            'type'       => "C", 
+                            'type'       => "S", 
                             'user_id'    => $value->id, 
                             'start_time' => Carbon::now(), 
                             't_uuid'     => $uuid), 
                 ));
-                $params['name'] = @$value->user;
-                $params['link'] = $url."&ref2=".@$value->id;
+                $params['name']  = @$value->user;
+                $params['link']  = $url."&ref2=".@$value->id;
 
                 EmailJob::dispatch(@$value->email, 'sell', $params, $params['company'], $params['company']." Acquired Business");
             }
@@ -184,28 +197,12 @@ class ContactController extends Controller
                                     'start_time' => Carbon::now(),
                                     't_uuid'     => $uuid,
                                 ));
-                $params['name']       = @$value->user;
-                $params['link']       = $url."&ref2=".@$value->id;
+                $params['name']  = @$value->user;
+                $params['link']  = $url."&ref2=".@$value->id;
                 $params['start_time'] = Carbon::now();
 
                 EmailJob::dispatch(@$value->email, 'sell', $params, $params['company'], $params['company']." Acquired Business");
             }
         }
     }
-
-    public function validateContact($request) {
-    	$this->validate($request, [
-			'name'  => 'between: 1,250',
-			'phone' => 'between: 1,20',
-			'email' => 'between: 1,250|email',
-			'captcha' => 'between: 1,250|captcha',
-    	], [
-    	], array(
-            'name'     => trans('fe_business.name'),
-            'phone'    => trans('fe_business.phone'),
-            'email'    => trans('fe_business.email'),
-            'captcha'  => trans('fe_business.captcha'),
-        ));
-    }
 }
-

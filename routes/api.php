@@ -18,9 +18,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::group(['prefix' => '', 'middleware' => ['api']], function() {
-    Route::post('buy-business', 'Api\SendMailCtrl@buyBusiness');
-    Route::post('sell-business', 'Api\SendMailCtrl@sellBusiness');
-    Route::post('event-register', 'Api\SendMailCtrl@addEvent');
-    Route::post('contact', 'Api\SendMailCtrl@addContact');
+    Route::post('buy-business', 'Api\BuyCtrl@buyBusiness');
+    Route::post('sell-business', 'Api\SellCtrl@sellBusiness');
+    Route::post('event-register', 'Api\FranchiseCtrl@addEvent');
+    Route::post('contact', 'Api\ContactCtrl@addContact');
 });
 

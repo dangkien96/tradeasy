@@ -1,41 +1,41 @@
 <?php
 
-namespace App\Http\Controllers\Frontend;
+namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use DB, Mail;
-use App\Models\Contact;
-use Carbon\Carbon;
+use App\Models\BuyBusiness;
+use App\Models\BusinessDB2;
+use App\Models\BusinessNature;
+use App\Models\Location;
+use App\Libs\Functions\HTTP;
 use App\Jobs\EmailJob;
 
-class ContactController extends Controller
+use Carbon\Carbon;
+use DB, Mail;
+
+class ContactCtrl extends Controller
 {
-	private $contactModel;
-    private $mail_check_arr = array();
-    private $base_url = "http://transoft.tk/";
-
-    public function contact () {
-    	return view('Frontend.Contents.contact.index');
+    private $buyBusinessModel, $businessModel, $http, $base_url, $mail_check_arr = array();
+    public function __construct(BuyBusiness $buyBusiness, BusinessDB2 $business, HTTP $http) {
+            $this->buyBusinessModel = $buyBusiness; 
+            $this->businessModel    = $business;
+            $this->http             = $http;
+            $this->base_url         = "http://transoft.tk/";
     }
 
-    public function __construct(Contact $contactModel, Request $request)
-    {
-    	$this->contactModel = $contactModel;
-    }
+    /**
+     * Insert and send mail contact
+     * @param $request
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function addContact (Request $request) {
-        $request->flash();
-        $this->validateContact($request);
-    	DB::beginTransaction();
-    	try {
-			$this->contactModel->name    = $request->name;
-			$this->contactModel->email   = $request->email;
-			$this->contactModel->phone   = $request->phone;
-			$this->contactModel->message = $request->message;
-			$this->contactModel->save();
 
+        DB::beginTransaction();
+        try {
             $s_source="Email Enquiry";
-            $t_uuid=uniqid("",true);
+            $t_uuid=uniqid("", true);
 
             DB::connection('mysql2')
                 ->table('tbl_business_transfer')
@@ -63,7 +63,7 @@ class ContactController extends Controller
                     'inactive'           => '0',
                     'status'             => '0',
                     ));
-    		$company = $request->input('company', 'TRADEASY');
+            $company = $request->input('company', 'TRADEASY');
             $params = [
                 'name'    => $request->name,
                 'phone'   => $request->phone,
@@ -74,20 +74,21 @@ class ContactController extends Controller
                 'come_to' => $s_source,
             ]; 
             $url   = $this->base_url."follow_general.php?t_uuid=".$t_uuid."&type=S"; 
-            EmailJob::dispatch($request->email, 'contact_customer', $params, $params['company'], $params['company']." Acquired Business");
 
-            EmailJob::dispatch(config('mail.toMail'), 'contact_ad', $params, $params['company'], $params['company']." Acquired Business");
+            EmailJob::dispatch($request->email, 'contact_customer', $params, $params['company'], $params['company']." - Contact-us");
+
+            EmailJob::dispatch($request->company_email, 'contact_ad', $params, $params['company'], $params['company']." - Contact-us");
             
             $this->_sendMailSetting($t_uuid, $params, $url);
             $this->_sendMailAd($t_uuid, $params, $url);
             $this->_sendExclusive(-1, $request->phone, $t_uuid, $params, $url);
 
-            $request->flush();
             DB::commit();
-    		return redirect()->back()->with('contact', 'success');
-    	} catch (Exception $e) {
-    		DB::rollback();
-    	}
+            return response()->json(['status' => true], 200);
+        } catch (Exception $e) {
+            DB::rollback();
+            return response()->json(['status' => false], 422);
+        }
     }
 
     public function _sendMailSetting ($uuid, $params, $url) {
@@ -192,20 +193,5 @@ class ContactController extends Controller
             }
         }
     }
-
-    public function validateContact($request) {
-    	$this->validate($request, [
-			'name'  => 'between: 1,250',
-			'phone' => 'between: 1,20',
-			'email' => 'between: 1,250|email',
-			'captcha' => 'between: 1,250|captcha',
-    	], [
-    	], array(
-            'name'     => trans('fe_business.name'),
-            'phone'    => trans('fe_business.phone'),
-            'email'    => trans('fe_business.email'),
-            'captcha'  => trans('fe_business.captcha'),
-        ));
-    }
+    
 }
-

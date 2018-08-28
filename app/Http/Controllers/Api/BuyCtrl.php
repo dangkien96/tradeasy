@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Frontend;
+namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -8,67 +8,36 @@ use App\Models\BuyBusiness;
 use App\Models\BusinessDB2;
 use App\Models\BusinessNature;
 use App\Models\Location;
-use App\Mail\SendMail;
 use App\Libs\Functions\HTTP;
 use App\Jobs\EmailJob;
 
 use Carbon\Carbon;
 use DB, Mail;
 
-class BuyController extends Controller
+class BuyCtrl extends Controller
 {
-    private $buyBusinessModel, $businessModel, $http;
-    private $mail_check_arr = array();
-    private $base_url = "http://transoft.tk/";
-
-    public function __construct(BuyBusiness $buyBusiness, BusinessDB2 $business, HTTP $http)
-    {
-        $this->buyBusinessModel = $buyBusiness; 
-        $this->businessModel    = $business;
-        $this->http             = $http;
+    private $buyBusinessModel, $businessModel, $http, $base_url, $mail_check_arr = array();
+    public function __construct(BuyBusiness $buyBusiness, BusinessDB2 $business, HTTP $http) {
+            $this->buyBusinessModel = $buyBusiness; 
+            $this->businessModel    = $business;
+            $this->http             = $http;
+            $this->base_url         = "http://transoft.tk/";
     }
 
-	public function buy (Request $request) {
-        $data = $this->businessModel->select('id', 'intro_2', 'code')
-                                    ->where('id', $request->business)
-                                    ->first();
-
-		return view('Frontend.Contents.buy-business.buy', array('business' => $data));
-	}
-    public function process () {
-    	return view('Frontend.Contents.buy-business.process');
-    }
-
-    public function qa () {
-    	return view('Frontend.Contents.buy-business.qa');
-    }
-
-    public function guard () {
-    	return view('Frontend.Contents.buy-business.safeguard');
-    }
-
+    /**
+     * Insert and send mail buy business
+     * @param $request
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function buyBusiness(Request $request) {
         ini_set('max_execution_time', 300); 
-        $request->flash();
-        $this->_validateBuy($request);
+
         DB::beginTransaction();
         $nature_name = @BusinessNature::find($request->industry)->name_2;
-        $location_name = @Location::find($request->location_name)->name_2;
+        $location_name = @Location::find($request->location_id)->name_2;
         $business_info = @BusinessDB2::find($request->business_id);
         try {
-            // Insert Database buy_business of backend mysql 1
-            $this->buyBusinessModel->name          = $request->name;
-            $this->buyBusinessModel->phone         = $request->phone;
-            $this->buyBusinessModel->email         = $request->email;
-            $this->buyBusinessModel->city          = $location_name;
-            $this->buyBusinessModel->nature        = $nature_name;
-            $this->buyBusinessModel->investment    = $request->investment;
-            $this->buyBusinessModel->message       = $request->message;
-            $this->buyBusinessModel->business_name = $request->business_name;
-            $this->buyBusinessModel->business_code = $request->business_code;
-            $this->buyBusinessModel->business_id   = $request->business_id;
-            $this->buyBusinessModel->save();
-            
             //Insert data tbl_business_transfer of business crm mysql 2
             $t_uuid=uniqid("",true);
             $s_source='Email Enquiry';
@@ -102,17 +71,16 @@ class BuyController extends Controller
 
             // Params in view mail
             $params = [
-                'intro'                => $request->business_name,
-                'code'                 => $request->business_code,
+                'intro'                => @$business_info->intro_2,
+                'code'                 => @$business_info->code,
                 'region_name'          => $location_name,
                 'business_nature_name' => $nature_name,
                 'investment'           => $request->investment,
                 'company'              => $request->input('company', "TRADEASY"),
-                'message'              => $request->message,
                 ];
 
             $params2 = [
-                'intro'                => @$business_info->intro2,
+                'intro'                => @$business_info->intro_2,
                 'code'                 => @$business_info->code,
                 'region_name'          => $location_name,
                 'business_nature_name' => $nature_name,
@@ -128,7 +96,8 @@ class BuyController extends Controller
             $url   = $this->base_url."follow.php?t_uuid=".$t_uuid."&ref1=".$request->input('business_id', -1); 
 
             EmailJob::dispatch($request->email, 'buy_business_customer', $params2, $params2['company'], $params2['company']." Acquired Business");
-            EmailJob::dispatch(config('mail.toMail'), 'buy_business_ad', $params2, $params2['company'], $params2['company']." Acquired Business");
+
+            EmailJob::dispatch($request->company_email, 'buy_business_ad', $params2, $params2['company'], $params2['company']." Acquired Business");
 
             // Function send mail
             $mail  = $this->_sendMailUserFlow($request->input('business_id', -1), $t_uuid, $params, $url);
@@ -136,14 +105,21 @@ class BuyController extends Controller
             $mail3 = $this->_sendMailAd($request->input('business_id', -1), $t_uuid, $params, $url);
             $mail4 = $this->_sendExclusive($request->input('business_id', -1), $request->phone, $t_uuid, $params, $url);
             DB::commit();
-            $request->flush();
-            return redirect()->back()->with('buy-business', 'success');
+
+            return response()->json(['status' => true], 200);
 
         } catch (Exception $e) {
             DB::rollback();
+            return response()->json(['status' => false], 422);
         }
     }
 
+    /**
+     * Insert and send mail buy business
+     * @param $opp_id: id business, $uuid: $uuid create buyBusiness function, $params: Params array, $url: Url (ex: profidelta.com,...)
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function _sendMailUserFlow($opp_id, $uuid, $params, $url) {
         $data = DB::connection('mysql2')->table('tbl_opportunities')
                                         ->join('sys_user', 'tbl_opportunities.Followed1_By', '=', 'sys_user.id')
@@ -172,8 +148,15 @@ class BuyController extends Controller
                     ));
             EmailJob::dispatch(@$data->email, 'buy_business', $params, $params['company'], $params['company']." Acquired Business");
         }
+        return $data;
     }
 
+    /**
+     * Insert and send mail buy business
+     * @param $opp_id: id business, $uuid: $uuid create buyBusiness function, $params: Params array, $url: Url (ex: profidelta.com,...)
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function _sendMailSetting($opp_id, $uuid, $params, $url) {
         $business_imvestment = $this->businessModel->select("investment")->find($opp_id);
 
@@ -208,7 +191,7 @@ class BuyController extends Controller
         
         foreach ($data as $key => $value) {
             if (!in_array(@$value->email, $this->mail_check_arr)) {
-                $this->mail_check_arr[] = $value->email;
+                $this->mail_check_arr[] = @$value->email;
                 DB::connection('mysql2')
                     ->table('tbl_opportunities_mail_user')
                     ->insert(array(array(
@@ -228,6 +211,12 @@ class BuyController extends Controller
     }
 
 
+    /**
+     * Insert and send mail buy business
+     * @param $opp_id: id business, $uuid: $uuid create buyBusiness function, $params: Params array, $url: Url (ex: profidelta.com,...)
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function _sendMailAd ($opp_id, $uuid, $params, $url) {
         $data = DB::connection('mysql2')->table('sys_user_group')
                                         ->join('sys_user', 'sys_user_group.id', '=', 'sys_user.sys_user_group_id')
@@ -255,12 +244,18 @@ class BuyController extends Controller
                 $params['user']  = @$value->user;
                 $params['link']  = $url."&ref2=".@$value->id;
 
-                EmailJob::dispatch(@$value->email, 'buy_business', $params, $params['company'], $params['company']." Acquired Business");
+                EmailJob::dispatch(@$value->email, 'buy_business', $params, $params['company'], $params['company']."Acquired Business");
             }
         }
         return $data;
     }
 
+    /**
+     * Insert and send mail buy business
+     * @param $opp_id: id business, $uuid: $uuid create buyBusiness function, $params: Params array, $url: Url (ex: profidelta.com,...)
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function _sendExclusive($opp_id, $phone, $uuid, $params, $url) {
         $exclusive_business = DB::connection('mysql2')
                             ->table('tbl_customer_exclusive_salesman')
@@ -297,24 +292,4 @@ class BuyController extends Controller
             }
         }
     }
-
-    public function _validateBuy($request) {
-        $this->validate($request, [
-            'name'          => 'between: 1, 150',
-            'phone'         => 'between: 1, 20',
-            'email'         => 'email| between: 1, 150',
-            'location_name' => 'between: 1, 150',
-            'industry'      => 'between: 1, 150',
-            'captcha'       => 'between: 1, 150|captcha'
-        ], [], 
-        array(
-            'name'          => trans('fe_business.name'),
-            'phone'         => trans('fe_business.phone'),
-            'email'         => trans('fe_business.email'),
-            'location_name' => trans('fe_business.select_location'),
-            'industry'      => trans('fe_business.select_industry'),
-            'captcha'       => trans('fe_business.captcha'),
-        ));
-    }
 }
-
