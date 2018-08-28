@@ -83,8 +83,6 @@ class FranchiseCtrl extends Controller
 
             EmailJob::dispatch($request->email, 'franchise_customer', $params, $params['company'], $params['company']." - Acquired Business");
             EmailJob::dispatch($request->company_email, 'franchise_ad', $params, $params['company'], $params['company']." - Acquired Business");
-
-            $this->_sendMailUserFlow($opp_id, $t_uuid, $params, $url);
             $this->_sendMailAd($opp_id, $t_uuid, $params, $url);
             $this->_sendExclusive($opp_id,  $request->phone, $t_uuid, $params, $url);
 
