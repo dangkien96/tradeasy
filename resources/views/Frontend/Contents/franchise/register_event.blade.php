@@ -24,6 +24,10 @@
 		                            <div class="col-md-6">
 		                            	<input type="hidden" value="{{ request()->get('franchise_id') }}" name="franchise_id">
 		                            	<input type="hidden" value="{{ request()->get('franchise_name') }}" name="franchise_name" >
+		                            	@if (request()->get('franchise_id'))
+											<h3 style="font-size: 20px; font-weight: 600;" class="text-danger">報名參加 [ {{ request()->get('franchise_name') }} ] 說明會</h3>
+											<br>
+		                            	@endif
 		                           		<input class="form-control" name="name" type="text" placeholder="{{ trans('fe_event_online.name') }}*"
 		                           		value="{{ old('name') }}">
 	                                	@if ($errors->has('name'))
@@ -67,6 +71,7 @@
 		                            	</p>
    			                            <div class="row">
    			                            	<div class="col-md-12 text-center">
+   			                            		<br>
    			                            		<button class="button comment-cntact active" type="submit">{!! trans('fe_business.send') !!}</button>
    			                            			<p class="bigtech-send-message"></p>
    			                            	</div>

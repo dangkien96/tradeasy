@@ -72,7 +72,7 @@ class SendMailCtrl extends Controller
 
             // Params in view mail
             $params = [
-                'intro'                => @$business_info->intro2,
+                'intro'                => @$business_info->intro_2,
                 'code'                 => @$business_info->code,
                 'region_name'          => $location_name,
                 'business_nature_name' => $nature_name,
@@ -81,7 +81,7 @@ class SendMailCtrl extends Controller
                 ];
 
             $params2 = [
-                'intro'                => @$business_info->intro2,
+                'intro'                => @$business_info->intro_2,
                 'code'                 => @$business_info->code,
                 'region_name'          => $location_name,
                 'business_nature_name' => $nature_name,
@@ -147,7 +147,7 @@ class SendMailCtrl extends Controller
                             'start_time' => Carbon::now(), 
                             't_uuid'     => $uuid),
                     ));
-            // EmailJob::dispatch(@$data->email, 'buy_business', $params, $params['company'], $params['company']." Acquired Business");
+            EmailJob::dispatch(@$data->email, 'buy_business', $params, $params['company'], $params['company']." Acquired Business");
         }
         return $data;
     }
@@ -350,9 +350,9 @@ class SendMailCtrl extends Controller
                 'come_to'              => $s_source,
                 'company'              => $company,
                 ]; 
-            EmailJob::dispatch($request->email, 'sell_business_customer', $params, $params['company'], $params['company']." - Contact us");
+            EmailJob::dispatch($request->email, 'sell_business_customer', $params, $params['company'], $params['company']." - Acquired Business");
 
-            EmailJob::dispatch($request->company_email, 'sell_business_ad', $params, $params['company'], $params['company']." - Contact us");
+            EmailJob::dispatch($request->company_email, 'sell_business_ad', $params, $params['company'], $params['company']." - Acquired Business");
             
             DB::commit();
 
@@ -413,9 +413,9 @@ class SendMailCtrl extends Controller
                 'come_to' => $s_source,
             ]; 
 
-            EmailJob::dispatch($request->email, 'contact_customer', $params, $params['company'], $params['company']." Acquired Business");
+            EmailJob::dispatch($request->email, 'contact_customer', $params, $params['company'], $params['company']." - Contact-us");
 
-            EmailJob::dispatch($request->company_email, 'contact_ad', $params, $params['company'], $params['company']." Acquired Business");
+            EmailJob::dispatch($request->company_email, 'contact_ad', $params, $params['company'], $params['company']." - Contact-us");
 
             // Mail::to(config('mail.toMail'))
                     // ->send(new SendMail('contact',  $params, 'Transoft', 'Contact Tradeasy') );

@@ -108,6 +108,8 @@ class BusinessController extends Controller
     public function _validateMail($rquest) {
     	$this->_validateMail($rquest, [
     		'email' => 'required|email'
+    	], [], [
+    		'email' => trans('fe_business.email')
     	]);
     }
 

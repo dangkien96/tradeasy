@@ -9,10 +9,10 @@
 	        <div class="row">
 	            <div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
 	                <div class="main-heading-content text-center">
-	                    <h2>{{ $franchise->data->title }}</h2>
+	                    <h2>{{ @$franchise->intro_2 }}</h2>
 	                </div>
 	                <div class="col-md-12 text-center mb-50">
-	                	<a href="{{ route('fe.event_online', [ 'franchise_id'=>$franchise->data->id, 'franchise_name'=>$franchise->data->title ]) }}" type="" ><img src="{{ url('Frontend/img/zxbm430.gif') }}" alt=""></a>
+	                	<a href="{{ route('fe.event_online', [ 'franchise_id'=>@$franchise->id, 'franchise_name'=>@$franchise->intro_2 ]) }}" type="" ><img src="{{ url('Frontend/img/zxbm430.gif') }}" alt=""></a>
 	                </div>
 	            </div>
 	        </div>
@@ -21,7 +21,7 @@
 	                <div class="col-md-12 col-sm-12">
 	                    <div class="service-item">
 	                        <div class="service-text">
-	                        	{!! $franchise->data->content !!}
+	                        	{!! @$franchise->content1 !!}
 	                        </div>
 	                    </div>
 	                </div>

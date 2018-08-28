@@ -9,34 +9,47 @@ use DB, Mail;
 use App\Libs\Functions\HTTP;
 use Carbon\Carbon;
 use App\Jobs\EmailJob;
+use App\Models\Franchises;
+use App\Models\FranchiseCategory;
 
 class FranchiseController extends Controller
 {
 	private $api_url;
     private $http;
-	
+	private $franchiseModel;
+    private $franchiseCategoryModel;
+
 	public function __construct()
 	{
-		$this->api_url = HTTP::API_URL;
-        $this->http = new HTTP();
+        $this->api_url                = HTTP::API_URL;
+        $this->http                   = new HTTP();
+        $this->franchiseModel         = new Franchises();
 	}
 
     public function index() {
 
-    	$url = $this->api_url.'franchise_category/all';
+    	// $url = $this->api_url.'franchise_category/all';
         // return $url;
-    	$data = $this->http->_send($this->http::HTTP_METHOD_GET, $url, []);
-    	$data = json_decode($data);
+    	// $data = $this->http->_send($this->http::HTTP_METHOD_GET, $url, []);
+    	// $data = json_decode($data);
 
-    	return view('Frontend.Contents.franchise.index', array('categories' => $data));
+        // $data = $this->franchiseModel->all();
+        // $category = $this->franchiseCategoryModel->select('name_2', 'id')
+        //             ->orderBy('sort_no', 'desc')->get();
+
+        // echo "<pre>";
+        // print_r($data->toArray());
+        // return 123;
+    	return view('Frontend.Contents.franchise.index');
     }
 
-    public function detail($id) {
-    	$url = $this->api_url.'franchise/detail/'.$id;
+    public function detail($id, $slug) {
 
-    	$data = $this->http->_send($this->http::HTTP_METHOD_GET, $url, []);
-    	$data = json_decode($data);
+    	// $url = $this->api_url.'franchise/detail/'.$id;
 
+    	// $data = $this->http->_send($this->http::HTTP_METHOD_GET, $url, []);
+    	// $data = json_decode($data);
+        $data = $this->franchiseModel->findOrFail($id);
     	return view('Frontend.Contents.franchise.detail', array('franchise'=> $data) );
     }
 

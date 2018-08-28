@@ -306,7 +306,6 @@ class BuyController extends Controller
             'email'         => 'email| between: 1, 150',
             'location_name' => 'between: 1, 150',
             'industry'      => 'between: 1, 150',
-            // 'investment'    => 'between: 1, 150',
             'captcha'       => 'between: 1, 150|captcha'
         ], [], 
         array(

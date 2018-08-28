@@ -6,6 +6,7 @@ use App\Models\Slide;
 use App\Models\BusinessDB2;
 use App\Models\Setting;
 use App\Models\Recurits;
+use App\Models\Franchises;
 
 
 class HomeProvider {
@@ -13,13 +14,15 @@ class HomeProvider {
 	private $business;
 	private $slideModel;
 	private $settingModel;
+	private $franchiseModel;
 
 	public function __construct()
 	{
-		$this->business     = new BusinessDB2();
-		$this->slideModel   = new Slide();
-		$this->settingModel = new Setting();
-		$this->recuritModel = new Recurits();
+		$this->business       = new BusinessDB2();
+		$this->slideModel     = new Slide();
+		$this->settingModel   = new Setting();
+		$this->recuritModel   = new Recurits();
+		$this->franchiseModel = new Franchises();    
 	}
 
 	public function getListBusiness () {
@@ -119,4 +122,12 @@ class HomeProvider {
 		return $data;
 	}
 
+	public function getFranchises ($cate_1, $cate_2, $cate_3) {
+		$data = $this->franchiseModel->filterCategory1($cate_1)
+									 ->filterCategory2($cate_2, $cate_3)
+									 ->buildCond()
+									 ->get();
+
+		return $data;
+	}
 }
