@@ -10,18 +10,20 @@ use App\Models\BusinessNature;
 use App\Models\Location;
 use App\Libs\Functions\HTTP;
 use App\Jobs\EmailJob;
+use App\Models\Franchises;
 
 use Carbon\Carbon;
 use DB, Mail;
 
 class FranchiseCtrl extends Controller
 {
-    private $buyBusinessModel, $businessModel, $http, $base_url, $mail_check_arr = array();
+    private $buyBusinessModel, $businessModel, $http, $base_url, $mail_check_arr = array(), $franchiseModel;
     public function __construct(BuyBusiness $buyBusiness, BusinessDB2 $business, HTTP $http) {
             $this->buyBusinessModel = $buyBusiness; 
             $this->businessModel    = $business;
             $this->http             = $http;
             $this->base_url         = "http://transoft.tk/";
+            $this->franchiseModel = new Franchises();
     }   
     /**
      * Insert and send mail buy business
@@ -35,6 +37,8 @@ class FranchiseCtrl extends Controller
         try {
             $s_source="Email Enquiry";
             $t_uuid=uniqid("", true);
+
+            $franchiseItem = $this->franchiseModel::find($request->franchise_id);
 
             DB::connection('mysql2')
                 ->table('tbl_business_transfer')
@@ -73,6 +77,9 @@ class FranchiseCtrl extends Controller
                 'franchise_id'   => $request->input('franchise_id', 0),
                 'franchise_name' => $request->input('franchise_name', ""),
                 'message'        => $request->number,
+                'intro'          => @$franchiseItem->intro_2,
+                'code'           => @$franchiseItem->code,
+                'transfer'       => @$request->number,
                 'type'           => '講座/課程',
                  
                 'come_to'        => $s_source, 
