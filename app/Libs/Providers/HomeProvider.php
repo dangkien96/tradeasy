@@ -117,7 +117,9 @@ class HomeProvider {
 	}
 
 	public function getRecruit () {
-		$data = $this->recuritModel::orderBy('id', 'desc')->limit(5)->get();
+		$data = $this->recuritModel::orderBy('created_at', 'desc')
+									->limit(5)
+									->get();
 
 		return $data;
 	}

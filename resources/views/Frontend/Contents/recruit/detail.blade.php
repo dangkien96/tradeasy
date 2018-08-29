@@ -32,10 +32,10 @@
 	                	        <h4 class="widget-title">{{ trans('fe_business.hot_business') }}</h4>
 	                	        <div class="widget-content">
 	                	            <ul class="post-cat-list">
-	                	                @foreach ($rectuits as $key => $rectuit)
+	                	                @foreach ($rectuits as $key => $value)
 	                	                <li>
-	                	                    <a href="{{ route('fe.recruit_detail', [@$recruit->id, @$recruit->slug]) }}">
-	                	                        <i class="fa fa-angle-double-right"> </i> {!! @$recruit->title !!}</a>
+	                	                    <a href="{{ route('fe.recruit_detail', [@$value->id, @$value->slug]) }}">
+	                	                        <i class="fa fa-angle-double-right"> </i> {!! @$value->title !!}</a>
 	                	                </li>
 	                	                @endforeach 
 	                	            </ul>
