@@ -22,7 +22,7 @@ class FranchiseCtrl extends Controller
             $this->buyBusinessModel = $buyBusiness; 
             $this->businessModel    = $business;
             $this->http             = $http;
-            $this->base_url         = "http://transoft.tk/";
+            $this->base_url         = config('url.follow_url');
             $this->franchiseModel = new Franchises();
     }   
     /**

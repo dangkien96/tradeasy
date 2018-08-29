@@ -13,7 +13,7 @@ class ContactController extends Controller
 {
 	private $contactModel;
     private $mail_check_arr = array();
-    private $base_url = "http://transoft.tk/";
+    private $base_url;
 
     public function contact () {
     	return view('Frontend.Contents.contact.index');
@@ -21,7 +21,8 @@ class ContactController extends Controller
 
     public function __construct(Contact $contactModel, Request $request)
     {
-    	$this->contactModel = $contactModel;
+        $this->contactModel = $contactModel;
+        $this->base_url     = config('url.follow_url');
     }
     public function addContact (Request $request) {
         $request->flash();

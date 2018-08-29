@@ -14,11 +14,12 @@ class SellController extends Controller
 {
     private $sellBusinessModel;
     private $mail_check_arr = array();
-    private $base_url = "http://transoft.tk/";
+    private $base_url;
 
     public function __construct(SellBusiness $sellBusiness)
     {
-        $this->sellBusinessModel = $sellBusiness;    
+        $this->sellBusinessModel = $sellBusiness;  
+        $this->base_url          = config('url.follow_url');  
     }
 
     public function sell (){

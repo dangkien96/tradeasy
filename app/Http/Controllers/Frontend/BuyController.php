@@ -19,13 +19,14 @@ class BuyController extends Controller
 {
     private $buyBusinessModel, $businessModel, $http;
     private $mail_check_arr = array();
-    private $base_url = "http://transoft.tk/";
+    private $base_url;
 
     public function __construct(BuyBusiness $buyBusiness, BusinessDB2 $business, HTTP $http)
     {
         $this->buyBusinessModel = $buyBusiness; 
         $this->businessModel    = $business;
         $this->http             = $http;
+        $this->base_url         = config('url.follow_url');
     }
 
 	public function buy (Request $request) {

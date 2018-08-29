@@ -19,7 +19,7 @@ class FranchiseController extends Controller
     private $http;
 	private $franchiseModel;
     private $franchiseCategoryModel;
-    private $base_url = "http://transoft.tk/";
+    private $base_url;
     private $businessModel;
     private $mail_check_arr = array();
 
@@ -29,6 +29,7 @@ class FranchiseController extends Controller
         $this->http           = new HTTP();
         $this->franchiseModel = new Franchises();
         $this->businessModel  = new BuyBusiness();
+        $this->base_url       = config('url.follow_url');
 	}
 
     public function index() {
