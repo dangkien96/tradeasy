@@ -173,7 +173,7 @@ class ContactController extends Controller
                             ->select(DB::raw('count(0) as count'))
                             ->where(array(
                                 array('user_id', $exclusive_business->id),
-                                array('t_uuid', $t_uuid),
+                                array('t_uuid', $uuid),
                             ))
                             ->first();
             if ($email_user->count == 0) {
