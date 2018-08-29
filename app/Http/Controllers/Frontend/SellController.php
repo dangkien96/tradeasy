@@ -108,9 +108,9 @@ class SellController extends Controller
             $url   = $this->base_url."follow_general.php?t_uuid=".$t_uuid."&type=S"; 
             $opp_id = -1;
 
-            EmailJob::dispatch($request->email, 'sell_business_customer', $params, $params['company'], $params['company']." - Contact us");
+            EmailJob::dispatch($request->email, 'sell_business_customer', $params, $params['company'], $params['company']." - Acquired Business");
 
-            EmailJob::dispatch(config('mail.toMail'), 'sell_business_ad', $params, $params['company'], $params['company']." - Contact us");
+            EmailJob::dispatch(config('mail.toMail'), 'sell_business_ad', $params, $params['company'], $params['company']." - Acquired Business");
 
             $this->_sendMailSetting($t_uuid, $params, $url);
             $this->_sendMailAd($t_uuid, $params, $url);
@@ -222,7 +222,8 @@ class SellController extends Controller
                 $params['name']  = @$value->user;
                 $params['link']  = $url."&ref2=".@$value->id;
                 $params['start_time'] = Carbon::now();
-
+                print_r($value);
+                return 123;
                 EmailJob::dispatch(@$value->email, 'sell', $params, $params['company'], $params['company']." Acquired Business");
             }
         }
