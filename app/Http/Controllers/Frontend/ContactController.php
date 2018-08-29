@@ -75,9 +75,9 @@ class ContactController extends Controller
                 'come_to' => $s_source,
             ]; 
             $url   = $this->base_url."follow_general.php?t_uuid=".$t_uuid."&type=S"; 
-            EmailJob::dispatch($request->email, 'contact_customer', $params, $params['company'], $params['company']." Acquired Business");
+            EmailJob::dispatch($request->email, 'contact_customer', $params, $params['company'], $params['company']." Contact Us");
 
-            EmailJob::dispatch(config('mail.toMail'), 'contact_ad', $params, $params['company'], $params['company']." Acquired Business");
+            EmailJob::dispatch(config('mail.toMail'), 'contact_ad', $params, $params['company'], $params['company']." Contact Us");
             
             $this->_sendMailSetting($t_uuid, $params, $url);
             $this->_sendMailAd($t_uuid, $params, $url);
@@ -185,12 +185,11 @@ class ContactController extends Controller
                                     'start_time' => Carbon::now(),
                                     't_uuid'     => $uuid,
                                 ));
-                $params['name']       = @$value->user;
-                $params['link']       = $url."&ref2=".@$value->id;
+                $params['name']       = @$exclusive_business->user;
+                $params['link']       = $url."&ref2=".@$exclusive_business->id;
                 $params['start_time'] = Carbon::now();
-                print_r($value);
-                return 123;
-                EmailJob::dispatch(@$value->email, 'sell', $params, $params['company'], $params['company']." Acquired Business");
+
+                EmailJob::dispatch(@$exclusive_business->email, 'sell', $params, $params['company'], $params['company']." Acquired Business");
             }
         }
     }

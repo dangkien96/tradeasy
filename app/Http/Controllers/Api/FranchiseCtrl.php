@@ -163,11 +163,11 @@ class FranchiseCtrl extends Controller
                                     'start_time' => Carbon::now(),
                                     't_uuid'     => $uuid,
                                 ));
-                $params['user']       = @$value->user;
-                $params['link']       = $url."&ref2=".@$value->id;
+                $params['user']       = @$exclusive_business->user;
+                $params['link']       = $url."&ref2=".@$exclusive_business->id;
                 $params['start_time'] = Carbon::now();
 
-                EmailJob::dispatch(@$value->email, 'franchise', $params, $params['company'], $params['company']." Acquired Business");
+                EmailJob::dispatch(@$exclusive_business->email, 'franchise', $params, $params['company'], $params['company']." Acquired Business");
             }
         }
     }
