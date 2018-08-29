@@ -51,7 +51,7 @@ class FranchiseCtrl extends Controller
                     'phone_1'            => $request->phone,
                     'email'              => $request->email,
                     'business_nature_id' => 0,
-                    'desc_2'             => $s_source." ".$request->message,
+                    'desc_2'             => "[".$request->input('company', "TRADEASY")."] ".$request->message,
                     'source'             => $s_source,
                     'character_1'        => "",
 

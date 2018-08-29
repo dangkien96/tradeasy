@@ -53,7 +53,7 @@ class SellCtrl extends Controller
                     'business_nature_id' => $request->industry,
                     'investment'         => $request->investment,
                     'profit'             => $request->profit,
-                    'desc_2'             => $request->message,
+                    'desc_2'             => "[".$request->input('company', "TRADEASY")."] ".$request->message,
                     'source'             => $s_source,
 
                     'member_create_date' => '0000-00-00 00:00:00',

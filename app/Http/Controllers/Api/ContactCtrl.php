@@ -47,7 +47,7 @@ class ContactCtrl extends Controller
                     'first_name'         => $request->name,
                     'phone_1'            => $request->phone,
                     'email'              => $request->email,
-                    'desc_2'             => $request->message,
+                    'desc_2'             => "[".$request->input('company', "TRADEASY")."] ".$request->message,
                     'source'             => $s_source,
                     'business_nature_id' => 0,
 
