@@ -16,8 +16,7 @@
 	        </div>
 	        <div class="row">
 	            <div class="service-wrapper">
-	                <div class="col-md-12 col-sm-12">
-	                    <div class="service-item">
+	                <div class="col-md-12 col-sm-12 pt-50 pb-20 plr-20" style="background: #fff;">
 	                    	<table style="width: 100%;" class="col-md-12 ptb-30 table-hover table-striped">
 	                    		<tbody>
 	                    			@foreach ($recruits as $key => $recruit)
@@ -32,7 +31,7 @@
 	                    			@endforeach
 	                    		</tbody>
 	                    	</table>
-	                    </div>
+	                    <!-- </div> -->
 	                </div>
 	            </div>
 	        </div>

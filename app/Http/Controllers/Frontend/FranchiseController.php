@@ -145,7 +145,6 @@ class FranchiseController extends Controller
             $this->_sendExclusive($opp_id,  $request->phone, $t_uuid, $params, $url);
 
             DB::commit();
-            return $this->mail_check_arr;
             return redirect()->back()->with('event', 'success');
         } catch (Exception $e) {
             return redirect()->back();

@@ -53,7 +53,7 @@ class SellController extends Controller
             $this->sellBusinessModel->phone      = $request->phone;
             $this->sellBusinessModel->email      = $request->email;
             $this->sellBusinessModel->profit     = $request->profit;
-            $this->sellBusinessModel->nature     = $request->industry;
+            $this->sellBusinessModel->nature     = $nature_name;
             $this->sellBusinessModel->imvestment = $request->investment;
             $this->sellBusinessModel->message    = $request->message;
             $this->sellBusinessModel->save();
