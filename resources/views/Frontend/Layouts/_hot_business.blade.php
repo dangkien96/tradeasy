@@ -27,14 +27,12 @@
                 @foreach ($hotFranchises as $key => $hotFranchise)
                     <div class="widget-single-post clearfix">
                         <div class="post-thumb">
-                            <a href="{{ route('fe.franchise_detail', [@$hotFranchise['id'], @$hotFranchise['slug'] ]) }}"><img src="{{ @$hotFranchise['image'] }}" alt=""></a>
+                            <a href="{{ route('fe.franchise_detail', [@$hotFranchise->id, @$hotFranchise->code]) }}"><img src="{{ @$hotFranchise->photo_1 }}" alt=""></a>
                         </div>
                         <div class="widget-post-content">
-                            <p>
-                                <p  class="widget-post-date">{{ $hotFranchise['title'] }}</p>
-                                <a href="{{ route('fe.business_detail', [@$hotFranchise['id'], @$hotFranchise['intro_2']]) }}">
-                                {!! str_limit(@$hotFranchise['description'], $limit = 70, $end = '...') !!}</a>
-                            </p>
+                            <p  class="widget-post-date">{{ $hotFranchise->intro_2 }}</p>
+                            <a href="{{ route('fe.business_detail', [@$hotFranchise->id, @$hotFranchise->intro_2]) }}">
+                            {!! str_limit(@$hotFranchise->teacher_introduction, $limit = 70, $end = '...') !!}</a>
                         </div>
                     </div>
                 @endforeach 

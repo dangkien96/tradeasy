@@ -253,16 +253,10 @@ class FranchiseController extends Controller
     }
 
     public function hotFranchise(){
-        $url = $this->api_url.'franchise_category/all';
-        
-        $data = $this->_send($this->http::HTTP_METHOD_GET, $url, []);
-        
-        $data   = json_decode($data, true);
-        $val    = array_rand($data['data']);
-        $ran_m  = array_rand($data['data'][$val]['franchises'], 2);
-        $hotF[] = $data['data'][$val]['franchises'][0];
-        $hotF[] = $data['data'][$val]['franchises'][1];
-        return $hotF;
+        $data = $this->franchiseModel->select('photo_1', 'intro_2', 'teacher_introduction', 'id', 'code')
+                                    ->limit(3)->orderBy('sort_no', 'desc')
+                                    ->get();
+        return $data;
     }
 
 
