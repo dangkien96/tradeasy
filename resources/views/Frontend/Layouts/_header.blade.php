@@ -16,8 +16,9 @@
                     </div>
                     <div class="col-md-4 col-sm-4">
                         <ul class="social-bookmarks">
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+                            <li><a href="{{ @$contact->data->fb }}"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="{{ @$contact->data->wechat }}"><i class="fa fa-weixin"></i></a></li>
+                            <li><a href="{{ @$contact->data->whatsap }}"><i class="fa fa-whatsapp"></i></a></li>
                         </ul>
                     </div>
                 </div>
