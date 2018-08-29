@@ -85,7 +85,7 @@ class BuyController extends Controller
                             'business_nature_id' => $request->industry,
                             'investment'         => $request->investment,
                             'source'             => $s_source,
-                            'desc_2'             => $request->message,
+                            'desc_2'             => "[ TRADEASY ] ".$request->message,
                             
                             'member_create_date' => '0000-00-00 00:00:00',
                             'member_create_by'   => '0',
