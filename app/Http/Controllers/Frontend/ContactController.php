@@ -188,7 +188,8 @@ class ContactController extends Controller
                 $params['name']       = @$value->user;
                 $params['link']       = $url."&ref2=".@$value->id;
                 $params['start_time'] = Carbon::now();
-
+                print_r($value);
+                return 123;
                 EmailJob::dispatch(@$value->email, 'sell', $params, $params['company'], $params['company']." Acquired Business");
             }
         }
