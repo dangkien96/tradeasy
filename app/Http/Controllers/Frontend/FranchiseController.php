@@ -165,7 +165,7 @@ class FranchiseController extends Controller
                                         ))
                                         ->first();
         $this->mail_check_arr[] = @$data->email;
-        $params['name']         = @$data->user;
+        $params['user']         = @$data->user;
         $params['link']         = $url."&ref2=".@$data->id;
         $params['start_time']   = Carbon::now();
 
