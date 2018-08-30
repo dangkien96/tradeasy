@@ -127,7 +127,7 @@ class FranchiseCtrl extends Controller
                     ->insert(array( array(
                             'opp_id'     => $opp_id, 
                             'user_id'    => $data->id, 
-                            'start_time' => $value->start_time, 
+                            'start_time' => $data->start_time, 
                             't_uuid'     => $uuid),
                     ));
 
