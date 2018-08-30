@@ -117,7 +117,7 @@ class SellController extends Controller
             $this->_sendExclusive($opp_id, $request->phone, $t_uuid, $params, $url);
 
             DB::commit();
-            $request->session()->flush();
+            $request->flush();
             return redirect()->back()->with('sell-business', 'success');
 
         } catch (Exception $e) {

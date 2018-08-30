@@ -143,7 +143,7 @@ class FranchiseController extends Controller
             $this->_sendMailUserFlow($opp_id, $t_uuid, $params, $url);
             $this->_sendMailAd($opp_id, $t_uuid, $params, $url);
             $this->_sendExclusive($opp_id,  $request->phone, $t_uuid, $params, $url);
-
+            $request->flush();
             DB::commit();
             return redirect()->back()->with('event', 'success');
         } catch (Exception $e) {
