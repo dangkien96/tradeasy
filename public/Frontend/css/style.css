@@ -3984,3 +3984,43 @@ textarea.text-area:focus {
     margin-bottom: 10px;
     -webkit-box-shadow: none;
 }
+.dock-item img {
+    width: 100%;
+}
+.dock-container .dock-item{
+    -webkit-transition:0.5s;
+    position: relative;
+}
+
+.dock-container .dock-item::before, .dock-container .dock-item::after {
+  width: 100%;
+  height:100%;
+  z-index: 3;
+  content:'';
+  position: absolute;
+  top:3px;
+  left:0;
+  box-sizing: border-box;
+  -webkit-transform: scale(0);
+  transition: 0.5s;
+}
+
+.dock-container .dock-item.active {
+  border-bottom: 3px solid rgb(255, 109, 0);
+}
+
+.dock-item::before {
+  border-bottom: 3px solid rgb(255, 109, 0);
+  border-left: 0;
+  -webkit-transform-origin: 0% 100%;
+}
+
+.dock-item::after {
+  border-top: 0;
+  border-right: 0;
+  -webkit-transform-origin: 50% 50%;
+}
+.dock-container .dock-item:hover::after, .dock-container .dock-item:hover::before {
+  -webkit-transform: scale(1);
+}
+

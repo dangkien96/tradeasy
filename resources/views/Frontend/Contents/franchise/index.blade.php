@@ -13,25 +13,25 @@
 	        <div>
 	        	<div class="dock-container text-center">
     				<li class="dock-item" data-item="1">
-			        	<img style="width: 100%;" src="{{ url('Frontend/img/team') }}/1.png" alt="嬰幼兒" />
+			        	<img src="{{ url('Frontend/img/team') }}/1.png" alt="嬰幼兒" />
 			        </li>
 					<li class="dock-item" data-item="2">
-						<img style="width: 100%;" src="{{ url('Frontend/img/team') }}/2.png" alt="全部" />
+						<img  src="{{ url('Frontend/img/team') }}/2.png" alt="全部" />
 					</li> 
 			        <li class="dock-item" data-item="3">
-			        	<img style="width: 100%;" src="{{ url('Frontend/img/team') }}/3.png" alt="飲食業" />
+			        	<img  src="{{ url('Frontend/img/team') }}/3.png" alt="飲食業" />
 			        </li> 
 			        <li class="dock-item" data-item="4">
-			        	<img style="width: 100%;" src="{{ url('Frontend/img/team') }}/4.png" alt="教育業" />
+			        	<img src="{{ url('Frontend/img/team') }}/4.png" alt="教育業" />
 			        </li> 
 			        <li class="dock-item" data-item="5">
-			        	<img style="width: 100%;" src="{{ url('Frontend/img/team') }}/5.png" alt="藝術與音樂" />
+			        	<img src="{{ url('Frontend/img/team') }}/5.png" alt="藝術與音樂" />
 			        </li> 
 			        <li class="dock-item" data-item="6">
-			        	<img style="width: 100%;" src="{{ url('Frontend/img/team') }}/6.png" alt="零售業" />
+			        	<img src="{{ url('Frontend/img/team') }}/6.png" alt="零售業" />
 			        </li> 
 			        <li class="dock-item" data-item="7">
-			        	<img style="width: 100%;" src="{{ url('Frontend/img/team') }}/7.png" alt="服務業" />
+			        	<img src="{{ url('Frontend/img/team') }}/7.png" alt="服務業" />
 			        </li> 
 			        
         	    </div>
@@ -236,6 +236,14 @@
 			function loadListItem(categoryId) {
 				$('.list-item-franchise .item-franchise').css('display', 'none');
 				$('#list-category-'+ categoryId).css('display', 'block');
+
+				$('.dock-item').removeClass('active');
+
+				$('.dock-item').each(function() {
+					if ($(this).data('item') == categoryId) {
+						$(this).addClass('active');
+					}
+				})
 			}
 
 			$('.dock-item').click(function () {
