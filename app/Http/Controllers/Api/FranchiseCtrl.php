@@ -53,7 +53,7 @@ class FranchiseCtrl extends Controller
                     'business_nature_id' => 0,
                     'desc_2'             => "[".$request->input('company', "TRADEASY")."] ".$franchiseItem->intro_2,
                     'source'             => $s_source,
-                    'character_1'        => "",
+                    'character_1'        => $franchiseItem->intro_2,
 
                     'member_create_date' => '0000-00-00 00:00:00',
                     'member_create_by'   => '0',
