@@ -236,14 +236,6 @@
 			function loadListItem(categoryId) {
 				$('.list-item-franchise .item-franchise').css('display', 'none');
 				$('#list-category-'+ categoryId).css('display', 'block');
-
-				$('.dock-item').removeClass('active');
-
-				$('.dock-item').each(function() {
-					if ($(this).data('item') == categoryId) {
-						$(this).addClass('active');
-					}
-				})
 			}
 
 			$('.dock-item').click(function () {
