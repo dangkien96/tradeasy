@@ -54,7 +54,7 @@
 				                           	<div class="form-group">
 				                           	    <label for="inputEmail3" class="col-sm-3 control-label">{!! trans('fe_business.filter.location') !!} </label>
 				                           	    <div class="col-sm-9">
-				                           	    	<select name="location_name[]" class="selectpicker" title="行業" multiple="multiple" data-live-search="true" data-width="100%">
+				                           	    	<select name="location_name[]" class="selectpicker" title="{!! trans('fe_business.filter.location') !!}" multiple="multiple" data-live-search="true" data-width="100%">
 				                           	    		{{ locationSelect(@$locations, $locationGr, " -- ", array() ) }}
 				                           	    	</select>
 				                           	    </div>
@@ -62,7 +62,7 @@
 			                           	    <div class="form-group">
 				                           	    <label for="inputEmail3" class="col-sm-3 control-label">{!! trans('fe_business.filter.nature') !!} </label>
 				                           	    <div class="col-sm-9">
-				                           	    	<select class="selectpicker" title="地區" multiple="multiple" data-live-search="true" data-width="100%" name="nature_name[]">
+				                           	    	<select class="selectpicker" title="{!! trans('fe_business.filter.nature') !!}" multiple="multiple" data-live-search="true" data-width="100%" name="nature_name[]">
 				                           	    	    @foreach (@$natures as $nature)
 				                           	    	    	<option value="">{!! @$nature->name_2 !!}</option>
 				                           	    	    @endforeach

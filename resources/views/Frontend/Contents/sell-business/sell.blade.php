@@ -58,7 +58,7 @@
 		                            	@if ($errors->has('investment'))
 			                            	<p class="text-left text-danger">{{ $errors->first('investment') }}</p>
 			                            @endif
-		                            	<textarea class="text-area form-control" name="message" cols="30" rows="1" placeholder="備註*">{{ old('message') }}</textarea>
+		                            	<textarea class="text-area form-control" name="message" cols="30" rows="1" placeholder="備註*" style="height: 119px;">{{ old('message') }}</textarea>
 		                            	<p>
     		                            	@php
     											echo captcha_img();
@@ -71,6 +71,7 @@
 		                            </div>
 				                </div>
 								<div class="col-md-12 pb-10">
+									<button style="margin-left: 10px; background: rgb(140, 140, 140); border-color: rgb(140, 140, 140)" class="button comment-cntact active pull-right" type="reset">{!! trans('fe_business.reset') !!}</button>
 									<button class="button comment-cntact active pull-right" type="submit">{!! trans('fe_business.send') !!}</button>
 										<p class="bigtech-send-message"></p>
 								</div>

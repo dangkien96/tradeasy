@@ -51,7 +51,8 @@
    			                            @endif
    			                            <div class="row">
    			                            	<div class="col-md-12 text-center">
-   			                            		<button class="button comment-cntact active" type="submit">SEND</button>
+   			                            		<button class="button comment-cntact active" type="submit">{!! trans('fe_business.send') !!}</button>
+   			                            		<button style="margin-left: 10px; background: rgb(140, 140, 140); border-color: rgb(140, 140, 140)" class="button comment-cntact active" type="reset">{!! trans('fe_business.reset') !!}</button>
    			                            			<p class="bigtech-send-message"></p>
    			                            	</div>
    			                            </div>

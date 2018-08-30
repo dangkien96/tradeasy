@@ -121,7 +121,7 @@
 				                            </div>
 				                            <div class="col-md-7">
     			                           	    <div class="form-group">
-    				                           	    <label for="inputEmail3" class="col-sm-3 control-label">{!! trans('fe_business.filter.area') !!}	 </label>
+    				                           	    <label for="inputEmail3" class="col-sm-3 control-label">{!! trans('fe_business.filter.area') !!}</label>
     				                           	    <div class="col-sm-9">
     				                           	      	<div id="demo-dp-range">
       						                                <div class="input-daterange input-group" id="datepicker">
@@ -151,7 +151,7 @@
 	            			<div class="form-group">
 	            				<input type="text" name="email" placeholder="your email">
 	            				<button class="btn btn-default" type="submit">
-	            					Send
+	            					{!! trans('fe_business.send') !!}
 	            				</button>
 	            			</div>
 	            		</div>
