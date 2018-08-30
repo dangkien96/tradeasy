@@ -21,15 +21,15 @@
                             	<div class="col-md-6">
                             	<p><span class="title">{{ trans('fe_business.code') }}</span> {{ @$business->code }}</p>
                             	<p><span class="title"> 頂手費:</span> HKD {{ number_format(@$business->investment, 0,",","," ) }}</p>
-                            	<p><span class="title">{{ trans('fe_business.reference_profits') }}: {{ @$business->reference_profits }}</span> </p>
+                            	<p><span class="title">{{ trans('fe_business.reference_profits') }}: </span> {{ @$business->reference_profits }}</p>
                             	<p><span class="title">{{ trans('fe_business.payback_period') }}:</span> {{ @$business->payback_period }}</p>
                             	<p><span class="title">{{ trans('fe_business.rent') }}: </span> {{ @$business->Rent }}</p>
                             </div>
                             <div class="col-md-6">
-                            	<p><span class="title">{{ trans('fe_business.location') }}</span> {{ @$business->locations->name_2 ? $business->locations->name_2 : 'N/A' }} </p>
-                            	<p><span class="title">{{ trans('fe_business.nature') }}</span> {{ @$business->natures->name_2 }} </p>
-                            	<p><span class="title">{{ trans('fe_business.revenue') }}</span> {{ @$business->Revenue }} </p>
-                            	<p><span class="title">{{ trans('fe_business.premise_size') }}</span> {{ @$business->Premise_Size }}</p>
+                            	<p><span class="title">{{ trans('fe_business.location') }}:</span> {{ @$business->locations->name_2 ? $business->locations->name_2 : 'N/A' }} </p>
+                            	<p><span class="title">{{ trans('fe_business.nature') }}:</span> {{ @$business->natures->name_2 }} </p>
+                            	<p><span class="title">{{ trans('fe_business.revenue') }}:</span> {{ @$business->Revenue }} </p>
+                            	<p><span class="title">{{ trans('fe_business.premise_size') }}:</span> {{ @$business->Premise_Size }}</p>
                             </div>
                             <div class="col-md-12 pt-50">
                             	<span>{{ trans('fe_business.description') }}: </span>
