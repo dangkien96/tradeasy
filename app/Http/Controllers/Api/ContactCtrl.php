@@ -118,7 +118,7 @@ class ContactCtrl extends Controller
                 $params['link']       = $url."&ref2=".@$value->id;
                 $params['start_time'] = $value->start_time;
 
-                EmailJob::dispatch(@$value->email, 'sell', $params, $params['company'], $params['company']." Acquired Business");
+                EmailJob::dispatch(@$value->email, 'sell', $params, $params['company'], $params['company']." Contact Us");
             }
         }
     }
@@ -151,7 +151,7 @@ class ContactCtrl extends Controller
                 $params['name'] = @$value->user;
                 $params['link'] = $url."&ref2=".@$value->id;
 
-                EmailJob::dispatch(@$value->email, 'sell', $params, $params['company'], $params['company']." Acquired Business");
+                EmailJob::dispatch(@$value->email, 'sell', $params, $params['company'], $params['company']." Contact Us");
             }
         }
         return $data;
@@ -189,7 +189,7 @@ class ContactCtrl extends Controller
                 $params['link']       = $url."&ref2=".@$exclusive_business->id;
                 $params['start_time'] = Carbon::now();
 
-                EmailJob::dispatch(@$exclusive_business->email, 'sell', $params, $params['company'], $params['company']." Acquired Business");
+                EmailJob::dispatch(@$exclusive_business->email, 'sell', $params, $params['company'], $params['company']." Contact Us");
             }
         }
     }
