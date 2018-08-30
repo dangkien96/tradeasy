@@ -90,8 +90,10 @@ class FranchiseCtrl extends Controller
 
             EmailJob::dispatch($request->email, 'franchise_customer', $params, $params['company'], $params['company']." - Acquired Business");
             EmailJob::dispatch($request->company_email, 'franchise_ad', $params, $params['company'], $params['company']." - Acquired Business");
+
             $this->_sendMailAd($opp_id, $t_uuid, $params, $url);
             $this->_sendExclusive($opp_id,  $request->phone, $t_uuid, $params, $url);
+            $this->_sendMailUserFlow($opp_id, $t_uuid, $params, $url);
 
             DB::commit();
 
@@ -100,6 +102,37 @@ class FranchiseCtrl extends Controller
             DB::rollback();
             return response()->json(['status' => false], 422);
         }    
+    }
+
+    public function _sendMailUserFlow($opp_id, $uuid, $params, $url) {
+        $data = DB::connection('mysql2')->table('tbl_opportunities_franchise_follow_user')
+                                        ->join('sys_user', 'tbl_opportunities_franchise_follow_user.user_id', '=', 'sys_user.id')
+                                        ->join('tbl_opportunities_franchise', 'tbl_opportunities_franchise_follow_user.opp_id', '=',  'tbl_opportunities_franchise.id')
+                                        ->select(DB::raw('ADDTIME(now(),100*tbl_mailsetting.wait_time) as start_time'), 'sys_user.id', 'sys_user.user', 'sys_user.email')
+                                        ->where(array(
+                                            array('tbl_opportunities_franchise.active', 1),
+                                            array('sys_user.deleted', 0),
+                                            array('sys_user.email', '<>', ''),
+                                            array('tbl_opportunities_franchise_follow_user.opp_id', $opp_id)      
+                                        ))
+                                        ->first();
+        $this->mail_check_arr[] = @$data->email;
+        $params['user']         = @$data->user;
+        $params['link']         = $url."&ref2=".@$data->id;
+        $params['start_time']   = Carbon::now();
+
+        if (!empty($data)) {
+            DB::connection('mysql2')
+                    ->table('tbl_opportunities_mail_user_franchise')
+                    ->insert(array( array(
+                            'opp_id'     => $opp_id, 
+                            'user_id'    => $data->id, 
+                            'start_time' => $value->start_time, 
+                            't_uuid'     => $uuid),
+                    ));
+
+            EmailJob::dispatch(@$data->email, 'franchise', $params, $params['company'], $params['company']." Acquired Business");
+        }
     }
 
     public function _sendMailAd ($opp_id, $uuid, $params, $url) {

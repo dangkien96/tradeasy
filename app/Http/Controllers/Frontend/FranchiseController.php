@@ -155,7 +155,7 @@ class FranchiseController extends Controller
         $data = DB::connection('mysql2')->table('tbl_opportunities_franchise_follow_user')
                                         ->join('sys_user', 'tbl_opportunities_franchise_follow_user.user_id', '=', 'sys_user.id')
                                         ->join('tbl_opportunities_franchise', 'tbl_opportunities_franchise_follow_user.opp_id', '=',  'tbl_opportunities_franchise.id')
-                                        ->select('sys_user.id', 'sys_user.user', 'sys_user.email')
+                                        ->select(DB::raw('ADDTIME(now(),100*tbl_mailsetting.wait_time) as start_time'), 'sys_user.id', 'sys_user.user', 'sys_user.email')
                                         ->where(array(
                                             array('tbl_opportunities_franchise.active', 1),
                                             array('sys_user.deleted', 0),
@@ -174,7 +174,7 @@ class FranchiseController extends Controller
                     ->insert(array( array(
                             'opp_id'     => $opp_id, 
                             'user_id'    => $data->id, 
-                            'start_time' => Carbon::now(), 
+                            'start_time' => $value->start_time, 
                             't_uuid'     => $uuid),
                     ));
 
