@@ -99,7 +99,7 @@ class FranchiseController extends Controller
                     'phone_1'            => $request->phone,
                     'email'              => $request->email,
                     'business_nature_id' => 0,
-                    'desc_2'             => "[ TRADEASY ] ".@$franchiseItem->desc_2,
+                    'desc_2'             => "[ TRADEASY ] ".@$franchiseItem->intro_2,
                     'source'             => $s_source,
                     'character_1'        => @$franchiseItem->intro_2,
 
