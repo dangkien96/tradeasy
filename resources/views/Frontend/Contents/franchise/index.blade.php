@@ -12,7 +12,7 @@
 	        </div>
 	        <div>
 	        	<div class="dock-container text-center">
-    				<li class="dock-item" data-item="1">
+    				<li class="dock-item active" data-item="1">
 			        	<img src="{{ url('Frontend/img/team') }}/1.png" alt="嬰幼兒" />
 			        </li>
 					<li class="dock-item" data-item="2">
@@ -240,6 +240,9 @@
 
 			$('.dock-item').click(function () {
 				categoryId = $(this).data('item');
+				$('.dock-item').removeClass('active');
+				$(this).addClass('active');
+
 				loadListItem(categoryId);
 			});
 

@@ -4005,10 +4005,10 @@ textarea.text-area:focus {
   transition: 0.5s;
 }
 
-.dock-container .dock-item.active {
+/*.dock-container .dock-item.active {
   border-bottom: 3px solid rgb(255, 109, 0);
 }
-
+*/
 .dock-item::before {
   border-bottom: 3px solid rgb(255, 109, 0);
   border-left: 0;
@@ -4021,6 +4021,10 @@ textarea.text-area:focus {
   -webkit-transform-origin: 50% 50%;
 }
 .dock-container .dock-item:hover::after, .dock-container .dock-item:hover::before {
+  -webkit-transform: scale(1);
+}
+
+.dock-container .dock-item.active::after, .dock-container .dock-item.active::before {
   -webkit-transform: scale(1);
 }
 
