@@ -159,6 +159,22 @@ button {
     color: #858585;
 }
 
+.widget-link a:focus, .widget-address a:focus, 
+.widget-link a:hover, .widget-address a:hover {
+    color: #dadada;
+    text-decoration: none;
+}
+
+.widget-link a,
+.widget-link button {
+    outline: medium none;
+    color: #fff;
+}
+
+.widget-address a {
+    color: #fff;
+}
+
 h1 {
     font-size: 35px;
     font-weight: 500;

@@ -53,11 +53,10 @@ class BuyController extends Controller
         $request->flash();
         $this->_validateBuy($request);
         DB::beginTransaction();
-        $nature_name = @BusinessNature::find($request->industry)->name_2;
-        $location_name = @Location::find($request->location_name)->name_2;
+        $nature_name   = $request->industry == 0 ? trans('fe_business.select_industry') : @BusinessNature::find($request->industry)->name_2;
+        $location_name = $request->location_name == 0 ? trans('fe_business.select_industry') : @Location::find($request->location_name)->name_2;
         $business_info = @BusinessDB2::find($request->business_id);
         try {
-            // Insert Database buy_business of backend mysql 1
             $this->buyBusinessModel->name          = $request->name;
             $this->buyBusinessModel->phone         = $request->phone;
             $this->buyBusinessModel->email         = $request->email;
@@ -69,7 +68,7 @@ class BuyController extends Controller
             $this->buyBusinessModel->business_code = $request->business_code;
             $this->buyBusinessModel->business_id   = $request->business_id;
             $this->buyBusinessModel->save();
-            
+
             //Insert data tbl_business_transfer of business crm mysql 2
             $t_uuid=uniqid("",true);
             $s_source='Email Enquiry';
@@ -125,7 +124,7 @@ class BuyController extends Controller
                 'come_to'              => $s_source,
                 'message'              => $request->message,
                 ];
-
+            return $nature_name.$location_name ;
             $url   = $this->base_url."follow.php?t_uuid=".$t_uuid."&ref1=".$request->input('business_id', -1); 
 
             EmailJob::dispatch($request->email, 'buy_business_customer', $params2, $params2['company'], $params2['company']." Acquired Business");
@@ -304,16 +303,12 @@ class BuyController extends Controller
             'name'          => 'between: 1, 150',
             'phone'         => 'between: 1, 20',
             'email'         => 'email| between: 1, 150',
-            'location_name' => 'between: 1, 150',
-            'industry'      => 'between: 1, 150',
             'captcha'       => 'between: 1, 150|captcha'
         ], [], 
         array(
             'name'          => trans('fe_business.name'),
             'phone'         => trans('fe_business.phone'),
             'email'         => trans('fe_business.email'),
-            'location_name' => trans('fe_business.select_location'),
-            'industry'      => trans('fe_business.select_industry'),
             'captcha'       => trans('fe_business.captcha'),
         ));
     }

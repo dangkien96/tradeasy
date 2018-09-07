@@ -49,7 +49,7 @@
    			                            	<p class="text-left text-danger">{{ $errors->first('email') }}</p>
    			                            @endif
 		                           		<select id="demo-select2-placeholder" class="form-control" name="location_name">
-		                           			<option value="">{!! trans('fe_business.select_location') !!}</option>
+		                           			<option value="0">{!! trans('fe_business.select_location') !!}</option>
 		                           			@foreach ($locations as $location)
 		                           				<option @if ($location->id == old('location_name')) selected @endif value="{!! $location->id !!}">{!! $location->name_2 !!}</option>
 		                           			@endforeach
@@ -58,7 +58,7 @@
    			                            	<p class="text-left text-danger">{{ $errors->first('location_name') }}</p>
    			                            @endif
 		                           		<select class="form-control" name="industry" >
-		                           			<option value="">{!! trans('fe_business.select_industry') !!}</option>
+		                           			<option value="0">{!! trans('fe_business.select_industry') !!}</option>
 		                           			@foreach ($natures as $nature)
 		                           				<option @if ($nature->id == old('industry')) selected @endif value="{!! $nature->id !!}">{!! $nature->name_2 !!}</option>
 		                           			@endforeach

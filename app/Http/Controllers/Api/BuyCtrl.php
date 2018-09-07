@@ -34,8 +34,8 @@ class BuyCtrl extends Controller
         ini_set('max_execution_time', 300); 
 
         DB::beginTransaction();
-        $nature_name = @BusinessNature::find($request->industry)->name_2;
-        $location_name = @Location::find($request->location_id)->name_2;
+        $nature_name   = empty($request->industry) || $request->industry==0 ? trans('fe_business.select_industry') : @BusinessNature::find($request->industry)->name_2;
+        $location_name = empty($request->location_id) || $request->location_id == 0 ? trans('fe_business.select_industry') : @Location::find($request->location_id)->name_2;
         $business_info = @BusinessDB2::find($request->business_id);
         try {
             //Insert data tbl_business_transfer of business crm mysql 2
@@ -51,7 +51,7 @@ class BuyCtrl extends Controller
                             'first_name'         => $request->name,
                             'phone_1'            => $request->phone,
                             'email'              => $request->email,
-                            'business_nature_id' => $request->industry,
+                            'business_nature_id' => empty($request->industry) || $request->industry == 0 ? 0  : $request->industry,
                             'investment'         => $request->investment,
                             'source'             => $s_source,
                             'desc_2'             => "[".$request->input('company', "TRADEASY")."] ".$request->message,

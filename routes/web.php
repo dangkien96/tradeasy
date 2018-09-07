@@ -10,15 +10,17 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/', function () {
+        return view('Frontend.Contents.home');
+    })->name('home');
 Route::get('/get_captcha/{config?}', function (\Mews\Captcha\Captcha $captcha, $config = 'default') {
     return $captcha->src($config);
 });
 
 //Frontend
 Route::group(['prefix' => '/', 'namespace' => 'Frontend'], function() {
-    Route::get('/', function () {
-        return view('Frontend.Contents.home');
-    })->name('home');
+    
     //Buy
     Route::get('buy-business/process', 'BuyController@process')->name('fe.buy_business_process');
     Route::get('buy-business/qa', 'BuyController@qa')->name('fe.buy_qa');
@@ -54,7 +56,6 @@ Route::group(['prefix' => '/', 'namespace' => 'Frontend'], function() {
     Route::get('recruit-detail/{id}-{slug}', 'RecruitController@recruitDetail')->name('fe.recruit_detail');
 
     Route::post('send-email', 'BusinessController@sendMail')->name('fe.sendMail');
-    
 
 });
 
