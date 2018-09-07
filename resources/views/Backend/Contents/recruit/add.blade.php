@@ -42,10 +42,10 @@
 	            	                        <div class="col-sm-10">
 	            	                        	<div class="form-group">
 	                	                            <label class="control-label">
-	                	                            	{!! trans('backend.recruit.end_date') !!}<span class="text-danger"> (*)</span>
+	                	                            	{!! trans('backend.recruit.end_date') !!}
 	                	                            </label>
 	                                                <div class="input-group date">
-					                                    <input type="text" class="form-control" name="end_date" value="{{ @$recruit->end_date }}" required>
+					                                    <input type="text" class="form-control" name="end_date" value="{{ @$recruit->end_date }}">
 					                                    <span class="input-group-addon"><i class="demo-pli-calendar-4"></i></span>
 					                                </div>
 	                                                @if ($errors->has('end_date'))
