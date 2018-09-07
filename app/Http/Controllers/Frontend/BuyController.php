@@ -124,7 +124,6 @@ class BuyController extends Controller
                 'come_to'              => $s_source,
                 'message'              => $request->message,
                 ];
-            return $nature_name.$location_name ;
             $url   = $this->base_url."follow.php?t_uuid=".$t_uuid."&ref1=".$request->input('business_id', -1); 
 
             EmailJob::dispatch($request->email, 'buy_business_customer', $params2, $params2['company'], $params2['company']." Acquired Business");
