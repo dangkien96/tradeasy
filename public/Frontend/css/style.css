@@ -4044,3 +4044,6 @@ textarea.text-area:focus {
   -webkit-transform: scale(1);
 }
 
+.logo img {
+    margin: 10px;
+}

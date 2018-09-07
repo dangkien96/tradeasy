@@ -27,28 +27,28 @@ class BusinessDB2 extends MyModel
 
     public function filterNature($params) {
     	if (!empty($params)) {
-    		$this->setFunctionCond('whereIn', ['business_nature_id', $params]);
+    		$this->setFunctionCond('whereIn', ['tbl_opportunities.business_nature_id', $params]);
     	}
     	return $this;
     }
 
     public function filterLocation($params) {
     	if (!empty($params)) {
-    		$this->setFunctionCond('whereIn', ['location_id', $params]);
+    		$this->setFunctionCond('whereIn', ['tbl_opportunities.location_id', $params]);
     	}
     	return $this;
     }
 
     public function filterCode($params) {
         if (!empty($params)) {
-            $this->setFunctionCond('where', ['code', "like", "%".$params."%"]);
+            $this->setFunctionCond('where', ['tbl_opportunities.code', "like", "%".$params."%"]);
         }
         return $this;
     }
 
      public function filterFreeText($params) {
         if (!empty($params)) {
-            $this->setFunctionCond('where', ['intro_2', "like", "%".$params."%"]);
+            $this->setFunctionCond('where', ['tbl_opportunities.intro_2', "like", "%".$params."%"]);
             // $this->setFunctionCond('whereOr', ['decs_2', "like", "%".$params."%"]);
         }
         return $this;

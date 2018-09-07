@@ -39,7 +39,7 @@ class HomeProvider {
 	}
 
 	public function getBusinessNew () {
-		$data = $this->business->select('tbl_opportunities_4.photo_1', 'tbl_opportunities.id', 'tbl_opportunities.code', 'tbl_opportunities.intro_2', 'reference_profits', 'investment', 'Premise_Size', 'location_id', 'hot_item')
+		$data = $this->business->select('tbl_opportunities_4.photo_1 as image_business', 'tbl_opportunities.id', 'tbl_opportunities.code', 'tbl_opportunities.intro_2', 'reference_profits', 'investment', 'Premise_Size', 'location_id', 'hot_item')
 								->join('tbl_opportunities_4', 'tbl_opportunities_4.cat_id', '=', 'tbl_opportunities.id')
 								
 								->with(['locations' => function($query) {

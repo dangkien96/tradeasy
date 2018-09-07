@@ -164,6 +164,11 @@
 	                <div class="team-item" style="background: #fff;">
 	                    <div class="team-content">
 	                        <div class="team-title-item">
+            	            	@if (empty($businessNew->image_business)) 
+            	            		<img style="position: absolute; top: 40px; right: 30px; width: 90px; height:90px;" src="{{ url('Frontend/img/noimage.png') }}" alt="">
+            	            	@else 
+									<img style="position: absolute; top: 40px; right: 30px; width: 90px; height:90px;" src="https://www.profidelta.com.hk/data/tbl_opportunities_4/org/{{@$businessNew->image_business}}" alt="">
+            	            	@endif
 	                        	<h3><a href="{{ route('fe.business_detail', [@$businessNew->id, @$businessNew->intro_2]) }}">{!! @$businessNew->intro_2 !!} </a> 
 	                        		@if (@$businessNew->hot_item == 1)
 	                        			<img src="{{ url('Frontend/img/service/hot.gif') }}" alt="">

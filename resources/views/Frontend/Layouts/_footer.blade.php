@@ -8,8 +8,8 @@
                 <div class="widget-wrapper">
                     <div class="col-md-3 col-sm-6">
                         <div class="widget-item">
-                            <h1 class="footer-logo">Tradeasy<span></span></h1>
-                            
+                            <!-- <h1 class="footer-logo">Tradeasy<span></span></h1> -->
+                            <img src="{{ url('Frontend/img/logo.png') }}" alt="">
                             <ul class="social-bookmarks footer-social">
                                 <li><a href="{{ @$contact->data->fb }}"><i class="fa fa-facebook"></i></a></li>
                                 <li><a href="{{ @$contact->data->wechat }}"><i class="fa fa-weixin"></i></a></li>

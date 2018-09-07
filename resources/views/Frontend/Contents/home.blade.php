@@ -151,7 +151,11 @@
 	            	    <div class="col-md-4 col-sm-6">
 	            	        <div class="team-item">
 	            	            <div class="team-content">
-	            	            	<!-- <img style="position: absolute; top: 37px; right: 20px; width: 60px; height:60px;" src="https://www.profidelta.com.hk/data/tbl_opportunities_4/org/{{@$businessNew->photo_1}}" alt=""> -->
+	            	            	@if (empty($businessNew->image_business)) 
+	            	            		<img style="position: absolute; top: 40px; right: 20px; width: 70px; height:70px;" src="{{ url('Frontend/img/noimage.png') }}" alt="">
+	            	            	@else 
+										<img style="position: absolute; top: 40px; right: 20px; width: 70px; height:70px;" src="https://www.profidelta.com.hk/data/tbl_opportunities_4/org/{{@$businessNew->image_business}}" alt="">
+	            	            	@endif
 	            	                <h3><a href="{{ route('fe.business_detail', [@$businessNew->id, @$businessNew->intro_2]) }}">{!! @$businessNew->intro_2 !!}</a>
 	                        		</h3>
 	            	                <span class="position">{!! trans('fe_business.code') !!}: {!! @$businessNew->code !!}</span>

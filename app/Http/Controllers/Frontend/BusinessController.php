@@ -45,16 +45,17 @@ class BusinessController extends Controller
 					 ->filterPremiseSize((int)$start_premise_size,(int)$end_premise_size)
 					 ->filterMoneyBasic($money_basic)
 					 ->buildCond()					 
-					 ->select('id', 'code', 'intro_2', 'reference_profits', 'investment', 'Premise_Size', 'location_id', 'hot_item', 'desc_3')
+					 ->select('tbl_opportunities_4.photo_1 as image_business', 'tbl_opportunities.id', 'tbl_opportunities.code', 'tbl_opportunities.intro_2', 'tbl_opportunities.reference_profits', 'tbl_opportunities.investment', 'tbl_opportunities.Premise_Size', 'tbl_opportunities.location_id', 'tbl_opportunities.hot_item', 'tbl_opportunities.desc_3')
+					 ->join('tbl_opportunities_4', 'tbl_opportunities_4.cat_id', '=', 'tbl_opportunities.id')
 					 ->with(['locations' => function($query) {
 						    $query->select('id', 'name_2');
 						}])
 					 ->where([
-					  array('status', 0),
-		              array('deleted', 0),
-		              array('active', 1)
+					  array('tbl_opportunities.status', 0),
+		              array('tbl_opportunities.deleted', 0),
+		              array('tbl_opportunities.active', 1)
 		          	])
-					 ->orderBy('sort_no', 'desc')
+					 ->orderBy('tbl_opportunities.sort_no', 'desc')
 					 ->paginate(15);
 		// echo "<pre>";
 		// var_dump($data);
