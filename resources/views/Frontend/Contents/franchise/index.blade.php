@@ -1,5 +1,5 @@
 @extends('Frontend.Layouts.default')
-
+@section ('title', trans('fe_business.franchise') )
 @section ('content')
 	<div class="content-section ptb-50 gray-bg">
 	    <div class="container">

@@ -7,14 +7,15 @@ use App\Http\Controllers\Controller;
 
 use App\Models\Permission;
 use App\Models\Role;
+use DB, Auth;
 
 class RoleController extends Controller
 {
-	private $roleModel;
+    private $roleModel;
 
     public function __construct(Role $roleModel)
     {
-    	$this->roleModel      = $roleModel;
+        $this->roleModel      = $roleModel;
     }
 
     public function index() {
@@ -36,17 +37,22 @@ class RoleController extends Controller
          * @return \Illuminate\Http\Response
          */
     public function store(Request $request) {
-    	$this->validate($request, array(
-			'name'         => 'required|unique:roles',
-			'display_name' => 'required|unique:roles',
-	    ));
-		$role               = new Role;
-		$this->roleModel->name         = $request->name;
-		$this->roleModel->display_name = $request->display_name;
-		$this->roleModel->description  = $request->description;
-		$this->roleModel->save();
-		
-		return redirect()->route('roles.index');
+        $this->validate($request, array(
+            'name'         => 'required|unique:roles',
+            'display_name' => 'required|unique:roles',
+        ));
+        $role = new Role();
+        DB::beginTransaction();
+        try {
+            $this->roleModel->name         = $request->name;
+            $this->roleModel->display_name = $request->display_name;
+            $this->roleModel->description  = $request->description;
+            $this->roleModel->save();
+            DB::commit();
+            return redirect()->route('roles.index')->with(['role' => trans('backend.role.actions_create_success')]);
+        } catch (Exception $e) {
+            DB::rollback();
+        }
     }
         /**
          * Display the specified resource.
@@ -65,8 +71,11 @@ class RoleController extends Controller
          * @return \Illuminate\Http\Response
          */
         public function edit($id)
-        {	
-        	$role = Role::findOrFail($id);
+        {   
+            $role = Role::findOrFail($id);
+            if ($role->name == config('roleper.superadmin') && Auth::check() && !Auth::user()->hasRole(config('roleper.superadmin')) ) {
+                return abort(403);
+            }
             return view("user_permission.role.add", array("role" => $role));
         }
         /**
@@ -79,16 +88,25 @@ class RoleController extends Controller
         public function update(Request $request, $id)
         {
             $this->validate($request, array(
-                'name'         => 'required',
-                'display_name' => 'required',
+                'name'         => "required|unique_rule:roles,$id",
+                'display_name' => "required|unique_rule:roles,$id"
             ));
-            $role = $this->roleModel->findOrFail($id);
-            $role->name         = $request->name;
-            $role->display_name = $request->display_name;
-            $role->description  = $request->description;
-    		$role->save();
-    		
-    		return redirect()->route('roles.index');
+            DB::beginTransaction();
+            try {
+                $role               = $this->roleModel->findOrFail($id);
+                if ($role->name == config('roleper.superadmin') && Auth::check() && !Auth::user()->hasRole(config('roleper.superadmin')) ) {
+                    return abort(403);
+                }
+                $role->name         = $request->name;
+                $role->display_name = $request->display_name;
+                $role->description  = $request->description;
+                $role->save();
+                DB::commit();
+                return redirect()->route('roles.index')->with(['role' => trans('backend.role.actions_update_success')]);
+            } catch (Exception $e) {
+                DB::rollback();
+            }
+            
         }
         /**
          * Remove the specified resource from storage.
@@ -98,9 +116,17 @@ class RoleController extends Controller
          */
         public function destroy($id)
         {
-        	if ($role = $this->roleModel::whereId($id)) {
-        	    $role->delete();
-        	}
-    		return redirect()->route('roles.index');
+            DB::beginTransaction();
+            try {
+                $role = $this->roleModel::where('id', $id)->first();
+                if (!empty($role) && @$role->name != config('roleper.superadmin')) {
+                    $role->delete();
+                }
+                DB::commit();
+                return redirect()->route('roles.index')->with(['role' => trans('backend.role.actions_delete_success')]);
+            } catch (Exception $e) {
+                DB::rollback();
+            }
+            
         }
 }

@@ -1,5 +1,5 @@
 @extends('Frontend.Layouts.default')
-
+@section ('title', @$business->intro_2 )
 @section ('content')
 @php
     $businessHots = app('Home')->getBusinessHot();

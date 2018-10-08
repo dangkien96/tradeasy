@@ -10,6 +10,7 @@ namespace DangKien\RolePer;
  */
 
 use Illuminate\Support\ServiceProvider;
+use Validator, DB;
 
 class RolePerServiceProvider extends ServiceProvider
 {
@@ -29,15 +30,27 @@ class RolePerServiceProvider extends ServiceProvider
     {
         // Publish config files
         $this->publishes([
-            __DIR__.'/../config/config.php' => app()->basePath() . '/config/roleper.php',
-            __DIR__.'/migrations' => base_path('database/migrations'),
-            __DIR__.'/Models' => base_path('app/Models'),
-            __DIR__.'/Middleware' => base_path('app/Http/Middleware'),
-            __DIR__.'/../views/role_per' => base_path('resources/views/user_permission'),
+            __DIR__.'/../config/config.php'       => base_path('config/roleper.php'),
+            __DIR__.'/migrations'                 => base_path('database/migrations'),
+            __DIR__.'/seeds'                      => base_path('database/seeds'),
+            __DIR__.'/Models/Permission.php'      => base_path('app/Models/Permission.php'),
+            __DIR__.'/Models/PermissionGroup.php' => base_path('app/Models/PermissionGroup.php'),
+            __DIR__.'/Models/Role.php'            => base_path('app/Models/Role.php'),
+            __DIR__.'/Middleware'                 => base_path('app/Http/Middleware'),
+            __DIR__.'/../views/role_per'          => base_path('resources/views/user_permission'),
         ]);
         $this->bladeDirectives();
+        Validator::extend('unique_rule', function($attribute, $value, $parameters, $validator) {
+            $exit = DB::table($parameters[0])->where([ 
+                                        array($attribute, $value),
+                                        array('id', '!=', $parameters[1])
+                                    ])->first();
+            if (empty($exit) ) {
+                return true;
+            }
+            return false;
+        });
 
-        // $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
     }
 
     /**
@@ -47,11 +60,11 @@ class RolePerServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->make('DangKien\RolePer\Controllers\RoleController');
-        $this->app->make('DangKien\RolePer\Controllers\PermissionGroupController');
-        $this->app->make('DangKien\RolePer\Controllers\PermissionController');
-        $this->app->make('DangKien\RolePer\Controllers\UserRoleController');
-        $this->app->make('DangKien\RolePer\Controllers\RolePermissionController');
+        // $this->app->make('DangKien\RolePer\Controllers\RoleController');
+        // $this->app->make('DangKien\RolePer\Controllers\PermissionGroupController');
+        // $this->app->make('DangKien\RolePer\Controllers\PermissionController');
+        // $this->app->make('DangKien\RolePer\Controllers\UserRoleController');
+        // $this->app->make('DangKien\RolePer\Controllers\RolePermissionController');
     }
 
     /**

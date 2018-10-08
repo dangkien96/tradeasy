@@ -76,7 +76,10 @@
                 	                                    <input id="demo-radio-8" class="magic-radio" type="radio" name="status" value="DISABLE" data-bv-field="member" @if($user->status == "DISABLE") {{ 'checked' }} @endif>
                 	                                    <label for="demo-radio-8">{!! trans('backend.status.disable') !!}</label>
                 	                                </div>
-                	                        </div>
+                                                    @if ($errors->has('status'))
+                                                        <p class="text-left text-danger">{{ $errors->first('status') }}</p>
+                                                    @endif
+                	                           </div>
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-primary btn-block btn-form-submit">

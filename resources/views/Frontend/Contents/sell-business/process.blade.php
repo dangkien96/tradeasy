@@ -1,5 +1,5 @@
 @extends('Frontend.Layouts.default')
-
+@section ('title', trans('fe_business.sell_process') )
 @section ('content')
 	@php
 		$business = app('Buy')->getBusiness(App\Libs\Configs\KeyConfig::CONST_KEY_SELL_PROCESS);

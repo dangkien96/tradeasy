@@ -1,5 +1,5 @@
 @extends('Frontend.Layouts.default')
-
+@section ('title', 'Profi Delta Consultancy Limited 普斯匯達顧問有限公司' )
 @section ('content')
 	@php
 		$locations = app('Location')->getLocaiton();

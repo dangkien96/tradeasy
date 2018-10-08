@@ -1,5 +1,5 @@
 @extends('Frontend.Layouts.default')
-
+@section ('title', trans('fe_menu.about_us') )
 @section ('content')
 	@php
 		$about_us     = app('AboutUs')->aboutUs();

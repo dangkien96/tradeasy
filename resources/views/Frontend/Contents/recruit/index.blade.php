@@ -1,5 +1,5 @@
 @extends('Frontend.Layouts.default')
-
+@section ('title', trans('fe_recruit.title') )
 @section ('content')
 	@php
 		$business = app('Buy')->getBusiness(App\Libs\Configs\KeyConfig::CONST_SELL_CRITERIA);

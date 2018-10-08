@@ -13,6 +13,15 @@ class SlideController extends Controller
     public function __construct(Slide $slide)
     {
         $this->slideModel = $slide;
+        
+        $this->middleware('permission:slide.read', ['only' => ['list']]);
+        $this->middleware('permission:slide.read', ['only' => ['index']]);
+        $this->middleware('permission:slide.create',['only' => ['create']]);
+        $this->middleware('permission:slide.create', ['only' => ['store']]);
+        $this->middleware('permission:slide.read', ['only' => ['show']]);
+        $this->middleware('permission:slide.update', ['only' => ['edit']]);
+        $this->middleware('permission:slide.update', ['only' => ['update']]);
+        $this->middleware('permission:slide.delete', ['only' => ['destroy']]);
     }
     /**
      * Display a listing of the resource.

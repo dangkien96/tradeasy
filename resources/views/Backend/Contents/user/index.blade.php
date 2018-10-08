@@ -55,7 +55,7 @@
 			                                </span>
 			                            </td>
 		                                <td style="width: 250px">
-		                                	<a class="btn btn-info btn-icon btn-sm" >
+		                                	<a href="{{ url('admin/users/') }}/@{{ user.id }}/edit" class="btn btn-info btn-icon btn-sm" >
 		                                		{!! trans('backend.actions.edit') !!}
 		                                	</a>
 		                                	<a class="btn btn-info btn-icon btn-sm" href="{{ url('admin/users/user-permission') }}/@{{ user.id }}">

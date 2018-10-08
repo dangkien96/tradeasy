@@ -66,12 +66,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/DangKien/role-permisson.git",
-                "reference": "6cf199c7d85bc4af052f04d2ab14c0dd27af78c3"
+                "reference": "396c8f461571b3bb9285efedb7113c727e3bdce3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/DangKien/role-permisson/zipball/6cf199c7d85bc4af052f04d2ab14c0dd27af78c3",
-                "reference": "6cf199c7d85bc4af052f04d2ab14c0dd27af78c3",
+                "url": "https://api.github.com/repos/DangKien/role-permisson/zipball/396c8f461571b3bb9285efedb7113c727e3bdce3",
+                "reference": "396c8f461571b3bb9285efedb7113c727e3bdce3",
                 "shasum": ""
             },
             "require": {
@@ -101,12 +101,7 @@
                 "psr-4": {
                     "App\\": "app/",
                     "DangKien\\RolePer\\": "src/RolePer/"
-                },
-                "classmap": [
-                    "src/RolePer/Models",
-                    "src/RolePer/controllers",
-                    "src/RolePer/Traits"
-                ]
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -126,7 +121,7 @@
                 "permission",
                 "roles"
             ],
-            "time": "2018-07-12T02:29:53+00:00"
+            "time": "2018-09-11T03:38:52+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",

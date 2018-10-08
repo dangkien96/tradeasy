@@ -1,5 +1,5 @@
 @extends('Frontend.Layouts.default')
-
+@section ('title', trans('fe_business.sell_business') )
 @section ('content')
 	@php
 		$locations = app('Location')->getLocaiton();

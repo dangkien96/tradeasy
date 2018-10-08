@@ -24,8 +24,8 @@
 	<div class="content-section pt-50">
 		<div class="container">
 			<div class="col-md-12" class="banner-header ">
-	    		<a href="{{ $bannerHome->data->url_header }}" >
-	    			<img style="width: 100%;" src="{{ url('') }}{{ $bannerHome->data->banner_header }}" alt="">
+	    		<a href="{{ @$bannerHome->data->url_header }}" >
+	    			<img style="width: 100%;" src="{{ url('') }}{{ @$bannerHome->data->banner_header }}" alt="">
 	    		</a>
 	    	</div>
 	    </div>
@@ -188,13 +188,13 @@
 	            </div>
 	            <div class="col-md-3 col-sm-3 banner-r mt-50">
 	            	<div class="rt-banner">
-	            		<a href="{{ $bannerHome->data->url_rt }}">
-	            			<img style="width: 100%" src="{{ url('') }}{{ $bannerHome->data->banner_rt_img }}" alt="">
+	            		<a href="{{ @$bannerHome->data->url_rt }}">
+	            			<img style="width: 100%" src="{{ url('') }}{{ @$bannerHome->data->banner_rt_img }}" alt="">
 	            		</a>
 	            	</div>
 	            	<div class="rb-banner mt-40">
-	            		<a href="{{ $bannerHome->data->url_rb }}">
-	            			<img style="width: 100%" src="{{ url('') }}{{ $bannerHome->data->banner_rb_img }}" alt="">
+	            		<a href="{{ @$bannerHome->data->url_rb }}">
+	            			<img style="width: 100%" src="{{ url('') }}{{ @$bannerHome->data->banner_rb_img }}" alt="">
 	            		</a>
 	            	</div>
 	            </div>

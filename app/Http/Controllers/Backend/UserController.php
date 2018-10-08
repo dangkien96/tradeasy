@@ -13,6 +13,15 @@ class UserController extends Controller
     public function __construct(User $userModel)
     {
         $this->userModel = $userModel;
+
+        $this->middleware('permission:user.read', ['only' => ['list']]);
+        $this->middleware('permission:user.read', ['only' => ['index']]);
+        $this->middleware('permission:user.create',['only' => ['create']]);
+        $this->middleware('permission:user.create', ['only' => ['store']]);
+        $this->middleware('permission:user.read', ['only' => ['show']]);
+        $this->middleware('permission:user.update', ['only' => ['edit']]);
+        $this->middleware('permission:user.update', ['only' => ['update']]);
+        $this->middleware('permission:user.delete', ['only' => ['destroy']]);
     }
     /**
      * Display a listing of the resource.
@@ -79,11 +88,13 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($id)
     {
         if (Auth::check()) {
-            $user = $this->userModel::findOrFail(Auth::id());
-            return view('Backend.Contents.user.updateSeft', ['user'=>$user]);
+            $user = $this->userModel::find(Auth::id());
+            if (!empty($user)) {
+                return view('Backend.Contents.user.updateSeft', ['user'=>$user]);
+            }
         } else {
             return redirect()->route('login');
         }
@@ -127,14 +138,23 @@ class UserController extends Controller
         try {
             $user->name     = $request->name;
             $user->phone    = $request->phone;
-            $user->status   = $request->status;
+            if ( $request->status == 'DISABLE') {
+                if (Auth::id() == $id || (!Auth::user()->hasRole(config('roleper.superadmin')) &&  $user->hasRole(config('roleper.superadmin'))) ) {
+                    return redirect()->back()->withInput()->withErrors(['status' => 'Update status failue']);
+                } else {
+                    $user->status = $request->status;
+                }
+                
+            } else {
+                $user->status = $request->status;
+            }
             $user->avatar   = $path;
             $user->save();
             DB::commit();
             return redirect()->route('users.index')->with('users', 'success');
         } catch (Exception $e) {
             DB::rollback();
-            return view('Backend.Contents.aboutTeam.update');
+            return view('Backend.Contents.user.update');
         }
     }
 
@@ -147,13 +167,12 @@ class UserController extends Controller
     public function destroy($id)
     {
         if (isset($id) && Auth::check() && $id != Auth::user()->id) {
-            $aboutTeam = $this->userModel::find($id);
-            if (empty($aboutTeam)) {
+            $user = $this->userModel::findOrFail($id);
+            if (empty($user) || $user->hasRole(config('roleper.superadmin')) ) {
                 return response()->json(['status' => false], 422);
             } else {
                 DB::beginTransaction();
                 try {
-                    $aboutTeam->delete();
                     DB::commit();
                     return response()->json(['status' => true], 200);
                 } catch (Exception $e) {
@@ -227,22 +246,31 @@ class UserController extends Controller
     }
 
     public function _validateInsert($request){
-        return $this->validate($request, [
+        $attribute = array(
+            'name'  => trans('backend.user.name'),
+            'email' => trans('backend.user.email'),
+            'phone' => trans('backend.user.phone')
+        );
+        $rules  = array(
             'name'    => 'required|max:255',
             'email'   => 'required|max:255|email',
             'phone'   => 'required|max:15',
-        ], [
-        ]
-       );
+        );
+        $messages = array();
+        return $this->validate($request, $rules, $messages, $attribute);
     }
 
     public function _validateUpdate($request){
-        return $this->validate($request, [
+        $attribute = array(
+            'name'  => trans('backend.user.name'),
+            'phone' => trans('backend.user.phone')
+        );
+        $rules  = array(
             'name'    => 'required|max:255',
             'phone'   => 'required|max:15',
-        ], [
-        ]
-       );
+        );
+        $messages = array();
+        return $this->validate($request, $rules, $messages, $attribute);
     }
 
     

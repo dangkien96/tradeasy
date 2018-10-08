@@ -95,34 +95,32 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend', 'middleware' => 'au
 
     Route::get('setting', 'SettingController@index')->name('setting.index');
 
-    Route::get('sell-business/process', 'SellController@sellProcess')->name('sell_process.index');
-    Route::get('sell-business/sell-criteria', 'SellController@sellCriteria')->name('sell_criteria.index');
-    Route::get('sell-business/sell-qa', 'SellController@sellQa')->name('sell_qa.index');
-    Route::get('sell-business/sell-valuation', 'SellController@sellValuation')->name('sell_valuation.index');
+    Route::group(['prefix' => 'sell-business', 'middleware' => 'permission:sell.update'], function() {
+        Route::get('/process', 'SellController@sellProcess')->name('sell_process.index');
+        Route::get('/sell-criteria', 'SellController@sellCriteria')->name('sell_criteria.index');
+        Route::get('/sell-qa', 'SellController@sellQa')->name('sell_qa.index');
+        Route::get('/sell-valuation', 'SellController@sellValuation')->name('sell_valuation.index');
+        Route::post('sell-business/process', 'SellController@saveSell')->name('sell_process.update');
+    });
 
-    Route::post('sell-business/process', 'SellController@saveSell')->name('sell_process.update');
+    Route::group(['prefix' => 'purchase-business', 'middleware' => 'permission:buy.update'], function() {
+        Route::get('purchase-business/process', 'BuyController@buyProcess')->name('buy_process.index');
+        Route::get('purchase-business/safe-guard', 'BuyController@gaurd')->name('safe_guard.index');
+        Route::get('purchase-business/buy-qa', 'BuyController@buyQa')->name('buy_qa.index');
+        Route::post('purchase-business/process', 'BuyController@saveSell')->name('buy_process.update');
+    });
     
-    Route::get('purchase-business/process', 'BuyController@buyProcess')->name('buy_process.index');
-    Route::get('purchase-business/safe-guard', 'BuyController@gaurd')->name('safe_guard.index');
-    Route::get('purchase-business/buy-qa', 'BuyController@buyQa')->name('buy_qa.index');
-
-    Route::post('purchase-business/process', 'BuyController@saveSell')->name('buy_process.update');
 
     Route::get('start-up-page', 'StartUpController@startUp')->name('start_up.index');
-
     Route::post('start-up-page', 'StartUpController@saveStartUp')->name('start_up.update');
     
-
     Route::resource('recruits', 'RecruitController',[ 'export' => ['destroy'] ]);
 
     Route::resource('slides', 'SlideController',[ 'export' => ['destroy'] ]);
 
     Route::get('contact', 'ContactController@index')->name('contact.index');
-
     Route::get('register-buy', 'BuyController@register')->name('register_buy.index');
-
     Route::get('register-sell', 'SellController@register')->name('register_sell.index');
-
     Route::get('event-online', 'EventOnlineController@register')->name('event_online.index');
     
 });

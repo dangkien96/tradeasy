@@ -1,5 +1,5 @@
 @extends('Frontend.Layouts.default')
-
+@section ('title', trans('fe_event_online.event_online') )
 @section ('content')
 	@php
 		$contact   = app('AboutUs')->getContact();

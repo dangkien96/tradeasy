@@ -1,5 +1,5 @@
 @extends('Frontend.Layouts.default')
-
+@section ('title', trans('fe_business.start_up') )
 @section ('content')
 	@php
 		$start_up = app('Buy')->getBusiness(App\Libs\Configs\KeyConfig::CONST_START_UP);

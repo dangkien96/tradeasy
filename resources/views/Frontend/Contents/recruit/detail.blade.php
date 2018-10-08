@@ -1,5 +1,5 @@
 @extends('Frontend.Layouts.default')
-
+@section ('title', @$recruit->title)
 @section ('content')
 	@php
 		$rectuits = app('Home')->getRecruit();
