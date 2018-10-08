@@ -46,7 +46,10 @@
 								    <ol class="indicator"></ol>
 								</div>
 								<div id="links">
-								    @foreach ($business->images as $image)
+									@php
+										$images = @$business->images ? $business->images : array(); 
+									@endphp
+								    @foreach (@$images as $image)
 								    	<a href="https://www.profidelta.com.hk/data/tbl_opportunities_photo/org/{{ @$image->photo_1 }}" title="{{ @$business->intro_2 }}" data-gallery>
 									    	<img style="margin: 10px; border: 1px solid; padding: 10px; box-shadow: 0 10px 13px 0 rgba(0, 0, 0, 0.28);" src="https://www.profidelta.com.hk/data/tbl_opportunities_photo/thu_crop/{{ @$image->photo_1 }}" alt="">
 									    </a>
