@@ -30,9 +30,9 @@
                             <a href="{{ route('fe.franchise_detail', [@$hotFranchise->id, @$hotFranchise->code]) }}"><img src="{{ @$hotFranchise->photo_1 }}" alt=""></a>
                         </div>
                         <div class="widget-post-content">
-                            <p  class="widget-post-date"><a href="{{ route(fe.franchise_detail', [@$hotFranchise->id, @$hotFranchise->intro_2]) }}">
+                            <p  class="widget-post-date"><a href="{{ route('fe.franchise_detail', [@$hotFranchise->id, @$hotFranchise->intro_2]) }}">
                             {{ $hotFranchise->intro_2 }}/a></p>
-                            <a href="{{ route(fe.franchise_detail', [@$hotFranchise->id, @$hotFranchise->intro_2]) }}">
+                            <a href="{{ route('fe.franchise_detail', [@$hotFranchise->id, @$hotFranchise->intro_2]) }}">
                             {!! str_limit(@$hotFranchise->teacher_introduction, $limit = 70, $end = '...') !!}</a>
                         </div>
                     </div>
