@@ -31,7 +31,7 @@
                         </div>
                         <div class="widget-post-content">
                             <p  class="widget-post-date">{{ $hotFranchise->intro_2 }}</p>
-                            <a href="{{ route('fe.business_detail', [@$hotFranchise->id, @$hotFranchise->intro_2]) }}">
+                            <a href="{{ route(fe.franchise_detail', [@$hotFranchise->id, @$hotFranchise->intro_2]) }}">
                             {!! str_limit(@$hotFranchise->teacher_introduction, $limit = 70, $end = '...') !!}</a>
                         </div>
                     </div>
