@@ -192,7 +192,7 @@
 	                                </div>
 	                            </div>
 	                            <div class="single-experience">
-	                                <p>{!! trans('fe_business.reference_profits') !!}: {!! @$businessNew->reference_profits !!}</p>
+									<p>{!! trans('fe_business.reference_profits') !!}: <span class="text-danger">{!! @$businessNew->reference_profits !!}</span></p>
 	                                <div class="progress">
 	                                    
 	                                </div>
