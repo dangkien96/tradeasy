@@ -29,14 +29,14 @@
             <div id="sticky-header">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-1 col-sm-2">
+                        <div class="col-md-3 col-sm-2">
                             <div class="logo">
                                 <a href="{{ route('home') }}">
                                     <img src="{{ url('Frontend/img/logo.png') }}" alt="">
                                 </a>
                             </div>
                         </div>
-                        <div class="col-md-11 col-sm-10 hidden-xs hidden-sm mainmenu-main-wrapper">
+                        <div class="col-md-9 col-sm-10 hidden-xs hidden-sm mainmenu-main-wrapper">
                             <div class="menu-area add-search">
                                 <nav>
                                     <ul class="main-menu hover-style-one clearfix ">

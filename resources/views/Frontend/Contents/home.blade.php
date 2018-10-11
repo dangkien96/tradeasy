@@ -30,7 +30,7 @@
 	    	</div>
 	    </div>
 	</div>
-	<div class="content-section pb-100 pt-50">
+	<div class="content-section pb-50 pt-50">
 	    <div class="container">
             <div class="row">
 	            <div class="col-md-9 col-sm-9">
@@ -162,13 +162,13 @@
 	            	                <p class="pt-20" >{!! trans('fe_business.industry') !!}: {!! @$businessNew->locations->name_2 !!}</p>
 	            	                <div class="progress-bar-wrapper">
 	            	                    <div class="single-experience">
-	            	                        <p>{!! trans('fe_business.sell_price') !!}: HKD {!! number_format(@$businessNew->investment, 0) !!}</p>
+	            	                        <p>{!! trans('fe_business.sell_price') !!}: <span class="text-danger"> HKD {!! number_format(@$businessNew->investment, 0) !!}</span> </p>
 	            	                        <div class="progress">
 	            	                            
 	            	                        </div>
 	            	                    </div>
 	            	                    <div class="single-experience">
-	            	                        <p>{!! trans('fe_business.reference_profit') !!}: {!! @$businessNew->reference_profits !!}</p>
+											<p>{!! trans('fe_business.reference_profit') !!}: <span class="text-danger">{!! @$businessNew->reference_profits !!}</span></p>
 	            	                        <div class="progress">
 	            	                            
 	            	                        </div>
@@ -205,7 +205,7 @@
 	<!-- Start Testimonial section -->
     <!-- Start about us section -->
     
-    <div class="content-section ptb-100 gray-bg">
+    <div class="content-section ptb-50 gray-bg">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
