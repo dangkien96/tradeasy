@@ -198,7 +198,7 @@
 	                                </div>
 	                            </div>
 	                            <div class="single-experience">
-	                                <p>{!! trans('fe_business.payback_period') !!}: {!! @$businessNew->payback_period ? $businessNew->payback_period : 'N/a' !!}</p>
+	                                <p>{!! trans('fe_business.payback_period') !!}: {!! @$businessNew->payback_period ? $businessNew->payback_period : '' !!}</p>
 	                                <div class="progress">
 	                                   
 	                                </div>
