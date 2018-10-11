@@ -184,7 +184,9 @@
 	                                </div>
 	                            </div>
 	                            <div class="single-experience">
-	                                <p>{!! trans('fe_business.investment') !!}: HKD {!! number_format(@$businessNew->investment, 0) !!}</p>
+	                                <p>{!! trans('fe_business.investment') !!}: <span class="text-danger">
+											HKD {!! number_format(@$businessNew->investment, 0) !!}
+										</span></p>
 	                                <div class="progress">
 	                                    
 	                                </div>
