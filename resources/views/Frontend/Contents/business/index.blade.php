@@ -21,7 +21,7 @@
 	    	<div class="row">
 	    	    <div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2">
 	    	        <div class="main-heading-content text-center">
-	    	            <h2>{!! trans('fe_business.business') !!}</span></h2>
+	    	            <h2>{!! trans('fe_business.business') !!}</h2>
 	    	        </div>
 	    	    </div>
 	    	</div>

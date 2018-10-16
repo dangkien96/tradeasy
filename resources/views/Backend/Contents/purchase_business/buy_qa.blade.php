@@ -1,5 +1,4 @@
 @extends('Backend.Layouts.default')
-@section ('title', 'ZeLike 澤樣室內設計')
 @section('content')
 	<div id="content-container">
 		<div id="page-content">

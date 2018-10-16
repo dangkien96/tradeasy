@@ -21,7 +21,7 @@
 				                </div>
 				                <div class="col-sm-6 table-toolbar-right">
 				                    <div class="form-group col-sm-12">
-				                        <input id="demo-input-search2" type="text" placeholder="Tìm kiếm" class="form-control col-sm-
+				                        <input id="demo-input-search2" type="text" placeholder="{{ trans('backend.actions.search')  }}" class="form-control col-sm-
 				                        8" autocomplete="off" ng-change="actions.filter()" ng-model="filter.freetext">
 				                    </div>
 				                </div>
