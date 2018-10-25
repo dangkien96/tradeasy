@@ -12,15 +12,15 @@
 */
 
 Route::get('/', function () {
-        return view('Frontend.Contents.home');
-    })->name('home');
+    return view('Frontend.Contents.home');
+})->name('home');
 Route::get('/get_captcha/{config?}', function (\Mews\Captcha\Captcha $captcha, $config = 'default') {
     return $captcha->src($config);
 });
 
 //Frontend
 Route::group(['prefix' => '/', 'namespace' => 'Frontend'], function() {
-    
+
     //Buy
     Route::get('buy-business/process', 'BuyController@process')->name('fe.buy_business_process');
     Route::get('buy-business/qa', 'BuyController@qa')->name('fe.buy_qa');
@@ -51,7 +51,7 @@ Route::group(['prefix' => '/', 'namespace' => 'Frontend'], function() {
 
     Route::get('event-online', 'FranchiseController@registerEvent')->name('fe.event_online');
     Route::post('event-online', 'FranchiseController@addEvent')->name('fe.post_event_online');
-    
+
     Route::get('recruits', 'RecruitController@recruit')->name('fe.recruits');
     Route::get('recruit-detail/{id}-{slug}', 'RecruitController@recruitDetail')->name('fe.recruit_detail');
 
@@ -79,7 +79,7 @@ Route::resource('admin/permissions', '\DangKien\RolePer\Controllers\PermissionCo
 Route::resource('admin/permissions-group', '\DangKien\RolePer\Controllers\PermissionGroupController');
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Backend', 'middleware' => 'auth'], function() {
-    
+
     Route::get('/laravel-filemanager', '\UniSharp\LaravelFilemanager\Controllers\LfmController@show');
     Route::post('/laravel-filemanager/upload', '\UniSharp\LaravelFilemanager\Controllers\UploadController@upload');
 
@@ -95,7 +95,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend', 'middleware' => 'au
 
     Route::get('setting', 'SettingController@index')->name('setting.index');
 
-    Route::group(['prefix' => 'sell-business', 'middleware' => 'permission:sell.update'], function() {
+    Route::group(['prefix' => 'sell-business'], function() {
         Route::get('/process', 'SellController@sellProcess')->name('sell_process.index');
         Route::get('/sell-criteria', 'SellController@sellCriteria')->name('sell_criteria.index');
         Route::get('/sell-qa', 'SellController@sellQa')->name('sell_qa.index');
@@ -103,17 +103,17 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend', 'middleware' => 'au
         Route::post('sell-business/process', 'SellController@saveSell')->name('sell_process.update');
     });
 
-    Route::group(['prefix' => 'purchase-business', 'middleware' => 'permission:buy.update'], function() {
-        Route::get('purchase-business/process', 'BuyController@buyProcess')->name('buy_process.index');
-        Route::get('purchase-business/safe-guard', 'BuyController@gaurd')->name('safe_guard.index');
-        Route::get('purchase-business/buy-qa', 'BuyController@buyQa')->name('buy_qa.index');
-        Route::post('purchase-business/process', 'BuyController@saveSell')->name('buy_process.update');
+    Route::group(['prefix' => 'purchase-business'], function() {
+        Route::get('/process', 'BuyController@buyProcess')->name('buy_process.index');
+        Route::get('/safe-guard', 'BuyController@gaurd')->name('safe_guard.index');
+        Route::get('/buy-qa', 'BuyController@buyQa')->name('buy_qa.index');
+        Route::post('/process', 'BuyController@saveSell')->name('buy_process.update');
     });
-    
+
 
     Route::get('start-up-page', 'StartUpController@startUp')->name('start_up.index');
     Route::post('start-up-page', 'StartUpController@saveStartUp')->name('start_up.update');
-    
+
     Route::resource('recruits', 'RecruitController',[ 'export' => ['destroy'] ]);
 
     Route::resource('slides', 'SlideController',[ 'export' => ['destroy'] ]);
@@ -122,7 +122,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend', 'middleware' => 'au
     Route::get('register-buy', 'BuyController@register')->name('register_buy.index');
     Route::get('register-sell', 'SellController@register')->name('register_sell.index');
     Route::get('event-online', 'EventOnlineController@register')->name('event_online.index');
-    
+
 });
 
 Route::group(['prefix' => 'rest/admin', 'middleware' => 'auth'], function() {
@@ -143,5 +143,5 @@ Route::group(['prefix' => 'rest/admin', 'middleware' => 'auth'], function() {
     Route::get('register-buy', 'Backend\BuyController@list');
 
     Route::get('register-sell', 'Backend\SellController@list');
-    
+
 });

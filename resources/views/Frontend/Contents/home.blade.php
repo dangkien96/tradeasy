@@ -40,7 +40,7 @@
 				            	<form action="{{ route('fe.business') }}" method="GET" class="form-horizontal">
 				            		@csrf
 					                <div class="col-md-12 col-sm-12">
-			                           <div class="col-md-5">
+			                           <div class="col-md-6">
        			                           	<div class="form-group">
        			                           	    <label for="inputEmail3" class="col-sm-3 control-label">{!! trans('fe_business.code') !!} </label>
        			                           	    <div class="col-sm-9">
@@ -83,7 +83,7 @@
 				                           	    </div>
 			                           	    </div>
 			                            </div>
-			                            <div class="col-md-7">
+			                            <div class="col-md-6">
 			                            	<div class="form-group">
        			                           	    <label for="inputEmail3" class="col-sm-3 control-label">{!! trans('fe_business.freetext') !!} </label>
        			                           	    <div class="col-sm-9">
@@ -102,7 +102,7 @@
 				                           	    </div>
 			                           	    </div>
 			                            </div>
-			                            <div class="col-md-7">
+			                            <div class="col-md-6">
 			                           	    <div class="form-group">
 				                           	    <label for="inputEmail3" class="col-sm-3 control-label">{!! trans('fe_business.filter.rent') !!} </label>
 				                           	    <div class="col-sm-9">
@@ -116,7 +116,7 @@
 				                           	    </div>
 			                           	    </div>
 			                            </div>
-			                            <div class="col-md-7">
+			                            <div class="col-md-6">
 			                           	    <div class="form-group">
 				                           	    <label for="inputEmail3" class="col-sm-3 control-label">{!! trans('fe_business.filter.area') !!}	 </label>
 				                           	    <div class="col-sm-9">

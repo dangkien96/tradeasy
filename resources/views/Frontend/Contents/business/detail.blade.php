@@ -18,14 +18,14 @@
 	                <div class="col-md-8 col-sm-8">
                         <div class="service-text" style="overflow: auto; background-color: #fff">
                             <div class="pt-20">
-                            	<div class="col-md-6">
+                            	<div class="col-md-7">
                             	<p><span class="title">{{ trans('fe_business.code') }}</span> {{ @$business->code }}</p>
                             	<p><span class="title"> 頂手費:</span> HKD {{ number_format(@$business->investment, 0,",","," ) }}</p>
                             	<p><span class="title">{{ trans('fe_business.reference_profits') }}: </span> {{ @$business->reference_profits }}</p>
                             	<p><span class="title">{{ trans('fe_business.payback_period') }}:</span> {{ @$business->payback_period }}</p>
                             	<p><span class="title">{{ trans('fe_business.rent') }}: </span> {{ @$business->Rent }}</p>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-5">
                             	<p><span class="title">{{ trans('fe_business.location') }}:</span> {{ @$business->locations->name_2 ? $business->locations->name_2 : 'N/A' }} </p>
                             	<p><span class="title">{{ trans('fe_business.nature') }}:</span> {{ @$business->natures->name_2 }} </p>
                             	<p><span class="title">{{ trans('fe_business.revenue') }}:</span> {{ @$business->Revenue }} </p>
