@@ -88,7 +88,11 @@
     											echo captcha_img();
     		                            	@endphp
 		                            	</p>
-		                            	<input class="form-control" name="captcha" type="text" placeholder="{!! trans('fe_business.captcha') !!}">
+										<div class="form-group">
+											<div class="col-md-offset-4 col-md-6">
+												<div class="g-recaptcha" data-sitekey="6LcqPUIoiUNFAH_5KVxMGYDu76BS62jBqjJ3dRU1" data-callback="YourOnSubmitFn"></div>
+											</div>
+										</div>
 		                            	@if ($errors->has('captcha'))
    			                            	<p class="text-left text-danger">{{ $errors->first('captcha') }}</p>
    			                            @endif
@@ -109,6 +113,7 @@
 @endsection 
 
 @section ('myJs')
+	<script src='https://www.google.com/recaptcha/api.js'></script>
 	@if (Session::has('buy-business') && Session::get('buy-business') == 'success')
 		<script>
 			swal({

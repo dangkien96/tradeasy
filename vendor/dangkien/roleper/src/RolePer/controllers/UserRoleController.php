@@ -15,7 +15,8 @@ class UserRoleController extends Controller
     public function __construct(User $userModel)
     {
     	$this->userModel = $userModel;
-        // $this->middleware('auth');
+        $this->middleware('permission:permission.add_role',['only' => ['index']]);
+        $this->middleware('permission:permission.add_role', ['only' => ['store']]);
 	}
     /**
      * Display a listing of the resource.
